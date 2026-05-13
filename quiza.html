@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Thaís Coelho | Mapeamento Alimentar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        :root {
+            --bg-page: #F9FBF8;
+            --white-card: #FFFFFF;
+            --green-soft: #E2F0E6;
+            --green-primary: #2D6A4F;
+            --green-dark: #1B4D3E;
+            --green-highlight: #40916C;
+            --text-dark: #2C3E2F;
+            --text-light: #6B7C6E;
+            --border-light: #E6EDE8;
+            --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --orange-warning: #E8A87C;
+            --blue-info: #8BA298;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, var(--bg-page) 0%, #F3F7F4 100%);
+            height: 100%;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            color: var(--text-dark);
+            font-weight: 400;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Títulos com serifa elegante */
+        h1, h2, h3, h4, .question-text, .perfil-badge, .chart-title, .modal-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        .header-logo {
+            text-align: center;
+            padding: 24px 20px 12px;
+        }
+        .logo-circle {
+            background: linear-gradient(145deg, var(--green-primary), var(--green-dark));
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+        .logo-circle:hover {
+            transform: scale(1.05);
+        }
+        .logo-circle i {
+            font-size: 28px;
+            color: white;
+        }
+
+        .container {
+            max-width: 560px;
+            margin: 0 auto;
+            padding: 12px 20px 40px;
+            min-height: 100%;
+        }
+
+        .contador {
+            background: var(--white-card);
+            border-radius: 60px;
+            padding: 12px 20px;
+            margin-bottom: 24px;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--border-light);
+            display: block;
+            width: 100%;
+            color: var(--text-dark);
+            box-shadow: var(--shadow-sm);
+            font-family: 'Inter', sans-serif;
+        }
+        .contador i {
+            color: var(--green-primary);
+            margin-right: 8px;
+        }
+
+        .progress-wrapper {
+            margin: 8px 0 24px;
+        }
+        .progress-bar-bg {
+            height: 6px;
+            background: var(--green-soft);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--green-primary), var(--green-highlight));
+            border-radius: 10px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .step-counter {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 8px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .question-card {
+            background: var(--white-card);
+            border-radius: 32px;
+            padding: 40px 28px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+            text-align: center;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            animation: fadeInUp 0.4s ease;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .question-image {
+            width: 100%;
+            max-width: 280px;
+            height: 40vh;
+            border-radius: 28px;
+            margin: 0 auto 24px auto;
+            display: block;
+            object-fit: cover;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--green-soft);
+            transition: transform 0.3s ease;
+        }
+        .question-image:hover {
+            transform: scale(1.02);
+        }
+
+        .question-text {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 36px;
+            line-height: 1.3;
+            text-align: center;
+        }
+        
+        .highlight-word {
+            color: var(--green-highlight);
+            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            display: inline-block;
+            position: relative;
+        }
+        .highlight-word::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--green-highlight), transparent);
+            border-radius: 2px;
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            max-width: 320px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .option-item {
+            background: var(--bg-page);
+            border: 1px solid var(--border-light);
+            border-radius: 60px;
+            padding: 14px 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .option-item:hover {
+            background: var(--green-soft);
+            border-color: var(--green-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .option-item.selected {
+            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+            border-color: var(--green-primary);
+            color: white;
+            transform: scale(1.02);
+        }
+
+        .option-item.selected i {
+            color: white;
+        }
+
+        .option-icon {
+            width: 24px;
+            font-size: 1rem;
+            color: var(--green-primary);
+        }
+        .option-item.selected .option-icon i {
+            color: white;
+        }
+
+        .input-name {
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto 20px;
+            display: block;
+            padding: 16px 22px;
+            border: 2px solid var(--border-light);
+            border-radius: 60px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-page);
+            text-align: center;
+            transition: all 0.2s;
+            outline: none;
+            color: var(--text-dark);
+        }
+        .input-name:focus {
+            border-color: var(--green-primary);
+            box-shadow: 0 0 0 3px rgba(64, 145, 108, 0.15);
+        }
+        .input-name.error {
+            border-color: #E8A87C;
+            animation: shake 0.3s ease;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+            color: white;
+            padding: 16px 28px;
+            border-radius: 60px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 320px;
+            margin: 12px auto 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 3000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .loading-card {
+            background: white;
+            border-radius: 48px;
+            padding: 48px 40px;
+            text-align: center;
+            max-width: 340px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+            animation: slideUp 0.4s ease;
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .loading-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--green-soft), var(--green-primary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        .loading-icon i {
+            font-size: 40px;
+            color: white;
+        }
+        .loading-step {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--green-primary);
+            margin-top: 12px;
+            min-height: 60px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-container {
+            background: white;
+            max-width: 480px;
+            width: 100%;
+            border-radius: 40px;
+            overflow: hidden;
+            animation: fadeUp 0.3s ease;
+            box-shadow: var(--shadow-lg);
+        }
+        @keyframes fadeUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .modal-header {
+            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+            padding: 24px;
+            text-align: center;
+            color: white;
+        }
+        .modal-header i {
+            font-size: 48px;
+            margin-bottom: 8px;
+        }
+        .modal-body {
+            padding: 28px 28px 20px;
+            text-align: center;
+        }
+        .modal-actions {
+            padding: 0 24px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .btn-modal-primary {
+            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+            color: white;
+            padding: 14px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+        .btn-modal-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        .btn-modal-secondary {
+            background: transparent;
+            border: 1.5px solid var(--border-light);
+            color: var(--green-dark);
+            padding: 12px;
+            border-radius: 60px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-modal-secondary:hover {
+            background: var(--green-soft);
+            border-color: var(--green-primary);
+        }
+        
+        .report-card {
+            background: white;
+            border-radius: 36px;
+            padding: 32px 24px;
+            margin-top: 12px;
+            box-shadow: var(--shadow-md);
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        .chart-container {
+            background: #F8FBF9;
+            border-radius: 24px;
+            padding: 24px;
+            margin: 20px 0;
+            border: 1px solid var(--border-light);
+        }
+        .chart-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .chart-item {
+            margin-bottom: 18px;
+        }
+        .chart-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+        .chart-bar-bg {
+            height: 8px;
+            background: var(--green-soft);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .chart-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--green-primary), var(--green-highlight));
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .chart-percent {
+            font-weight: 700;
+            color: var(--green-primary);
+        }
+        
+        .strengths-card, .opportunities-card {
+            background: #F8FBF9;
+            border-radius: 24px;
+            padding: 20px;
+            margin-top: 16px;
+            text-align: left;
+        }
+        .strengths-card h4, .opportunities-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Playfair Display', serif;
+        }
+        .strengths-card ul, .opportunities-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .strengths-card li, .opportunities-card li {
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .strengths-card li i {
+            color: var(--green-primary);
+            font-size: 0.7rem;
+        }
+        .opportunities-card li i {
+            color: var(--orange-warning);
+            font-size: 0.7rem;
+        }
+        
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin: 28px 0;
+        }
+        .card-downsell, .card-upsell {
+            border-radius: 28px;
+            padding: 24px 20px;
+            text-align: left;
+            transition: transform 0.2s ease;
+        }
+        .card-downsell:hover, .card-upsell:hover {
+            transform: translateY(-4px);
+        }
+        .card-downsell {
+            background: #F9FDFA;
+            border: 1px solid var(--border-light);
+        }
+        .card-upsell {
+            background: linear-gradient(135deg, var(--green-primary) 0%, #195a42 100%);
+            color: white;
+            position: relative;
+        }
+        .badge-hot {
+            position: absolute;
+            top: 14px;
+            right: -28px;
+            background: #F5B042;
+            color: #1A3B2C;
+            padding: 6px 40px;
+            transform: rotate(45deg);
+            font-size: 0.7rem;
+            font-weight: 800;
+        }
+        .btn-downsell, .btn-upsell {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 16px;
+            transition: all 0.2s;
+        }
+        .btn-downsell {
+            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+            color: white;
+        }
+        .btn-upsell {
+            background: #25D366;
+            color: white;
+        }
+        .btn-downsell:hover, .btn-upsell:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+        .termo-etica {
+            margin-top: 28px;
+            padding: 16px;
+            background: #F5F8F5;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        .footer-site {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 16px;
+            font-size: 0.65rem;
+            color: #8BA298;
+            border-top: 1px solid #E2EDE8;
+            font-style: italic;
+        }
+        .hidden {
+            display: none;
+        }
+        .perfil-badge {
+            background: var(--green-soft);
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .icon-fix {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image-error {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-logo">
+    <div class="logo-circle">
+        <i class="fas fa-seedling"></i>
+    </div>
+</div>
+
+<div class="container">
+    <div id="contadorContainer"></div>
+    
+    <div id="quizArea">
+        <div class="progress-wrapper">
+            <div class="progress-bar-bg"><div class="progress-fill" id="progressFill"></div></div>
+            <div class="step-counter" id="stepCounter">Carregando...</div>
+        </div>
+        <div id="questionsContainer"></div>
+    </div>
+
+    <div id="reportArea" class="hidden"></div>
+
+    <div class="footer-site">
+        © 2026 · Thaís Coelho Nutrição · Autoconhecimento alimentar
+    </div>
+</div>
+
+<div id="resultModal" class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <i class="fas fa-chart-line"></i>
+            <h2 style="color:white; font-size:1.5rem;">Seu diagnóstico</h2>
+        </div>
+        <div class="modal-body" id="modalBodyContent"></div>
+        <div class="modal-actions">
+            <button id="modalNextStepBtn" class="btn-modal-primary">VER PRÓXIMOS PASSOS →</button>
+            <button id="modalCloseBtn" class="btn-modal-secondary">FECHAR</button>
+        </div>
+    </div>
+</div>
+
+<div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-card">
+        <div class="loading-icon">
+            <i class="fas fa-leaf"></i>
+        </div>
+        <div class="loading-step" id="loadingStepText">Analisando respostas<span class="loading-dots">...</span></div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Definição das perguntas com imagens da pasta /imagens/
+        const questions = [
+            {
+                id: "genero",
+                type: "choice",
+                text: "Qual é o seu <span class='highlight-word'>gênero</span>?",
+                options: ["Feminino", "Masculino"],
+                icons: ["fa-venus", "fa-mars"],
+                image: "img/header.jpg"
+            },
+            {
+                id: "idade",
+                type: "choice", 
+                text: "Qual a sua <span class='highlight-word'>faixa etária</span>?",
+                options: ["Menos de 25 anos", "25 a 35 anos", "36 a 45 anos", "46 anos ou mais"],
+                icons: ["fa-seedling", "fa-sun", "fa-tree", "fa-crown"],
+                image: "img/2.jpg"
+            },
+            {
+                id: "desafio",
+                type: "choice",
+                text: "Qual o seu <span class='highlight-word'>maior desafio</span> hoje para ter uma alimentação equilibrada?",
+                options: [
+                    "Ansiedade e vontade de comer doces",
+                    "Metabolismo lento (sinto que nada funciona)",
+                    "Falta de tempo para cozinhar ou me organizar",
+                    "Efeito sanfona (emagreço e engordo tudo de novo)"
+                ],
+                icons: ["fa-brain", "fa-tachometer-alt", "fa-clock", "fa-chart-line"],
+                image: "img/3.jpg"
+            },
+            {
+                id: "energia",
+                type: "choice",
+                text: "Como está o seu <span class='highlight-word'>nível de energia</span> durante o dia?",
+                options: [
+                    "Acordo cansada e sem disposição",
+                    "Tenho picos de energia, mas caio à tarde",
+                    "Sinto muito sono após as refeições",
+                    "Tenho energia estável o dia todo"
+                ],
+                icons: ["fa-battery-empty", "fa-bolt", "fa-moon", "fa-sun"],
+                image: "img/4.jpg"
+            },
+            {
+                id: "compromisso",
+                type: "choice",
+                text: "Você está disposta a seguir um <span class='highlight-word'>plano de 21 dias</span> para melhorar seus hábitos?",
+                options: [
+                    "Sim, estou 100% comprometida!",
+                    "Quero tentar, se não for muito difícil",
+                    "Só estou curiosa"
+                ],
+                icons: ["fa-calendar-check", "fa-hand-peace", "fa-eye"],
+                image: "img/5.jpg"
+            },
+            {
+                id: "nome",
+                type: "name_only",
+                text: "Para personalizar, me diga: <span class='highlight-word'>seu primeiro nome</span>",
+                placeholder: "Ex: Ana, João, Maria",
+                image: "img/6.jpg"
+            }
+        ];
+
+        let currentStep = 0;
+        let answers = {
+            genero: null,
+            idade: null,
+            desafio: null,
+            energia: null,
+            compromisso: null,
+            nome: ""
+        };
+
+        // Função para tratar erro de carregamento da imagem
+        function handleImageError(imgElement) {
+            imgElement.style.display = 'none';
+        }
+
+        const diagnosticos = {
+            ansiedade_doces: {
+                titulo: "🍫 Fome Emocional",
+                descricao: "Seu padrão mostra busca por dopamina em momentos de estresse ou ansiedade. Isso afeta a saciedade e escolhas.",
+                estrategia: "Identificar gatilhos emocionais é libertador. Ajustes simples na rotina alimentar podem equilibrar isso.",
+                scores: { emocional: 78, metabolismo: 52, organizacao: 38, consistencia: 45 },
+                strengths: ["Alta autoconsciência sobre seus hábitos", "Motivação para mudança", "Percebe gatilhos emocionais"],
+                opportunities: ["Criar estratégias para lidar com ansiedade", "Estabelecer rotina alimentar", "Praticar alimentação consciente"]
+            },
+            metabolismo_lento: {
+                titulo: "🐢 Metabolismo Adaptado",
+                descricao: "Histórico de dietas restritivas fez seu corpo economizar energia, criando um platô metabólico.",
+                estrategia: "Realimentação estratégica e variação calórica são caminhos para destravar o metabolismo.",
+                scores: { emocional: 45, metabolismo: 82, organizacao: 55, consistencia: 48 },
+                strengths: ["Resiliência e disciplina", "Conhecimento sobre dietas", "Persistência nos objetivos"],
+                opportunities: ["Aumentar metabolismo basal", "Variar ingestão calórica", "Incluir treino de força"]
+            },
+            falta_tempo: {
+                titulo: "⏰ Rotina Acelerada",
+                descricao: "Seu desafio não é saber o que fazer, mas encaixar na correria do dia a dia.",
+                estrategia: "Meal prep express e receitas de 15 minutos podem se encaixar perfeitamente na sua rotina.",
+                scores: { emocional: 42, metabolismo: 48, organizacao: 76, consistencia: 52 },
+                strengths: ["Produtividade", "Foco em resultados", "Adaptabilidade"],
+                opportunities: ["Organização semanal de refeições", "Receitas rápidas e nutritivas", "Automação de hábitos"]
+            },
+            efeito_sanfona: {
+                titulo: "🔄 Ciclo Restrição-Compulsão",
+                descricao: "Você emagrece na força de vontade, mas recupera o peso porque o método é insustentável.",
+                estrategia: "Reeducação alimentar sem dietas restritivas é o caminho sustentável para você.",
+                scores: { emocional: 68, metabolismo: 58, organizacao: 52, consistencia: 72 },
+                strengths: ["Força de vontade", "Capacidade de seguir planos", "Autodisciplina"],
+                opportunities: ["Sair do ciclo restrição-compulsão", "Construir hábitos sustentáveis", "Respeitar a saciedade"]
+            }
+        };
+
+        const ofertas = {
+            feminino: {
+                titulo: "Protocolo Magra 21D",
+                descricao: "Plano completo para mulheres que querem emagrecer com saúde e sem sofrimento.",
+                preco_parcela: "R$ 68,90",
+                preco_avista: "R$ 297",
+                parcelas: 5
+            },
+            masculino: {
+                titulo: "Protocolo Semente",
+                descricao: "Estratégia para homens que querem queimar gordura e ganhar massa muscular.",
+                preco_parcela: "R$ 79,90",
+                preco_avista: "R$ 347",
+                parcelas: 5
+            }
+        };
+
+        const elements = {
+            quizArea: document.getElementById('quizArea'),
+            reportArea: document.getElementById('reportArea'),
+            questionsContainer: document.getElementById('questionsContainer'),
+            progressFill: document.getElementById('progressFill'),
+            stepCounter: document.getElementById('stepCounter'),
+            modal: document.getElementById('resultModal'),
+            modalBody: document.getElementById('modalBodyContent'),
+            modalNextBtn: document.getElementById('modalNextStepBtn'),
+            modalCloseBtn: document.getElementById('modalCloseBtn'),
+            contadorContainer: document.getElementById('contadorContainer'),
+            loadingOverlay: document.getElementById('loadingOverlay'),
+            loadingStepText: document.getElementById('loadingStepText')
+        };
+
+        function updateProgressUI() {
+            const total = questions.length;
+            const percent = ((currentStep + 1) / total) * 100;
+            if(elements.progressFill) elements.progressFill.style.width = percent + '%';
+            if(elements.stepCounter) elements.stepCounter.innerText = `Passo ${currentStep+1} · ${total}`;
+        }
+
+        function determinarPerfil() {
+            const desafio = answers.desafio;
+            if(desafio && desafio.includes("Ansiedade")) return diagnosticos.ansiedade_doces;
+            if(desafio && desafio.includes("Metabolismo lento")) return diagnosticos.metabolismo_lento;
+            if(desafio && desafio.includes("Falta de tempo")) return diagnosticos.falta_tempo;
+            if(desafio && desafio.includes("Efeito sanfona")) return diagnosticos.efeito_sanfona;
+            return diagnosticos.metabolismo_lento;
+        }
+
+        async function showLoadingSequence() {
+            elements.loadingOverlay.style.display = 'flex';
+            const steps = [
+                "Analisando respostas",
+                "Identificando padrões",
+                "Gerando diagnóstico"
+            ];
+            for(let i = 0; i < steps.length; i++) {
+                elements.loadingStepText.innerHTML = `${steps[i]}<span class="loading-dots">...</span>`;
+                await new Promise(resolve => setTimeout(resolve, 800));
+            }
+            await new Promise(resolve => setTimeout(resolve, 400));
+            elements.loadingOverlay.style.display = 'none';
+        }
+
+        function exibirPopupResultado() {
+            const perfil = determinarPerfil();
+            const nome = answers.nome || "Visitante";
+            const primeiroNome = nome.split(' ')[0];
+            
+            elements.modalBody.innerHTML = `
+                <div style="margin-bottom: 12px;">
+                    <i class="fas fa-heart" style="font-size: 48px; color: var(--green-primary);"></i>
+                </div>
+                <h3 style="font-size: 1.9rem; margin-bottom: 6px;">${primeiroNome},</h3>
+                <div class="perfil-badge" style="font-size: 1rem;">${perfil.titulo}</div>
+                <p style="line-height: 1.5; margin: 16px 0 10px; color: #2D4A3C;">${perfil.descricao}</p>
+                <p style="background: var(--green-soft); padding: 12px 16px; border-radius: 28px; font-size: 0.9rem; font-weight:500;">💡 ${perfil.estrategia}</p>
+            `;
+            
+            elements.modal.style.display = 'flex';
+            
+            const nextHandler = () => {
+                elements.modal.style.display = 'none';
+                renderReport();
+            };
+            elements.modalNextBtn.onclick = nextHandler;
+            elements.modalCloseBtn.onclick = () => {
+                elements.modal.style.display = 'none';
+                renderReport();
+            };
+        }
+
+        function renderReport() {
+            const perfil = determinarPerfil();
+            const oferta = answers.genero === "Masculino" ? ofertas.masculino : ofertas.feminino;
+            const primeiroNome = answers.nome.split(' ')[0] || "Visitante";
+            const mapeamentoId = 'MAP_' + Math.random().toString(36).substring(2, 8).toUpperCase();
+            
+            console.log(`PIXEL TRACK: Mapeamento gerado - Nome: ${primeiroNome} | Perfil: ${perfil.titulo} | ID: ${mapeamentoId}`);
+            
+            const chartItems = [
+                { label: "Controle Emocional", key: "emocional", icon: "fa-brain" },
+                { label: "Metabolismo", key: "metabolismo", icon: "fa-tachometer-alt" },
+                { label: "Organização", key: "organizacao", icon: "fa-calendar-alt" },
+                { label: "Consistência", key: "consistencia", icon: "fa-chart-line" }
+            ];
+            
+            let chartHtml = `<div class="chart-container"><div class="chart-title">📊 SEU PERFIL ALIMENTAR</div>`;
+            chartItems.forEach(item => {
+                const percent = perfil.scores[item.key] || 50;
+                chartHtml += `
+                    <div class="chart-item">
+                        <div class="chart-label">
+                            <span><i class="fas ${item.icon}" style="margin-right: 6px;"></i> ${item.label}</span>
+                            <span class="chart-percent">${percent}%</span>
+                        </div>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" style="width: ${percent}%;"></div>
+                        </div>
+                    </div>
+                `;
+            });
+            chartHtml += `</div>`;
+            
+            const strengthsHtml = `
+                <div class="strengths-card">
+                    <h4><i class="fas fa-star" style="color: var(--green-primary);"></i> 💪 SUAS FORÇAS</h4>
+                    <ul>
+                        ${perfil.strengths.map(s => `<li><i class="fas fa-check-circle"></i> ${s}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            
+            const opportunitiesHtml = `
+                <div class="opportunities-card">
+                    <h4><i class="fas fa-bullseye" style="color: var(--orange-warning);"></i> 🎯 OPORTUNIDADES DE MELHORIA</h4>
+                    <ul>
+                        ${perfil.opportunities.map(o => `<li><i class="fas fa-arrow-right"></i> ${o}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            
+            elements.reportArea.innerHTML = `
+                <div class="report-card">
+                    <i class="fas fa-chart-simple" style="font-size: 42px; color: var(--green-primary); margin-bottom: 16px;"></i>
+                    <h2 style="font-size: 1.7rem;">Olá, ${primeiroNome}!</h2>
+                    <div class="perfil-badge" style="margin-top: 12px;">${perfil.titulo}</div>
+                    <p style="margin: 16px 0; line-height: 1.5;">${perfil.descricao}</p>
+                    <p style="margin-bottom: 20px; background: #F0F9F3; padding: 16px; border-radius: 28px;">💡 ${perfil.estrategia}</p>
+                    
+                    ${chartHtml}
+                    ${strengthsHtml}
+                    ${opportunitiesHtml}
+                    
+                    <div style="margin: 20px 0 12px;">
+                        <div style="width: 50px; height: 2px; background: var(--border-light); margin: 0 auto 20px;"></div>
+                        <h3 style="font-size: 1.3rem;">📌 Seu próximo passo</h3>
+                    </div>
+                    
+                    <div class="flex-col">
+                        <div class="card-downsell">
+                            <span style="background: var(--green-soft); padding: 4px 14px; border-radius: 30px; font-size:0.7rem; font-weight:600;">📘 GUIA COMPLETO</span>
+                            <h4 style="margin: 14px 0 8px;">Mapeamento Detalhado</h4>
+                            <p style="font-size: 0.85rem; margin-bottom: 16px;">PDF com 25 páginas + estratégias personalizadas + planilha de auto-observação.</p>
+                            <span style="font-size: 1.8rem; font-weight:800;">R$ 29,90</span>
+                            <a href="https://pay.cakto.com.br/37d6ewg_866860" class="btn-downsell" id="downsellBtn">QUERO MEU MAPEAMENTO →</a>
+                        </div>
+                        <div class="card-upsell">
+                            <div class="badge-hot">MAIS VENDIDO</div>
+                            <i class="fas fa-crown" style="font-size: 28px; margin-bottom: 10px; color: #F5B042;"></i>
+                            <h3 style="font-size: 1.4rem;">${oferta.titulo}</h3>
+                            <p style="opacity:0.9; margin: 8px 0;">${oferta.descricao}</p>
+                            <div><span style="font-size: 1rem;">${oferta.parcelas}x</span> <strong style="font-size: 1.8rem;"> ${oferta.preco_parcela}</strong> <span style="font-size:0.7rem;">ou ${oferta.preco_avista}</span></div>
+                            <div style="margin: 16px 0;">
+                                <div>✔ Protocolo 21D completo</div>
+                                <div>✔ Grupo VIP + aulas gravadas</div>
+                                <div>✔ Bônus: Sessão de 30min</div>
+                            </div>
+                            <a href="#" class="btn-upsell" id="upsellBtn"><i class="fab fa-whatsapp"></i> QUERO MEU PROTOCOLO</a>
+                        </div>
+                    </div>
+                    <div class="termo-etica">
+                        <i class="fas fa-balance-scale"></i> Conforme Resolução CFN nº 856/2026. Ferramenta educativa, não substitui consulta.
+                    </div>
+                </div>
+            `;
+            
+            elements.reportArea.classList.remove('hidden');
+            elements.quizArea.classList.add('hidden');
+            elements.reportArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function renderQuestion() {
+            const q = questions[currentStep];
+            if(!q) return;
+            
+            // Monta a imagem com fall silencioso caso não exista
+            const imageHtml = q.image ? `<img src="${q.image}" class="question-image" alt="Ilustração da pergunta" onerror="this.style.display='none'">` : '';
+            
+            if(q.type === "choice") {
+                const optionsHtml = q.options.map((opt, idx) => `
+                    <div class="option-item" data-opt-index="${idx}">
+                        <div class="option-icon">
+                            <i class="fas ${q.icons?.[idx] || 'fa-circle'}"></i>
+                        </div>
+                        <span>${opt}</span>
+                    </div>
+                `).join('');
+
+                elements.questionsContainer.innerHTML = `
+                    <div class="question-card">
+                        ${imageHtml}
+                        <div class="question-text">${q.text}</div>
+                        <div class="options-grid" id="optionsGrid">
+                            ${optionsHtml}
+                        </div>
+                    </div>
+                `;
+
+                const optionDivs = document.querySelectorAll('.option-item');
+                optionDivs.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const optIndex = parseInt(btn.dataset.optIndex);
+                        const selectedValue = q.options[optIndex];
+                        answers[q.id] = selectedValue;
+                        
+                        optionDivs.forEach(opt => opt.classList.remove('selected'));
+                        btn.classList.add('selected');
+                        setTimeout(() => goToNextQuestion(), 250);
+                    });
+                });
+
+                if(answers[q.id]) {
+                    const selectedText = answers[q.id];
+                    optionDivs.forEach(btn => {
+                        if(btn.innerText.includes(selectedText)) btn.classList.add('selected');
+                    });
+                }
+            } 
+            else if(q.type === "name_only") {
+                elements.questionsContainer.innerHTML = `
+                    <div class="question-card">
+                        ${imageHtml}
+                        <div class="question-text">${q.text}</div>
+                        <input type="text" id="userNameInput" class="input-name" placeholder="${q.placeholder || "Digite seu nome"}" value="${answers.nome || ''}">
+                        <button class="btn-primary" id="nameSubmitBtn">GERAR MEU DIAGNÓSTICO <i class="fas fa-arrow-right"></i></button>
+                        <p style="font-size:0.7rem; margin-top: 20px; color: var(--text-light);">🔍 Usamos apenas seu nome para personalizar o resultado</p>
+                    </div>
+                `;
+                const input = document.getElementById('userNameInput');
+                const btn = document.getElementById('nameSubmitBtn');
+                
+                const submitName = async () => {
+                    const nome = input.value.trim();
+                    if(!nome) {
+                        input.classList.add('error');
+                        setTimeout(() => input.classList.remove('error'), 500);
+                        return;
+                    }
+                    answers.nome = nome;
+                    await showLoadingSequence();
+                    exibirPopupResultado();
+                };
+                
+                btn.addEventListener('click', submitName);
+                input.addEventListener('keypress', (e) => {
+                    if(e.key === 'Enter') submitName();
+                });
+            }
+            updateProgressUI();
+            elements.questionsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function goToNextQuestion() {
+            if(currentStep < questions.length - 1) {
+                currentStep++;
+                renderQuestion();
+            }
+        }
+
+        function addContador() {
+            const startDate = new Date(2024, 0, 1);
+            const now = new Date();
+            const daysDiff = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+            const total = 156000 + (daysDiff * 180);
+            if(elements.contadorContainer) {
+                elements.contadorContainer.innerHTML = `
+                    
+                `;
+            }
+        }
+
+        function init() {
+            addContador();
+            renderQuestion();
+        }
+        
+        if(document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    })();
+</script>
+</body>
+</html>

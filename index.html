@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Cache-Control" content="public, max-age=3600">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Descubra seu perfil alimentar com Thaís Coelho. Mapeamento gratuito que revela seus padrões comportamentais e transforma sua relação com a comida.">
+    <title>Thaís Coelho | Descubra seu Perfil Alimentar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-page: #F9FBF8;
+            --white-card: #FFFFFF;
+            --green-soft: #E2F0E6;
+            --green-primary: #2D6A4F;
+            --green-dark: #1B4D3E;
+            --green-highlight: #40916C;
+            --text-dark: #2C3E2F;
+            --text-light: #6B7C6E;
+            --border-light: #E6EDE8;
+            --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, var(--bg-page) 0%, #F3F7F4 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+            font-weight: 400;
+        }
+
+        /* Títulos com serifa elegante */
+        h1, h2, h3, .professional-text h2, .section-title, .hero h1, .profile-card h3, .cta-bottom p {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+
+        /* Header com foto de destaque (imagem real do Unsplash) */
+        .professional-header {
+            display: flex;
+            background-image: url('img/7.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 48px;
+            margin-bottom: 41px;
+            padding: 150px 40px;
+            border-radius: 32px;
+            border-bottom: none;
+            position: relative;
+            box-shadow: var(--shadow-md);
+        }
+        /* Overlay suave para contraste do texto */
+        .professional-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(45,106,79,0.75) 0%, rgba(27,77,62,0.6) 100%);
+            border-radius: 32px;
+        }
+        .professional-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .professional-photo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .professional-photo i {
+            font-size: 36px;
+            color: white;
+        }
+        .professional-text h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        .professional-text p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.9);
+            font-style: italic;
+        }
+        .btn-quiz-top {
+            background: white;
+            color: var(--green-primary);
+            padding: 10px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.25s;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            z-index: 2;
+            border: none;
+        }
+        .btn-quiz-top:hover {
+            transform: translateY(-2px);
+            background: var(--green-soft);
+            color: var(--green-dark);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        .hero-content {
+            flex: 1;
+            min-width: 280px;
+        }
+        .hero-badge {
+            background: var(--green-soft);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--green-dark);
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero h1 span {
+            color: var(--green-primary);
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            border-bottom: 2px solid var(--green-soft);
+        }
+        .hero p {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 30px;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--green-primary);
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .stat-label {
+            font-size: 0.65rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+        .btn-hero {
+            background: var(--green-primary);
+            color: white;
+            padding: 14px 34px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.25s;
+            box-shadow: 0 2px 8px rgba(45,106,79,0.2);
+            border: none;
+        }
+        .btn-hero:hover {
+            background: var(--green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(45,106,79,0.25);
+        }
+        .hero-image {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+        }
+        /* Substituído o ícone de coração feio por uma imagem real */
+        .hero-image-placeholder {
+            background: transparent;
+            border-radius: 32px;
+            padding: 0;
+            text-align: center;
+            color: var(--text-dark);
+            box-shadow: none;
+        }
+        .hero-image-placeholder img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 32px;
+            box-shadow: var(--shadow-md);
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+        }
+        .hero-image-placeholder h3 {
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--green-primary);
+        }
+        .hero-image-placeholder p {
+            font-size: 0.8rem;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        /* Seção de Perfis */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 52px;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+        }
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+            margin-bottom: 60px;
+        }
+        .profile-card {
+            background: var(--white-card);
+            border-radius: 32px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.25s ease;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .profile-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--green-highlight);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+        }
+        .profile-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--green-soft);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: all 0.2s;
+        }
+        .profile-card:hover .profile-icon {
+            background: var(--green-primary);
+        }
+        .profile-card:hover .profile-icon i {
+            color: white;
+        }
+        .profile-icon i {
+            font-size: 32px;
+            color: var(--green-primary);
+            transition: color 0.2s;
+        }
+        .profile-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .profile-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.45;
+        }
+
+        /* CTA Final */
+        .cta-bottom {
+            text-align: center;
+            padding: 48px 0 32px;
+            border-top: 1px solid var(--border-light);
+            margin-top: 20px;
+        }
+        .btn-cta {
+            background: transparent;
+            border: 1.5px solid var(--green-primary);
+            color: var(--green-primary);
+            padding: 14px 34px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.25s;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        .btn-cta:hover {
+            background: var(--green-primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(45,106,79,0.15);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-light);
+            font-size: 0.7rem;
+            color: var(--text-light);
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.25s;
+            z-index: 99;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.05);
+            background: #20b359;
+        }
+        .whatsapp-float i {
+            font-size: 28px;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px 40px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+            .professional-header {
+                padding: 60px 24px;
+                flex-direction: column;
+                text-align: center;
+            }
+            .professional-info {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .hero-image-placeholder img {
+                max-width: 240px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header com foto de destaque real (imagem de folhagem) -->
+    <div class="professional-header">
+        <div class="professional-info">
+         
+            <!-- Note: o texto "Thaís Coelho" estava oculto no original, mantive oculto mas adicionado para completar -->
+            <div class="professional-text">
+                <h2>Thaís Coelho</h2>
+                <p>Nutricionista</p>
+            </div>
+        </div>
+        <a href="quiza.html" class="btn-quiz-top">
+            <i class="fas fa-clipboard-list"></i> Fazer teste
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-chart-line"></i> Revisado por Thaís Coelho
+            </div>
+            <h1>Descubra seu <span>Perfil Alimentar</span> e transforme sua relação com a comida</h1>
+            <p>Mapeamento gratuito que revela seus padrões comportamentais e te mostra o caminho para hábitos mais saudáveis.</p>
+            <!-- stats removidas do original? Não existiam no HTML, apenas no CSS. Mantive sem stats -->
+            <a href="quiza.html" class="btn-hero">
+                FAZER TESTE GRATUITO <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="hero-image">
+            <div class="hero-image-placeholder">
+                <!-- Imagem real substituindo o ícone de coração feio -->
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mulher cuidando da alimentação">
+                <h3>Mapeamento Comportamental</h3>
+                <p>Baseado em evidências científicas</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Perfis Alimentares -->
+    <h2 class="section-title">Conheça os perfis identificados</h2>
+    <p class="section-subtitle">Seu resultado será personalizado com base nas suas respostas</p>
+    
+    <div class="profiles-grid">
+        <div class="profile-card">
+            <div class="profile-icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <h3>🍫 Fome Emocional</h3>
+            <p>Busca por alimentos em momentos de estresse ou ansiedade. Identificar gatilhos é o primeiro passo.</p>
+        </div>
+        <div class="profile-card">
+            <div class="profile-icon">
+                <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <h3>🐢 Metabolismo Adaptado</h3>
+            <p>Dietas restritivas fizeram seu corpo economizar energia. Hora de destravar o metabolismo.</p>
+        </div>
+        <div class="profile-card">
+            <div class="profile-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <h3>⏰ Rotina Acelerada</h3>
+            <p>Desafio não é saber o que fazer, mas encaixar na correria do dia a dia.</p>
+        </div>
+        <div class="profile-card">
+            <div class="profile-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>🔄 Efeito Sanfona</h3>
+            <p>Emagrece na força de vontade, mas recupera o peso. Reeducação é o caminho.</p>
+        </div>
+    </div>
+
+    <!-- CTA Final -->
+    <div class="cta-bottom">
+        <p style="font-size: 1.1rem; font-weight: 500;">Pronta para descobrir seu perfil?</p>
+        <a href="quiza.html" class="btn-cta">
+            QUERO FAZER O TESTE AGORA <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>© 2026 · Thaís Coelho Nutrição · CRN 123456</p>
+    <p style="margin-top: 12px; font-size: 0.65rem;">
+        Conforme Resolução CFN nº 856/2026. Ferramenta educativa, não substitui consulta nutricional individualizada.
+    </p>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre o mapeamento de perfil alimentar" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+    // Contador dinâmico (se houver elemento #totalCount, mantido)
+    (function() {
+        const startDate = new Date(2024, 0, 1);
+        const now = new Date();
+        const daysDiff = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+        const total = 156000 + (daysDiff * 180);
+        const totalCount = document.getElementById('totalCount');
+        if(totalCount) {
+            totalCount.innerHTML = total.toLocaleString() + '+';
+        }
+    })();
+</script>
+</body>
+</html>
