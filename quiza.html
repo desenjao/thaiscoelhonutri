@@ -34,7 +34,7 @@
             --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.05);
             --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
             --orange-warning: #E8A87C;
-            --blue-info: #8BA298;
+            --error-red: #e74c3c;
         }
 
         body {
@@ -52,8 +52,7 @@
             display: none;
         }
 
-        /* Títulos com serifa elegante */
-        h1, h2, h3, h4, .question-text, .perfil-badge, .chart-title, .modal-header h2 {
+        h1, h2, h3, h4, .question-text, .perfil-badge {
             font-family: 'Playfair Display', serif;
             font-weight: 500;
             letter-spacing: -0.01em;
@@ -89,26 +88,6 @@
             min-height: 100%;
         }
 
-        .contador {
-            background: var(--white-card);
-            border-radius: 60px;
-            padding: 12px 20px;
-            margin-bottom: 24px;
-            text-align: center;
-            font-size: 0.75rem;
-            font-weight: 500;
-            border: 1px solid var(--border-light);
-            display: block;
-            width: 100%;
-            color: var(--text-dark);
-            box-shadow: var(--shadow-sm);
-            font-family: 'Inter', sans-serif;
-        }
-        .contador i {
-            color: var(--green-primary);
-            margin-right: 8px;
-        }
-
         .progress-wrapper {
             margin: 8px 0 24px;
         }
@@ -131,7 +110,6 @@
             text-align: center;
             margin-top: 8px;
             font-weight: 500;
-            font-family: 'Inter', sans-serif;
         }
 
         .question-card {
@@ -142,7 +120,6 @@
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-light);
             text-align: center;
-            transition: transform 0.3s ease, opacity 0.3s ease;
             animation: fadeInUp 0.4s ease;
         }
         @keyframes fadeInUp {
@@ -166,10 +143,6 @@
             object-fit: cover;
             box-shadow: var(--shadow-sm);
             border: 2px solid var(--green-soft);
-            transition: transform 0.3s ease;
-        }
-        .question-image:hover {
-            transform: scale(1.02);
         }
 
         .question-text {
@@ -229,17 +202,11 @@
             background: var(--green-soft);
             border-color: var(--green-primary);
             transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
         }
 
         .option-item.selected {
             background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
             border-color: var(--green-primary);
-            color: white;
-            transform: scale(1.02);
-        }
-
-        .option-item.selected i {
             color: white;
         }
 
@@ -252,34 +219,75 @@
             color: white;
         }
 
-        .input-name {
+        /* Campos do formulário */
+        .form-field {
             width: 100%;
             max-width: 320px;
-            margin: 0 auto 20px;
+            margin: 0 auto 16px;
             display: block;
-            padding: 16px 22px;
+            text-align: left;
+        }
+        .form-field label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+            text-align: left;
+        }
+        .form-field label .required {
+            color: var(--error-red);
+        }
+        .form-field input, .form-field textarea {
+            width: 100%;
+            padding: 14px 18px;
             border: 2px solid var(--border-light);
             border-radius: 60px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-family: 'Inter', sans-serif;
             background: var(--bg-page);
-            text-align: center;
             transition: all 0.2s;
             outline: none;
             color: var(--text-dark);
         }
-        .input-name:focus {
+        .form-field textarea {
+            border-radius: 24px;
+            resize: vertical;
+            min-height: 80px;
+        }
+        .form-field input:focus, .form-field textarea:focus {
             border-color: var(--green-primary);
             box-shadow: 0 0 0 3px rgba(64, 145, 108, 0.15);
         }
-        .input-name.error {
-            border-color: #E8A87C;
-            animation: shake 0.3s ease;
+        .form-field input.error, .form-field textarea.error {
+            border-color: var(--error-red);
         }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+        .error-message {
+            color: var(--error-red);
+            font-size: 0.7rem;
+            margin-top: 5px;
+            display: none;
+            text-align: left;
+            padding-left: 8px;
+        }
+        .error-message.show {
+            display: block;
+        }
+        .chat-hint {
+            background: var(--green-soft);
+            padding: 12px 16px;
+            border-radius: 20px;
+            margin: 8px auto 20px;
+            max-width: 320px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.8rem;
+            color: var(--green-dark);
+            text-align: left;
+        }
+        .chat-hint i {
+            font-size: 1.2rem;
         }
 
         .btn-primary {
@@ -319,11 +327,6 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            animation: fadeIn 0.3s ease;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
         .loading-card {
             background: white;
@@ -333,17 +336,6 @@
             max-width: 340px;
             width: 90%;
             box-shadow: var(--shadow-lg);
-            animation: slideUp 0.4s ease;
-        }
-        @keyframes slideUp {
-            from {
-                transform: translateY(40px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
         }
         .loading-icon {
             width: 80px;
@@ -370,241 +362,53 @@
             font-weight: 500;
             color: var(--green-primary);
             margin-top: 12px;
-            min-height: 60px;
             font-family: 'Cormorant Garamond', serif;
         }
 
-        .modal-overlay {
+        /* Modal de bloqueio para quem já respondeu */
+        .blocked-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 4000;
             display: none;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            flex-direction: column;
         }
-        .modal-container {
+        .blocked-card {
             background: white;
-            max-width: 480px;
-            width: 100%;
-            border-radius: 40px;
-            overflow: hidden;
-            animation: fadeUp 0.3s ease;
+            border-radius: 48px;
+            padding: 48px 40px;
+            text-align: center;
+            max-width: 380px;
+            width: 90%;
             box-shadow: var(--shadow-lg);
+            animation: fadeInUp 0.3s ease;
         }
-        @keyframes fadeUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .modal-header {
-            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
-            padding: 24px;
-            text-align: center;
-            color: white;
-        }
-        .modal-header i {
-            font-size: 48px;
-            margin-bottom: 8px;
-        }
-        .modal-body {
-            padding: 28px 28px 20px;
-            text-align: center;
-        }
-        .modal-actions {
-            padding: 0 24px 28px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .btn-modal-primary {
-            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
-            color: white;
-            padding: 14px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 600;
-            text-align: center;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s;
-        }
-        .btn-modal-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-        }
-        .btn-modal-secondary {
-            background: transparent;
-            border: 1.5px solid var(--border-light);
-            color: var(--green-dark);
-            padding: 12px;
-            border-radius: 60px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .btn-modal-secondary:hover {
-            background: var(--green-soft);
-            border-color: var(--green-primary);
-        }
-        
-        .report-card {
-            background: white;
-            border-radius: 36px;
-            padding: 32px 24px;
-            margin-top: 12px;
-            box-shadow: var(--shadow-md);
-            animation: fadeInUp 0.5s ease;
-        }
-        
-        .chart-container {
-            background: #F8FBF9;
-            border-radius: 24px;
-            padding: 24px;
-            margin: 20px 0;
-            border: 1px solid var(--border-light);
-        }
-        .chart-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .chart-item {
-            margin-bottom: 18px;
-        }
-        .chart-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.75rem;
-            font-weight: 500;
-            margin-bottom: 6px;
-            color: var(--text-dark);
-        }
-        .chart-bar-bg {
-            height: 8px;
-            background: var(--green-soft);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .chart-bar-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--green-primary), var(--green-highlight));
-            border-radius: 10px;
-            width: 0%;
-            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .chart-percent {
-            font-weight: 700;
-            color: var(--green-primary);
-        }
-        
-        .strengths-card, .opportunities-card {
-            background: #F8FBF9;
-            border-radius: 24px;
-            padding: 20px;
-            margin-top: 16px;
-            text-align: left;
-        }
-        .strengths-card h4, .opportunities-card h4 {
-            font-size: 0.9rem;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Playfair Display', serif;
-        }
-        .strengths-card ul, .opportunities-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .strengths-card li, .opportunities-card li {
-            font-size: 0.8rem;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .strengths-card li i {
-            color: var(--green-primary);
-            font-size: 0.7rem;
-        }
-        .opportunities-card li i {
+        .blocked-card i {
+            font-size: 56px;
             color: var(--orange-warning);
-            font-size: 0.7rem;
+            margin-bottom: 20px;
         }
-        
-        .flex-col {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            margin: 28px 0;
+        .blocked-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--text-dark);
         }
-        .card-downsell, .card-upsell {
-            border-radius: 28px;
-            padding: 24px 20px;
-            text-align: left;
-            transition: transform 0.2s ease;
-        }
-        .card-downsell:hover, .card-upsell:hover {
-            transform: translateY(-4px);
-        }
-        .card-downsell {
-            background: #F9FDFA;
-            border: 1px solid var(--border-light);
-        }
-        .card-upsell {
-            background: linear-gradient(135deg, var(--green-primary) 0%, #195a42 100%);
-            color: white;
-            position: relative;
-        }
-        .badge-hot {
-            position: absolute;
-            top: 14px;
-            right: -28px;
-            background: #F5B042;
-            color: #1A3B2C;
-            padding: 6px 40px;
-            transform: rotate(45deg);
-            font-size: 0.7rem;
-            font-weight: 800;
-        }
-        .btn-downsell, .btn-upsell {
-            display: block;
-            text-align: center;
-            padding: 14px;
-            border-radius: 60px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 16px;
-            transition: all 0.2s;
-        }
-        .btn-downsell {
-            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
-            color: white;
-        }
-        .btn-upsell {
-            background: #25D366;
-            color: white;
-        }
-        .btn-downsell:hover, .btn-upsell:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.05);
-        }
-        .termo-etica {
-            margin-top: 28px;
-            padding: 16px;
-            background: #F5F8F5;
-            border-radius: 20px;
-            font-size: 0.65rem;
+        .blocked-card p {
             color: var(--text-light);
-            font-style: italic;
+            margin-bottom: 24px;
+            line-height: 1.5;
         }
+        .blocked-card .btn-primary {
+            margin: 0 auto;
+        }
+
         .footer-site {
             text-align: center;
             margin-top: 32px;
@@ -615,24 +419,6 @@
             font-style: italic;
         }
         .hidden {
-            display: none;
-        }
-        .perfil-badge {
-            background: var(--green-soft);
-            display: inline-block;
-            padding: 6px 20px;
-            border-radius: 60px;
-            font-weight: 600;
-            color: var(--green-dark);
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-        }
-        .icon-fix {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .image-error {
             display: none;
         }
     </style>
@@ -646,8 +432,6 @@
 </div>
 
 <div class="container">
-    <div id="contadorContainer"></div>
-    
     <div id="quizArea">
         <div class="progress-wrapper">
             <div class="progress-bar-bg"><div class="progress-fill" id="progressFill"></div></div>
@@ -656,24 +440,8 @@
         <div id="questionsContainer"></div>
     </div>
 
-    <div id="reportArea" class="hidden"></div>
-
     <div class="footer-site">
         © 2026 · Thaís Coelho Nutrição · Autoconhecimento alimentar
-    </div>
-</div>
-
-<div id="resultModal" class="modal-overlay">
-    <div class="modal-container">
-        <div class="modal-header">
-            <i class="fas fa-chart-line"></i>
-            <h2 style="color:white; font-size:1.5rem;">Seu diagnóstico</h2>
-        </div>
-        <div class="modal-body" id="modalBodyContent"></div>
-        <div class="modal-actions">
-            <button id="modalNextStepBtn" class="btn-modal-primary">VER PRÓXIMOS PASSOS →</button>
-            <button id="modalCloseBtn" class="btn-modal-secondary">FECHAR</button>
-        </div>
     </div>
 </div>
 
@@ -682,13 +450,59 @@
         <div class="loading-icon">
             <i class="fas fa-leaf"></i>
         </div>
-        <div class="loading-step" id="loadingStepText">Analisando respostas<span class="loading-dots">...</span></div>
+        <div class="loading-step" id="loadingStepText">Preparando seu diagnóstico<span class="loading-dots">...</span></div>
+    </div>
+</div>
+
+<div id="blockedModal" class="blocked-modal">
+    <div class="blocked-card">
+        <i class="fas fa-lock"></i>
+        <h3>🙏 Obrigado pela confiança!</h3>
+        <p>Você já realizou o Mapeamento Alimentar. Seu diagnóstico personalizado já foi gerado e está disponível na página de resultado.</p>
+        <p style="font-size: 0.8rem;">Caso não tenha salvo, entre em contato com Thaís Coelho pelo WhatsApp.</p>
+        <a href="parabensdanutri.html" class="btn-primary" style="display: inline-flex; width: auto; padding: 12px 28px; text-decoration: none;">VER MEU RESULTADO →</a>
     </div>
 </div>
 
 <script>
     (function() {
-        // Definição das perguntas com imagens da pasta /imagens/
+        // ============================================
+        // CONFIGURAÇÕES DA API - CORRIGIDA
+        // ============================================
+        // Usando a rota /api/leads que JÁ FUNCIONA no seu backend
+        const API_URL = 'https://thaicnutriback.onrender.com/api/leads';
+        
+        // ============================================
+        // CONTROLE DE USUÁRIO ÚNICO
+        // ============================================
+        const STORAGE_KEY = 'thais_coelho_quiz_realizado';
+        const SESSION_KEY = 'thais_coelho_dados_usuario';
+        
+        // Verificar se o usuário já respondeu o quiz
+        function hasUserAlreadyAnswered() {
+            return localStorage.getItem(STORAGE_KEY) === 'true';
+        }
+        
+        // Marcar que o usuário respondeu
+        function markUserAsAnswered() {
+            localStorage.setItem(STORAGE_KEY, 'true');
+        }
+        
+        // Se já respondeu, mostrar modal bloqueado
+        if (hasUserAlreadyAnswered()) {
+            const blockedModal = document.getElementById('blockedModal');
+            if (blockedModal) {
+                blockedModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                const quizArea = document.getElementById('quizArea');
+                if(quizArea) quizArea.style.opacity = '0.5';
+            }
+            return;
+        }
+        
+        // ============================================
+        // DEFINIÇÃO DAS PERGUNTAS
+        // ============================================
         const questions = [
             {
                 id: "genero",
@@ -745,10 +559,10 @@
                 image: "img/5.jpg"
             },
             {
-                id: "nome",
-                type: "name_only",
-                text: "Para personalizar, me diga: <span class='highlight-word'>seu primeiro nome</span>",
-                placeholder: "Ex: Ana, João, Maria",
+                id: "contato",
+                type: "contact_form",
+                text: "Para finalizar, me diga: <span class='highlight-word'>seu nome</span> e dados de contato",
+                placeholder: "Digite seu nome completo",
                 image: "img/6.jpg"
             }
         ];
@@ -760,77 +574,17 @@
             desafio: null,
             energia: null,
             compromisso: null,
-            nome: ""
-        };
-
-        // Função para tratar erro de carregamento da imagem
-        function handleImageError(imgElement) {
-            imgElement.style.display = 'none';
-        }
-
-        const diagnosticos = {
-            ansiedade_doces: {
-                titulo: "🍫 Fome Emocional",
-                descricao: "Seu padrão mostra busca por dopamina em momentos de estresse ou ansiedade. Isso afeta a saciedade e escolhas.",
-                estrategia: "Identificar gatilhos emocionais é libertador. Ajustes simples na rotina alimentar podem equilibrar isso.",
-                scores: { emocional: 78, metabolismo: 52, organizacao: 38, consistencia: 45 },
-                strengths: ["Alta autoconsciência sobre seus hábitos", "Motivação para mudança", "Percebe gatilhos emocionais"],
-                opportunities: ["Criar estratégias para lidar com ansiedade", "Estabelecer rotina alimentar", "Praticar alimentação consciente"]
-            },
-            metabolismo_lento: {
-                titulo: "🐢 Metabolismo Adaptado",
-                descricao: "Histórico de dietas restritivas fez seu corpo economizar energia, criando um platô metabólico.",
-                estrategia: "Realimentação estratégica e variação calórica são caminhos para destravar o metabolismo.",
-                scores: { emocional: 45, metabolismo: 82, organizacao: 55, consistencia: 48 },
-                strengths: ["Resiliência e disciplina", "Conhecimento sobre dietas", "Persistência nos objetivos"],
-                opportunities: ["Aumentar metabolismo basal", "Variar ingestão calórica", "Incluir treino de força"]
-            },
-            falta_tempo: {
-                titulo: "⏰ Rotina Acelerada",
-                descricao: "Seu desafio não é saber o que fazer, mas encaixar na correria do dia a dia.",
-                estrategia: "Meal prep express e receitas de 15 minutos podem se encaixar perfeitamente na sua rotina.",
-                scores: { emocional: 42, metabolismo: 48, organizacao: 76, consistencia: 52 },
-                strengths: ["Produtividade", "Foco em resultados", "Adaptabilidade"],
-                opportunities: ["Organização semanal de refeições", "Receitas rápidas e nutritivas", "Automação de hábitos"]
-            },
-            efeito_sanfona: {
-                titulo: "🔄 Ciclo Restrição-Compulsão",
-                descricao: "Você emagrece na força de vontade, mas recupera o peso porque o método é insustentável.",
-                estrategia: "Reeducação alimentar sem dietas restritivas é o caminho sustentável para você.",
-                scores: { emocional: 68, metabolismo: 58, organizacao: 52, consistencia: 72 },
-                strengths: ["Força de vontade", "Capacidade de seguir planos", "Autodisciplina"],
-                opportunities: ["Sair do ciclo restrição-compulsão", "Construir hábitos sustentáveis", "Respeitar a saciedade"]
-            }
-        };
-
-        const ofertas = {
-            feminino: {
-                titulo: "Protocolo Magra 21D",
-                descricao: "Plano completo para mulheres que querem emagrecer com saúde e sem sofrimento.",
-                preco_parcela: "R$ 68,90",
-                preco_avista: "R$ 297",
-                parcelas: 5
-            },
-            masculino: {
-                titulo: "Protocolo Semente",
-                descricao: "Estratégia para homens que querem queimar gordura e ganhar massa muscular.",
-                preco_parcela: "R$ 79,90",
-                preco_avista: "R$ 347",
-                parcelas: 5
-            }
+            nome: "",
+            telefone: "",
+            email: "",
+            mensagem: ""
         };
 
         const elements = {
             quizArea: document.getElementById('quizArea'),
-            reportArea: document.getElementById('reportArea'),
             questionsContainer: document.getElementById('questionsContainer'),
             progressFill: document.getElementById('progressFill'),
             stepCounter: document.getElementById('stepCounter'),
-            modal: document.getElementById('resultModal'),
-            modalBody: document.getElementById('modalBodyContent'),
-            modalNextBtn: document.getElementById('modalNextStepBtn'),
-            modalCloseBtn: document.getElementById('modalCloseBtn'),
-            contadorContainer: document.getElementById('contadorContainer'),
             loadingOverlay: document.getElementById('loadingOverlay'),
             loadingStepText: document.getElementById('loadingStepText')
         };
@@ -842,164 +596,244 @@
             if(elements.stepCounter) elements.stepCounter.innerText = `Passo ${currentStep+1} · ${total}`;
         }
 
-        function determinarPerfil() {
-            const desafio = answers.desafio;
-            if(desafio && desafio.includes("Ansiedade")) return diagnosticos.ansiedade_doces;
-            if(desafio && desafio.includes("Metabolismo lento")) return diagnosticos.metabolismo_lento;
-            if(desafio && desafio.includes("Falta de tempo")) return diagnosticos.falta_tempo;
-            if(desafio && desafio.includes("Efeito sanfona")) return diagnosticos.efeito_sanfona;
-            return diagnosticos.metabolismo_lento;
+        function showErrorModal(message) {
+            const errorMsg = document.getElementById('errorMessage');
+            if(errorMsg) errorMsg.innerText = message;
+            const errorModal = document.getElementById('errorModal');
+            if(errorModal) errorModal.style.display = 'flex';
         }
 
-        async function showLoadingSequence() {
-            elements.loadingOverlay.style.display = 'flex';
-            const steps = [
-                "Analisando respostas",
-                "Identificando padrões",
-                "Gerando diagnóstico"
-            ];
-            for(let i = 0; i < steps.length; i++) {
-                elements.loadingStepText.innerHTML = `${steps[i]}<span class="loading-dots">...</span>`;
-                await new Promise(resolve => setTimeout(resolve, 800));
+        window.fecharErrorModal = function() {
+            const errorModal = document.getElementById('errorModal');
+            if(errorModal) errorModal.style.display = 'none';
+        }
+
+        function goToNextQuestion() {
+            if(currentStep < questions.length - 1) {
+                currentStep++;
+                renderQuestion();
             }
-            await new Promise(resolve => setTimeout(resolve, 400));
-            elements.loadingOverlay.style.display = 'none';
         }
 
-        function exibirPopupResultado() {
-            const perfil = determinarPerfil();
-            const nome = answers.nome || "Visitante";
-            const primeiroNome = nome.split(' ')[0];
+        // ============================================
+        // FUNÇÃO PARA ENVIAR DADOS PARA A API
+        // ============================================
+        async function sendDataToAPI(userData) {
+            try {
+                console.log('[Thaís API] Enviando para:', API_URL);
+                console.log('[Thaís API] Dados:', userData);
+                
+                // Limpar telefone (remover máscara)
+                const telefoneLimpo = userData.telefone.replace(/\D/g, '');
+                
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nome: userData.nome,
+                        telefone: telefoneLimpo,
+                        mensagem: `Email: ${userData.email} | Mensagem: ${userData.mensagem || 'Sem mensagem adicional'}`,
+                        genero: userData.genero,
+                        idade: userData.idade,
+                        desafio: userData.desafio,
+                        energia: userData.energia,
+                        compromisso: userData.compromisso,
+                        origem: 'quiz_mapeamento_alimentar',
+                        pagina: 'formulario_contato'
+                    })
+                });
+                
+                let responseData;
+                const contentType = response.headers.get('content-type');
+                if (contentType && contentType.includes('application/json')) {
+                    responseData = await response.json();
+                } else {
+                    responseData = await response.text();
+                }
+                
+                console.log('[Thaís API] Resposta status:', response.status);
+                console.log('[Thaís API] Resposta dados:', responseData);
+                
+                if (!response.ok) {
+                    throw new Error(`API error ${response.status}: ${JSON.stringify(responseData)}`);
+                }
+                
+                return { success: true, data: responseData };
+                
+            } catch (error) {
+                console.error('[Thaís API] Erro:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        // ============================================
+        // SALVAR DADOS E REDIRECIONAR
+        // ============================================
+        async function saveDataAndRedirect() {
+            // Validar se todas as perguntas foram respondidas
+            if (!answers.genero || !answers.idade || !answers.desafio || 
+                !answers.energia || !answers.compromisso) {
+                showErrorModal('Por favor, responda todas as perguntas anteriores antes de enviar.');
+                return;
+            }
             
-            elements.modalBody.innerHTML = `
-                <div style="margin-bottom: 12px;">
-                    <i class="fas fa-heart" style="font-size: 48px; color: var(--green-primary);"></i>
-                </div>
-                <h3 style="font-size: 1.9rem; margin-bottom: 6px;">${primeiroNome},</h3>
-                <div class="perfil-badge" style="font-size: 1rem;">${perfil.titulo}</div>
-                <p style="line-height: 1.5; margin: 16px 0 10px; color: #2D4A3C;">${perfil.descricao}</p>
-                <p style="background: var(--green-soft); padding: 12px 16px; border-radius: 28px; font-size: 0.9rem; font-weight:500;">💡 ${perfil.estrategia}</p>
-            `;
-            
-            elements.modal.style.display = 'flex';
-            
-            const nextHandler = () => {
-                elements.modal.style.display = 'none';
-                renderReport();
+            const userDataForAPI = {
+                nome: answers.nome,
+                telefone: answers.telefone,
+                email: answers.email,
+                mensagem: answers.mensagem || '',
+                genero: answers.genero,
+                idade: answers.idade,
+                desafio: answers.desafio,
+                energia: answers.energia,
+                compromisso: answers.compromisso
             };
-            elements.modalNextBtn.onclick = nextHandler;
-            elements.modalCloseBtn.onclick = () => {
-                elements.modal.style.display = 'none';
-                renderReport();
+            
+            // Mostrar loading
+            if (elements.loadingOverlay) {
+                elements.loadingOverlay.style.display = 'flex';
+                if (elements.loadingStepText) {
+                    elements.loadingStepText.innerHTML = `Salvando seus dados<span class="loading-dots">...</span>`;
+                }
+            }
+            
+            // Enviar para a API
+            const apiResult = await sendDataToAPI(userDataForAPI);
+            
+            if (!apiResult.success) {
+                // Fechar loading e mostrar erro
+                if (elements.loadingOverlay) elements.loadingOverlay.style.display = 'none';
+                showErrorModal('Não foi possível salvar seus dados. Verifique sua conexão e tente novamente.\n\n' + apiResult.error);
+                return;
+            }
+            
+            console.log('[Thaís API] ✅ Dados salvos com sucesso!');
+            
+            // Sucesso! Salvar no sessionStorage
+            const userDataForResult = {
+                ...userDataForAPI,
+                timestamp: new Date().toISOString(),
+                apiEnviado: true,
+                apiResposta: apiResult.data
             };
+            
+            sessionStorage.setItem(SESSION_KEY, JSON.stringify(userDataForResult));
+            markUserAsAnswered();
+            
+            // Atualizar mensagem de loading
+            if (elements.loadingStepText) {
+                elements.loadingStepText.innerHTML = `Diagnóstico gerado! Redirecionando<span class="loading-dots">...</span>`;
+            }
+            
+            setTimeout(() => {
+                window.location.href = 'parabensdanutri.html';
+            }, 800);
         }
 
-        function renderReport() {
-            const perfil = determinarPerfil();
-            const oferta = answers.genero === "Masculino" ? ofertas.masculino : ofertas.feminino;
-            const primeiroNome = answers.nome.split(' ')[0] || "Visitante";
-            const mapeamentoId = 'MAP_' + Math.random().toString(36).substring(2, 8).toUpperCase();
+        // ============================================
+        // VALIDAÇÃO DO FORMULÁRIO DE CONTATO
+        // ============================================
+        function validateContactForm() {
+            let isValid = true;
             
-            console.log(`PIXEL TRACK: Mapeamento gerado - Nome: ${primeiroNome} | Perfil: ${perfil.titulo} | ID: ${mapeamentoId}`);
+            const nomeInput = document.getElementById('userNameInput');
+            const telefoneInput = document.getElementById('userTelefone');
+            const emailInput = document.getElementById('userEmail');
             
-            const chartItems = [
-                { label: "Controle Emocional", key: "emocional", icon: "fa-brain" },
-                { label: "Metabolismo", key: "metabolismo", icon: "fa-tachometer-alt" },
-                { label: "Organização", key: "organizacao", icon: "fa-calendar-alt" },
-                { label: "Consistência", key: "consistencia", icon: "fa-chart-line" }
-            ];
+            if (!nomeInput || !telefoneInput || !emailInput) {
+                showErrorModal('Erro no formulário. Recarregue a página e tente novamente.');
+                return false;
+            }
             
-            let chartHtml = `<div class="chart-container"><div class="chart-title">📊 SEU PERFIL ALIMENTAR</div>`;
-            chartItems.forEach(item => {
-                const percent = perfil.scores[item.key] || 50;
-                chartHtml += `
-                    <div class="chart-item">
-                        <div class="chart-label">
-                            <span><i class="fas ${item.icon}" style="margin-right: 6px;"></i> ${item.label}</span>
-                            <span class="chart-percent">${percent}%</span>
-                        </div>
-                        <div class="chart-bar-bg">
-                            <div class="chart-bar-fill" style="width: ${percent}%;"></div>
-                        </div>
-                    </div>
-                `;
-            });
-            chartHtml += `</div>`;
+            const nome = nomeInput.value.trim();
+            const telefone = telefoneInput.value.trim();
+            const email = emailInput.value.trim();
+            const mensagem = document.getElementById('userMensagem')?.value.trim() || '';
             
-            const strengthsHtml = `
-                <div class="strengths-card">
-                    <h4><i class="fas fa-star" style="color: var(--green-primary);"></i> 💪 SUAS FORÇAS</h4>
-                    <ul>
-                        ${perfil.strengths.map(s => `<li><i class="fas fa-check-circle"></i> ${s}</li>`).join('')}
-                    </ul>
-                </div>
-            `;
+            // Resetar mensagens de erro
+            document.getElementById('error-nome').innerText = 'Por favor, informe seu nome completo';
+            document.getElementById('error-telefone').innerText = 'Por favor, informe um telefone válido (ex: (11) 99999-9999)';
+            document.getElementById('error-email').innerText = 'Por favor, informe um e-mail válido';
             
-            const opportunitiesHtml = `
-                <div class="opportunities-card">
-                    <h4><i class="fas fa-bullseye" style="color: var(--orange-warning);"></i> 🎯 OPORTUNIDADES DE MELHORIA</h4>
-                    <ul>
-                        ${perfil.opportunities.map(o => `<li><i class="fas fa-arrow-right"></i> ${o}</li>`).join('')}
-                    </ul>
-                </div>
-            `;
+            // Valida nome
+            if (nome === '') {
+                showFieldError('nome', true);
+                document.getElementById('error-nome').innerText = 'Nome é obrigatório';
+                isValid = false;
+            } else if (nome.length < 3) {
+                showFieldError('nome', true);
+                document.getElementById('error-nome').innerText = 'Nome deve ter pelo menos 3 caracteres';
+                isValid = false;
+            } else {
+                showFieldError('nome', false);
+                answers.nome = nome;
+            }
             
-            elements.reportArea.innerHTML = `
-                <div class="report-card">
-                    <i class="fas fa-chart-simple" style="font-size: 42px; color: var(--green-primary); margin-bottom: 16px;"></i>
-                    <h2 style="font-size: 1.7rem;">Olá, ${primeiroNome}!</h2>
-                    <div class="perfil-badge" style="margin-top: 12px;">${perfil.titulo}</div>
-                    <p style="margin: 16px 0; line-height: 1.5;">${perfil.descricao}</p>
-                    <p style="margin-bottom: 20px; background: #F0F9F3; padding: 16px; border-radius: 28px;">💡 ${perfil.estrategia}</p>
-                    
-                    ${chartHtml}
-                    ${strengthsHtml}
-                    ${opportunitiesHtml}
-                    
-                    <div style="margin: 20px 0 12px;">
-                        <div style="width: 50px; height: 2px; background: var(--border-light); margin: 0 auto 20px;"></div>
-                        <h3 style="font-size: 1.3rem;">📌 Seu próximo passo</h3>
-                    </div>
-                    
-                    <div class="flex-col">
-                        <div class="card-downsell">
-                            <span style="background: var(--green-soft); padding: 4px 14px; border-radius: 30px; font-size:0.7rem; font-weight:600;">📘 GUIA COMPLETO</span>
-                            <h4 style="margin: 14px 0 8px;">Mapeamento Detalhado</h4>
-                            <p style="font-size: 0.85rem; margin-bottom: 16px;">PDF com 25 páginas + estratégias personalizadas + planilha de auto-observação.</p>
-                            <span style="font-size: 1.8rem; font-weight:800;">R$ 29,90</span>
-                            <a href="https://pay.cakto.com.br/37d6ewg_866860" class="btn-downsell" id="downsellBtn">QUERO MEU MAPEAMENTO →</a>
-                        </div>
-                        <div class="card-upsell">
-                            <div class="badge-hot">MAIS VENDIDO</div>
-                            <i class="fas fa-crown" style="font-size: 28px; margin-bottom: 10px; color: #F5B042;"></i>
-                            <h3 style="font-size: 1.4rem;">${oferta.titulo}</h3>
-                            <p style="opacity:0.9; margin: 8px 0;">${oferta.descricao}</p>
-                            <div><span style="font-size: 1rem;">${oferta.parcelas}x</span> <strong style="font-size: 1.8rem;"> ${oferta.preco_parcela}</strong> <span style="font-size:0.7rem;">ou ${oferta.preco_avista}</span></div>
-                            <div style="margin: 16px 0;">
-                                <div>✔ Protocolo 21D completo</div>
-                                <div>✔ Grupo VIP + aulas gravadas</div>
-                                <div>✔ Bônus: Sessão de 30min</div>
-                            </div>
-                            <a href="#" class="btn-upsell" id="upsellBtn"><i class="fab fa-whatsapp"></i> QUERO MEU PROTOCOLO</a>
-                        </div>
-                    </div>
-                    <div class="termo-etica">
-                        <i class="fas fa-balance-scale"></i> Conforme Resolução CFN nº 856/2026. Ferramenta educativa, não substitui consulta.
-                    </div>
-                </div>
-            `;
+            // Valida telefone (aceita formatos com e sem máscara)
+            const telefoneSemMascara = telefone.replace(/\D/g, '');
+            if (telefone === '' || telefoneSemMascara.length < 10 || telefoneSemMascara.length > 11) {
+                showFieldError('telefone', true);
+                isValid = false;
+            } else {
+                showFieldError('telefone', false);
+                answers.telefone = telefone;
+            }
             
-            elements.reportArea.classList.remove('hidden');
-            elements.quizArea.classList.add('hidden');
-            elements.reportArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Valida email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === '' || !emailRegex.test(email)) {
+                showFieldError('email', true);
+                isValid = false;
+            } else {
+                showFieldError('email', false);
+                answers.email = email;
+            }
+            
+            answers.mensagem = mensagem;
+            
+            return isValid;
+        }
+        
+        function showFieldError(fieldId, show) {
+            const errorDiv = document.getElementById(`error-${fieldId}`);
+            let inputId = '';
+            if (fieldId === 'nome') inputId = 'userNameInput';
+            else if (fieldId === 'telefone') inputId = 'userTelefone';
+            else if (fieldId === 'email') inputId = 'userEmail';
+            
+            const input = document.getElementById(inputId);
+            if (show) {
+                if (errorDiv) errorDiv.classList.add('show');
+                if (input) input.classList.add('error');
+            } else {
+                if (errorDiv) errorDiv.classList.remove('show');
+                if (input) input.classList.remove('error');
+            }
         }
 
+        function maskTelefone(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            if (value.length > 2) {
+                value = `(${value.slice(0,2)}) ${value.slice(2)}`;
+            }
+            if (value.length > 10) {
+                value = value.slice(0, 10) + '-' + value.slice(10);
+            }
+            input.value = value;
+        }
+
+        // ============================================
+        // RENDERIZAÇÃO DAS PERGUNTAS
+        // ============================================
         function renderQuestion() {
             const q = questions[currentStep];
             if(!q) return;
             
-            // Monta a imagem com fall silencioso caso não exista
-            const imageHtml = q.image ? `<img src="${q.image}" class="question-image" alt="Ilustração da pergunta" onerror="this.style.display='none'">` : '';
+            const imageHtml = q.image ? `<img src="${q.image}" class="question-image" alt="Ilustração" onerror="this.style.display='none'">` : '';
             
             if(q.type === "choice") {
                 const optionsHtml = q.options.map((opt, idx) => `
@@ -1041,61 +875,82 @@
                     });
                 }
             } 
-            else if(q.type === "name_only") {
+            else if(q.type === "contact_form") {
                 elements.questionsContainer.innerHTML = `
                     <div class="question-card">
                         ${imageHtml}
                         <div class="question-text">${q.text}</div>
-                        <input type="text" id="userNameInput" class="input-name" placeholder="${q.placeholder || "Digite seu nome"}" value="${answers.nome || ''}">
-                        <button class="btn-primary" id="nameSubmitBtn">GERAR MEU DIAGNÓSTICO <i class="fas fa-arrow-right"></i></button>
-                        <p style="font-size:0.7rem; margin-top: 20px; color: var(--text-light);">🔍 Usamos apenas seu nome para personalizar o resultado</p>
+                        
+                        <div class="chat-hint">
+                            <i class="fas fa-comment-dots"></i>
+                            <span>💬 Thaís Coelho leu sua mensagem! Escreva como se fosse um chat com a nutricionista.</span>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label>Seu nome completo <span class="required">*</span></label>
+                            <input type="text" id="userNameInput" class="input-name" placeholder="Ex: Ana Silva" autocomplete="name" value="${answers.nome || ''}">
+                            <div class="error-message" id="error-nome">Por favor, informe seu nome completo</div>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label>Seu telefone com WhatsApp <span class="required">*</span></label>
+                            <input type="tel" id="userTelefone" class="input-name" placeholder="(11) 99999-9999" autocomplete="tel" value="${answers.telefone || ''}">
+                            <div class="error-message" id="error-telefone">Por favor, informe um telefone válido (ex: (11) 99999-9999)</div>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label>Seu e-mail <span class="required">*</span></label>
+                            <input type="email" id="userEmail" class="input-name" placeholder="exemplo@email.com" autocomplete="email" value="${answers.email || ''}">
+                            <div class="error-message" id="error-email">Por favor, informe um e-mail válido</div>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label><i class="fas fa-comment"></i> Mensagem para a nutricionista (opcional)</label>
+                            <textarea id="userMensagem" placeholder="Ex: Thaís, tenho dificuldade com doces à noite. O que você me sugere? 💚">${answers.mensagem || ''}</textarea>
+                        </div>
+                        
+                        <button class="btn-primary" id="contactSubmitBtn">
+                            GERAR MEU DIAGNÓSTICO <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <p style="font-size:0.7rem; margin-top: 20px; color: var(--text-light);">
+                            🔒 Seus dados estão seguros. Usamos apenas para personalizar seu resultado.
+                        </p>
                     </div>
                 `;
-                const input = document.getElementById('userNameInput');
-                const btn = document.getElementById('nameSubmitBtn');
                 
-                const submitName = async () => {
-                    const nome = input.value.trim();
-                    if(!nome) {
-                        input.classList.add('error');
-                        setTimeout(() => input.classList.remove('error'), 500);
-                        return;
+                const telefoneInput = document.getElementById('userTelefone');
+                if (telefoneInput) {
+                    telefoneInput.addEventListener('input', function() { maskTelefone(this); });
+                }
+                
+                const submitBtn = document.getElementById('contactSubmitBtn');
+                const submitAction = async () => {
+                    if(validateContactForm()) {
+                        await saveDataAndRedirect();
                     }
-                    answers.nome = nome;
-                    await showLoadingSequence();
-                    exibirPopupResultado();
                 };
                 
-                btn.addEventListener('click', submitName);
-                input.addEventListener('keypress', (e) => {
-                    if(e.key === 'Enter') submitName();
+                if (submitBtn) {
+                    submitBtn.addEventListener('click', submitAction);
+                }
+                
+                const inputs = ['userNameInput', 'userTelefone', 'userEmail'];
+                inputs.forEach(id => {
+                    const input = document.getElementById(id);
+                    if(input) {
+                        input.addEventListener('keypress', (e) => {
+                            if(e.key === 'Enter') submitAction();
+                        });
+                    }
                 });
             }
             updateProgressUI();
-            elements.questionsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        function goToNextQuestion() {
-            if(currentStep < questions.length - 1) {
-                currentStep++;
-                renderQuestion();
-            }
-        }
-
-        function addContador() {
-            const startDate = new Date(2024, 0, 1);
-            const now = new Date();
-            const daysDiff = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
-            const total = 156000 + (daysDiff * 180);
-            if(elements.contadorContainer) {
-                elements.contadorContainer.innerHTML = `
-                    
-                `;
+            if(elements.questionsContainer) {
+                elements.questionsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
         function init() {
-            addContador();
             renderQuestion();
         }
         
