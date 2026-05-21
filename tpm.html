@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Thaís Coelho | Análise da TPM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        :root {
+            --bg-page: #FEF6F6;
+            --white-card: #FFFFFF;
+            --rose-light: #FDE8E8;
+            --rose-primary: #D6586A;
+            --rose-dark: #B83B4D;
+            --rose-highlight: #E87A8E;
+            --text-dark: #2C3E2F;
+            --text-light: #6B7C6E;
+            --border-light: #F0E2E2;
+            --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --error-red: #e74c3c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #FEF6F6 0%, #F9FBF8 100%);
+            height: 100%;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            color: var(--text-dark);
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        h1, h2, h3, h4, .question-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        .header-logo {
+            text-align: center;
+            padding: 24px 20px 12px;
+        }
+        .logo-circle {
+            background: linear-gradient(145deg, var(--rose-primary), var(--rose-dark));
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+        .logo-circle:hover {
+            transform: scale(1.05);
+        }
+        .logo-circle i {
+            font-size: 28px;
+            color: white;
+        }
+
+        .container {
+            max-width: 560px;
+            margin: 0 auto;
+            padding: 12px 20px 40px;
+            min-height: 100%;
+        }
+
+        .progress-wrapper {
+            margin: 8px 0 24px;
+        }
+        .progress-bar-bg {
+            height: 6px;
+            background: var(--rose-light);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--rose-primary), var(--rose-highlight));
+            border-radius: 10px;
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .step-counter {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .question-card {
+            background: var(--white-card);
+            border-radius: 32px;
+            padding: 40px 28px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+            text-align: center;
+            animation: fadeInUp 0.4s ease;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .question-image {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            max-height: 40vh;
+            border-radius: 28px;
+            margin: 0 auto 24px auto;
+            display: block;
+            object-fit: cover;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--rose-light);
+        }
+
+        .question-text {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 36px;
+            line-height: 1.3;
+            text-align: center;
+        }
+        
+        .highlight-word {
+            color: var(--rose-primary);
+            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            display: inline-block;
+            position: relative;
+        }
+        .highlight-word::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--rose-primary), transparent);
+            border-radius: 2px;
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            max-width: 320px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .option-item {
+            background: var(--bg-page);
+            border: 1px solid var(--border-light);
+            border-radius: 60px;
+            padding: 14px 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .option-item:hover {
+            background: var(--rose-light);
+            border-color: var(--rose-primary);
+            transform: translateY(-2px);
+        }
+
+        .option-item.selected {
+            background: linear-gradient(135deg, var(--rose-primary), var(--rose-dark));
+            border-color: var(--rose-primary);
+            color: white;
+        }
+
+        .option-icon {
+            width: 24px;
+            font-size: 1rem;
+            color: var(--rose-primary);
+        }
+        .option-item.selected .option-icon i {
+            color: white;
+        }
+
+        .form-field {
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto 16px;
+            display: block;
+            text-align: left;
+        }
+        .form-field label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+            text-align: left;
+        }
+        .form-field label .required {
+            color: var(--error-red);
+        }
+        .form-field input, .form-field textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--border-light);
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-page);
+            transition: all 0.2s;
+            outline: none;
+            color: var(--text-dark);
+        }
+        .form-field textarea {
+            border-radius: 24px;
+            resize: vertical;
+            min-height: 80px;
+        }
+        .form-field input:focus, .form-field textarea:focus {
+            border-color: var(--rose-primary);
+            box-shadow: 0 0 0 3px rgba(214, 88, 106, 0.15);
+        }
+        .form-field input.error, .form-field textarea.error {
+            border-color: var(--error-red);
+        }
+        .error-message {
+            color: var(--error-red);
+            font-size: 0.7rem;
+            margin-top: 5px;
+            display: none;
+            text-align: left;
+            padding-left: 8px;
+        }
+        .error-message.show {
+            display: block;
+        }
+        .chat-hint {
+            background: var(--rose-light);
+            padding: 12px 16px;
+            border-radius: 20px;
+            margin: 8px auto 20px;
+            max-width: 320px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.8rem;
+            color: var(--rose-dark);
+            text-align: left;
+        }
+        .chat-hint i {
+            font-size: 1.2rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--rose-primary), var(--rose-dark));
+            color: white;
+            padding: 16px 28px;
+            border-radius: 60px;
+            border: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 320px;
+            margin: 12px auto 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 3000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .loading-card {
+            background: white;
+            border-radius: 48px;
+            padding: 48px 40px;
+            text-align: center;
+            max-width: 340px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+        }
+        .loading-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--rose-light), var(--rose-primary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+        .loading-icon i {
+            font-size: 40px;
+            color: white;
+        }
+        .loading-step {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--rose-primary);
+            margin-top: 12px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .footer-site {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 16px;
+            font-size: 0.65rem;
+            color: #8BA298;
+            border-top: 1px solid #E2EDE8;
+            font-style: italic;
+        }
+
+        .error-modal {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e74c3c;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            z-index: 5000;
+            display: none;
+            white-space: nowrap;
+            box-shadow: var(--shadow-md);
+        }
+
+        @media (max-width: 480px) {
+            .question-text {
+                font-size: 1.3rem;
+            }
+            .question-card {
+                padding: 28px 20px;
+            }
+            .error-modal {
+                white-space: normal;
+                text-align: center;
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-logo">
+    <div class="logo-circle">
+        <i class="fas fa-heart"></i>
+    </div>
+</div>
+
+<div class="container">
+    <div id="quizArea">
+        <div class="progress-wrapper">
+            <div class="progress-bar-bg"><div class="progress-fill" id="progressFill"></div></div>
+            <div class="step-counter" id="stepCounter">Carregando...</div>
+        </div>
+        <div id="questionsContainer"></div>
+    </div>
+
+    <div class="footer-site">
+        © 2026 · Thaís Coelho Nutrição Feminina · Semana da TPM
+    </div>
+</div>
+
+<div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-card">
+        <div class="loading-icon">
+            <i class="fas fa-heart"></i>
+        </div>
+        <div class="loading-step" id="loadingStepText">Analisando seus sintomas hormonais<span class="loading-dots">...</span></div>
+    </div>
+</div>
+
+<div id="errorModal" class="error-modal"></div>
+
+<script>
+    (function() {
+        // ===========================================
+        // CONFIGURAÇÕES
+        // ===========================================
+        const API_URL = 'https://thaicnutriback.onrender.com/api/tpm/leads';
+        const SESSION_KEY = 'thais_coelho_dados_tpm';
+        const REDIRECT_URL = 'obrigadotpm.html';
+        
+        // ===========================================
+        // PERGUNTAS DO QUIZ
+        // ===========================================
+        const questions = [
+            {
+                id: "fase_tpm",
+                type: "choice",
+                text: "Como a <span class='highlight-word'>TPM</span> costuma te afetar?",
+                options: [
+                    "Fico extremamente irritada",
+                    "Desconto tudo na comida",
+                    "Me sinto inchada e pesada",
+                    "Oscilo emocionalmente o tempo todo"
+                ],
+                icons: ["fa-face-angry", "fa-cookie-bite", "fa-weight-scale", "fa-heart-crack"],
+                image: "img/2.jpg"
+            },
+            {
+                id: "compulsao",
+                type: "choice", 
+                text: "Durante a TPM, qual desses sintomas mais te <span class='highlight-word'>incomoda</span>?",
+                options: [
+                    "Vontade absurda de doce",
+                    "Ansiedade e descontrole",
+                    "Cansaço sem motivo",
+                    "Inchaço e retenção"
+                ],
+                icons: ["fa-candy-cane", "fa-brain", "fa-bed", "fa-droplet"],
+                image: "img/3.jpg"
+            },
+            {
+                id: "alimentacao",
+                type: "choice",
+                text: "Você sente que sua <span class='highlight-word'>alimentação piora</span> na TPM?",
+                options: [
+                    "Sim, completamente",
+                    "Um pouco",
+                    "Só à noite",
+                    "Não percebo diferença"
+                ],
+                icons: ["fa-burger", "fa-moon", "fa-cookie", "fa-check"],
+                image: "img/4.jpg"
+            },
+            {
+                id: "emocional",
+                type: "choice",
+                text: "Como você fica emocionalmente nesse período?",
+                options: [
+                    "Muito sensível",
+                    "Sem paciência com ninguém",
+                    "Desanimada e sem energia",
+                    "Me sinto fora de mim"
+                ],
+                icons: ["fa-heart", "fa-fire", "fa-battery-quarter", "fa-cloud"],
+                image: "img/5.jpg"
+            },
+            {
+                id: "objetivo",
+                type: "choice",
+                text: "Se você pudesse melhorar <span class='highlight-word'>1 coisa</span> na sua TPM, o que seria?",
+                options: [
+                    "Parar a compulsão alimentar",
+                    "Reduzir o inchaço",
+                    "Controlar a irritação",
+                    "Ter mais energia"
+                ],
+                icons: ["fa-ban", "fa-leaf", "fa-spa", "fa-bolt"],
+                image: "img/6.jpg"
+            },
+            {
+                id: "contato",
+                type: "contact_form",
+                text: "Agora me conta: <span class='highlight-word'>pra onde posso enviar</span> sua análise da TPM?",
+                placeholder: "Digite seu nome completo",
+                image: "img/7.jpg"
+            }
+        ];
+
+        // ===========================================
+        // ESTADO DO QUIZ
+        // ===========================================
+        let currentStep = 0;
+        let answers = {
+            fase_tpm: null,
+            compulsao: null,
+            alimentacao: null,
+            emocional: null,
+            objetivo: null,
+            nome: "",
+            telefone: "",
+            email: "",
+            mensagem: ""
+        };
+
+        const elements = {
+            quizArea: document.getElementById('quizArea'),
+            questionsContainer: document.getElementById('questionsContainer'),
+            progressFill: document.getElementById('progressFill'),
+            stepCounter: document.getElementById('stepCounter'),
+            loadingOverlay: document.getElementById('loadingOverlay'),
+            loadingStepText: document.getElementById('loadingStepText')
+        };
+
+        // ===========================================
+        // FUNÇÕES AUXILIARES
+        // ===========================================
+        function showErrorModal(message) {
+            const modal = document.getElementById('errorModal');
+            modal.textContent = message;
+            modal.style.display = 'block';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 4000);
+        }
+
+        function updateProgressUI() {
+            const total = questions.length;
+            const percent = ((currentStep + 1) / total) * 100;
+            if(elements.progressFill) elements.progressFill.style.width = percent + '%';
+            if(elements.stepCounter) elements.stepCounter.innerText = `Passo ${currentStep + 1} · ${total}`;
+        }
+
+        function goToNextQuestion() {
+            if (currentStep < questions.length - 1) {
+                currentStep++;
+                renderQuestion();
+            }
+        }
+
+        function maskTelefone(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            if (value.length > 2) {
+                value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+            }
+            if (value.length > 10) {
+                value = value.slice(0, 10) + '-' + value.slice(10);
+            }
+            input.value = value;
+        }
+
+        // ===========================================
+        // API E SALVAMENTO
+        // ===========================================
+        async function sendDataToAPI(userData) {
+            try {
+                console.log('[TPM] Enviando para:', API_URL);
+                
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nome: userData.nome,
+                        telefone: userData.telefone,
+                        email: userData.email,
+                        mensagem: userData.mensagem || '',
+                        fase_tpm: userData.fase_tpm,
+                        compulsao: userData.compulsao,
+                        alimentacao: userData.alimentacao,
+                        emocional: userData.emocional,
+                        objetivo: userData.objetivo,
+                        origem: 'quiz_semana_tpm',
+                        pagina: 'analise_tpm'
+                    })
+                });
+                
+                let responseData;
+                const contentType = response.headers.get('content-type');
+                if (contentType && contentType.includes('application/json')) {
+                    responseData = await response.json();
+                } else {
+                    responseData = await response.text();
+                }
+                
+                if (!response.ok) {
+                    throw new Error(`Erro ${response.status}: ${JSON.stringify(responseData)}`);
+                }
+                
+                return { success: true, data: responseData };
+                
+            } catch (error) {
+                console.error('[TPM] Erro na API:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        async function saveDataAndRedirect() {
+            // Validar se todas as perguntas foram respondidas
+            if (!answers.fase_tpm || !answers.compulsao || !answers.alimentacao || 
+                !answers.emocional || !answers.objetivo) {
+                showErrorModal('⚠️ Por favor, responda todas as perguntas sobre sua TPM antes de enviar.');
+                return;
+            }
+            
+            const userDataForAPI = {
+                nome: answers.nome,
+                telefone: answers.telefone,
+                email: answers.email,
+                mensagem: answers.mensagem || '',
+                fase_tpm: answers.fase_tpm,
+                compulsao: answers.compulsao,
+                alimentacao: answers.alimentacao,
+                emocional: answers.emocional,
+                objetivo: answers.objetivo
+            };
+            
+            // Mostrar loading
+            if (elements.loadingOverlay) {
+                elements.loadingOverlay.style.display = 'flex';
+                elements.loadingStepText.innerHTML = `Analisando seus sintomas hormonais...`;
+            }
+            
+            // Salvar no sessionStorage para a página de resultado
+            sessionStorage.setItem(SESSION_KEY, JSON.stringify(userDataForAPI));
+            
+            // Enviar para API (não bloqueia o redirecionamento se falhar)
+            const apiResult = await sendDataToAPI(userDataForAPI);
+            
+            if (apiResult.success) {
+                console.log('[TPM] ✅ Dados salvos com sucesso na API!');
+                elements.loadingStepText.innerHTML = `Seu plano TPM está pronto! Redirecionando...`;
+            } else {
+                console.warn('[TPM] ⚠️ Falha na API, mas dados salvos localmente:', apiResult.error);
+                elements.loadingStepText.innerHTML = `Análise gerada! Redirecionando...`;
+            }
+            
+            setTimeout(() => {
+                window.location.href = REDIRECT_URL;
+            }, 800);
+        }
+
+        // ===========================================
+        // VALIDAÇÃO DO FORMULÁRIO
+        // ===========================================
+        function validateContactForm() {
+            let isValid = true;
+            
+            const nomeInput = document.getElementById('userNameInput');
+            const telefoneInput = document.getElementById('userTelefone');
+            const emailInput = document.getElementById('userEmail');
+            
+            if (!nomeInput || !telefoneInput || !emailInput) {
+                showErrorModal('Erro no formulário. Recarregue a página.');
+                return false;
+            }
+            
+            const nome = nomeInput.value.trim();
+            const telefone = telefoneInput.value.trim();
+            const email = emailInput.value.trim();
+            const mensagem = document.getElementById('userMensagem')?.value.trim() || '';
+            
+            // Resetar erros
+            document.querySelectorAll('.error-message').forEach(el => el.classList.remove('show'));
+            document.querySelectorAll('.form-field input').forEach(el => el.classList.remove('error'));
+            
+            // Valida nome
+            if (nome === '' || nome.length < 3) {
+                const errorNome = document.getElementById('error-nome');
+                const nomeField = document.getElementById('userNameInput');
+                if (errorNome) errorNome.classList.add('show');
+                if (nomeField) nomeField.classList.add('error');
+                isValid = false;
+            } else {
+                answers.nome = nome;
+            }
+            
+            // Valida telefone
+            const telefoneSemMascara = telefone.replace(/\D/g, '');
+            if (telefone === '' || telefoneSemMascara.length < 10 || telefoneSemMascara.length > 11) {
+                const errorTelefone = document.getElementById('error-telefone');
+                const telefoneField = document.getElementById('userTelefone');
+                if (errorTelefone) errorTelefone.classList.add('show');
+                if (telefoneField) telefoneField.classList.add('error');
+                isValid = false;
+            } else {
+                answers.telefone = telefone;
+            }
+            
+            // Valida email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === '' || !emailRegex.test(email)) {
+                const errorEmail = document.getElementById('error-email');
+                const emailField = document.getElementById('userEmail');
+                if (errorEmail) errorEmail.classList.add('show');
+                if (emailField) emailField.classList.add('error');
+                isValid = false;
+            } else {
+                answers.email = email;
+            }
+            
+            answers.mensagem = mensagem;
+            
+            return isValid;
+        }
+
+        // ===========================================
+        // RENDERIZAÇÃO DAS PERGUNTAS
+        // ===========================================
+        function renderQuestion() {
+            const q = questions[currentStep];
+            if (!q) return;
+            
+            const imageHtml = q.image ? `<img src="${q.image}" class="question-image" alt="Ilustração" onerror="this.style.display='none'">` : '';
+            
+            if (q.type === "choice") {
+                const optionsHtml = q.options.map((opt, idx) => `
+                    <div class="option-item" data-opt-index="${idx}">
+                        <div class="option-icon">
+                            <i class="fas ${q.icons?.[idx] || 'fa-circle'}"></i>
+                        </div>
+                        <span>${opt}</span>
+                    </div>
+                `).join('');
+
+                elements.questionsContainer.innerHTML = `
+                    <div class="question-card">
+                        ${imageHtml}
+                        <div class="question-text">${q.text}</div>
+                        <div class="options-grid" id="optionsGrid">
+                            ${optionsHtml}
+                        </div>
+                    </div>
+                `;
+
+                const optionDivs = document.querySelectorAll('.option-item');
+                optionDivs.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const optIndex = parseInt(btn.dataset.optIndex);
+                        const selectedValue = q.options[optIndex];
+                        answers[q.id] = selectedValue;
+                        
+                        optionDivs.forEach(opt => opt.classList.remove('selected'));
+                        btn.classList.add('selected');
+                        setTimeout(() => goToNextQuestion(), 250);
+                    });
+                });
+
+                if (answers[q.id]) {
+                    optionDivs.forEach(btn => {
+                        if (btn.innerText.includes(answers[q.id])) {
+                            btn.classList.add('selected');
+                        }
+                    });
+                }
+            } 
+            else if (q.type === "contact_form") {
+                elements.questionsContainer.innerHTML = `
+                    <div class="question-card">
+                        ${imageHtml}
+                        <div class="question-text">${q.text}</div>
+                        
+                        <div class="chat-hint">
+                            <i class="fas fa-comment-dots"></i>
+                            <span>💬 Escreva como se fosse um chat com a Thaís</span>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label>Seu nome completo <span class="required">*</span></label>
+                            <input type="text" id="userNameInput" placeholder="Ex: Ana Silva" value="${escapeHtml(answers.nome || '')}">
+                            <div class="error-message" id="error-nome">Por favor, informe seu nome completo</div>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label>WhatsApp com DDD <span class="required">*</span></label>
+                            <input type="tel" id="userTelefone" placeholder="(11) 99999-9999" value="${escapeHtml(answers.telefone || '')}">
+                            <div class="error-message" id="error-telefone">Telefone inválido. Ex: (11) 99999-9999</div>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label>Seu e-mail <span class="required">*</span></label>
+                            <input type="email" id="userEmail" placeholder="exemplo@email.com" value="${escapeHtml(answers.email || '')}">
+                            <div class="error-message" id="error-email">E-mail inválido</div>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label><i class="fas fa-comment"></i> Mensagem (opcional)</label>
+                            <textarea id="userMensagem" placeholder="Ex: Thaís, na TPM eu perco totalmente o controle com doces e fico muito inchada 😭">${escapeHtml(answers.mensagem || '')}</textarea>
+                        </div>
+                        
+                        <button class="btn-primary" id="contactSubmitBtn">
+                            QUERO MINHA ANÁLISE DA TPM <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <p style="font-size:0.7rem; margin-top: 20px; color: var(--text-light);">
+                            🔒 Seus dados estão seguros. Usamos apenas para personalizar seu resultado.
+                        </p>
+                    </div>
+                `;
+                
+                const telefoneInput = document.getElementById('userTelefone');
+                if (telefoneInput) {
+                    telefoneInput.addEventListener('input', function() { maskTelefone(this); });
+                }
+                
+                const submitBtn = document.getElementById('contactSubmitBtn');
+                const submitAction = async () => {
+                    if (validateContactForm()) {
+                        await saveDataAndRedirect();
+                    }
+                };
+                
+                if (submitBtn) {
+                    submitBtn.addEventListener('click', submitAction);
+                }
+                
+                ['userNameInput', 'userTelefone', 'userEmail'].forEach(id => {
+                    const input = document.getElementById(id);
+                    if (input) {
+                        input.addEventListener('keypress', (e) => {
+                            if (e.key === 'Enter') submitAction();
+                        });
+                    }
+                });
+            }
+            updateProgressUI();
+            if (elements.questionsContainer) {
+                elements.questionsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function init() {
+            renderQuestion();
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    })();
+</script>
+</body>
+</html>

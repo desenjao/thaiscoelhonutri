@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Thaís Coelho | Sua Análise da TPM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-page: #FEF6F6;
+            --white-card: #FFFFFF;
+            --rose-light: #FDE8E8;
+            --rose-primary: #D6586A;
+            --rose-dark: #B83B4D;
+            --rose-highlight: #E87A8E;
+            --text-dark: #2C3E2F;
+            --text-light: #6B7C6E;
+            --border-light: #F0E2E2;
+            --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --orange-warning: #E8A87C;
+            --error-red: #e74c3c;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(145deg, #FEF6F6 0%, #F9FBF8 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, .perfil-badge, .chart-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+
+        .header-logo {
+            text-align: center;
+            padding: 24px 20px 12px;
+        }
+        .logo-circle {
+            background: linear-gradient(145deg, var(--rose-primary), var(--rose-dark));
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+        .logo-circle:hover {
+            transform: scale(1.05);
+        }
+        .logo-circle i {
+            font-size: 28px;
+            color: white;
+        }
+
+        .report-card {
+            background: white;
+            border-radius: 36px;
+            padding: 40px 32px;
+            margin-top: 12px;
+            box-shadow: var(--shadow-md);
+            animation: fadeInUp 0.5s ease;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .perfil-badge {
+            background: var(--rose-light);
+            display: inline-block;
+            padding: 8px 24px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: var(--rose-dark);
+            margin: 16px 0 20px;
+            font-size: 1rem;
+        }
+
+        .sintomas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .sintoma-item {
+            background: var(--rose-light);
+            padding: 12px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+        }
+        .sintoma-item i {
+            color: var(--rose-primary);
+            font-size: 1.1rem;
+        }
+
+        .chart-container {
+            background: #FEF6F6;
+            border-radius: 24px;
+            padding: 24px;
+            margin: 24px 0;
+            border: 1px solid var(--border-light);
+        }
+        .chart-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .chart-item {
+            margin-bottom: 18px;
+        }
+        .chart-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+        .chart-bar-bg {
+            height: 8px;
+            background: var(--rose-light);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .chart-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--rose-primary), var(--rose-dark));
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .chart-percent {
+            font-weight: 700;
+            color: var(--rose-primary);
+        }
+
+        .strengths-card, .opportunities-card {
+            background: #FEF6F6;
+            border-radius: 24px;
+            padding: 20px;
+            margin-top: 16px;
+            text-align: left;
+        }
+        .strengths-card h4, .opportunities-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Playfair Display', serif;
+        }
+        .strengths-card ul, .opportunities-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .strengths-card li, .opportunities-card li {
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .strengths-card li i {
+            color: var(--rose-primary);
+            font-size: 0.75rem;
+        }
+        .opportunities-card li i {
+            color: var(--orange-warning);
+            font-size: 0.75rem;
+        }
+
+        .mensagem-card {
+            background: var(--rose-light);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 24px 0;
+            text-align: left;
+            border-left: 4px solid var(--rose-primary);
+        }
+        .mensagem-card i {
+            color: var(--rose-primary);
+            margin-right: 8px;
+        }
+        .mensagem-card p {
+            margin-top: 8px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin: 28px 0;
+        }
+        .card-downsell, .card-upsell {
+            border-radius: 28px;
+            padding: 24px 20px;
+            text-align: left;
+            transition: transform 0.2s ease;
+        }
+        .card-downsell:hover, .card-upsell:hover {
+            transform: translateY(-4px);
+        }
+        .card-downsell {
+            background: #FEF6F6;
+            border: 1px solid var(--border-light);
+        }
+        .card-upsell {
+            background: linear-gradient(135deg, var(--rose-primary) 0%, var(--rose-dark) 100%);
+            color: white;
+            position: relative;
+        }
+        .badge-hot {
+            position: absolute;
+            top: 14px;
+            right: -28px;
+            background: #F5B042;
+            color: #1A3B2C;
+            padding: 6px 40px;
+            transform: rotate(45deg);
+            font-size: 0.7rem;
+            font-weight: 800;
+        }
+        .btn-downsell, .btn-upsell {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 16px;
+            transition: all 0.2s;
+        }
+        .btn-downsell {
+            background: linear-gradient(135deg, var(--rose-primary), var(--rose-dark));
+            color: white;
+        }
+        .btn-upsell {
+            background: #25D366;
+            color: white;
+        }
+        .btn-downsell:hover, .btn-upsell:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+        .termo-etica {
+            margin-top: 28px;
+            padding: 16px;
+            background: #FEF6F6;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            color: var(--text-light);
+            font-style: italic;
+            text-align: center;
+        }
+
+        .footer-site {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 16px;
+            font-size: 0.65rem;
+            color: #8BA298;
+            border-top: 1px solid #E2EDE8;
+            font-style: italic;
+        }
+
+        .btn-voltar {
+            background: transparent;
+            border: 1.5px solid var(--border-light);
+            color: var(--rose-dark);
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-voltar:hover {
+            background: var(--rose-light);
+            border-color: var(--rose-primary);
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .loading-spinner i {
+            font-size: 48px;
+            color: var(--rose-primary);
+            margin-bottom: 16px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.6; }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 16px 40px;
+            }
+            .report-card {
+                padding: 24px 20px;
+            }
+            .badge-hot {
+                right: -20px;
+                font-size: 0.6rem;
+                padding: 4px 30px;
+            }
+            .sintomas-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header-logo">
+    <div class="logo-circle">
+        <i class="fas fa-heart"></i>
+    </div>
+</div>
+
+<div class="container">
+    <div id="reportContainer">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-pulse"></i>
+            <p>Carregando sua análise personalizada da TPM...</p>
+        </div>
+    </div>
+    <div class="footer-site">
+        © 2026 · Thaís Coelho Nutrição Feminina · Semana da TPM
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ============================================
+        // CHAVE PARA RECUPERAR DADOS DO sessionStorage
+        // ============================================
+        const SESSION_KEY_TPM = 'thais_coelho_dados_tpm';
+        
+        // ============================================
+        // DIAGNÓSTICOS PARA TPM
+        // ============================================
+        const diagnosticosTPM = {
+            irritada: {
+                titulo: "🩸 Irritabilidade Hormonal",
+                descricao: "Seu humor fica mais instável nesse período devido à queda de serotonina e flutuação hormonal.",
+                estrategia: "Alimentos ricos em triptofano e magnésio podem ajudar a equilibrar seu humor naturalmente.",
+                scores: { equilibrio: 35, energia: 42, controle: 38, bemEstar: 40 },
+                strengths: ["Autoconhecimento emocional", "Reconhece seus limites", "Busca por equilíbrio", "Sensibilidade para perceber mudanças"],
+                opportunities: ["Controlar irritabilidade", "Melhorar qualidade do sono", "Reduzir estresse", "Equilibrar neurotransmissores"]
+            },
+            comida: {
+                titulo: "🍪 Compulsão Alimentar na TPM",
+                descricao: "A vontade incontrolável de comer doces e carboidratos é uma resposta do seu corpo buscando serotonina e energia rápida.",
+                estrategia: "Estratégias para equilibrar a glicose e oferecer fontes saudáveis de carboidratos complexos antes das crises.",
+                scores: { equilibrio: 28, energia: 35, controle: 32, bemEstar: 38 },
+                strengths: ["Consciência do padrão", "Desejo de mudança", "Motivação para aprender", "Busca por soluções"],
+                opportunities: ["Reduzir compulsão por doces", "Equilibrar hormônios", "Estabilizar energia", "Melhorar relação com a comida"]
+            },
+            inchaco: {
+                titulo: "💧 Retenção e Inchaço",
+                descricao: "Seu corpo retém líquidos devido à ação da progesterona e aldosterona nesse período, causando desconforto.",
+                estrategia: "Ajustes na ingestão de sódio, potássio e magnésio para reduzir o inchaço e melhorar o bem-estar.",
+                scores: { equilibrio: 42, energia: 45, controle: 48, bemEstar: 35 },
+                strengths: ["Percebe as alterações do corpo", "Cuida da hidratação", "Busca soluções naturais", "Atenção aos sinais"],
+                opportunities: ["Reduzir retenção de líquidos", "Melhorar digestão", "Equilibrar eletrólitos", "Aliviar desconforto físico"]
+            },
+            oscilacao: {
+                titulo: "🎢 Oscilação Emocional",
+                descricao: "Suas emoções variam intensamente, afetando relacionamentos, trabalho e bem-estar geral.",
+                estrategia: "Nutrientes específicos como magnésio, vitaminas do complexo B e regulação do estresse para estabilizar o humor.",
+                scores: { equilibrio: 30, energia: 38, controle: 35, bemEstar: 32 },
+                strengths: ["Inteligência emocional", "Empatia", "Resiliência", "Capacidade de reflexão"],
+                opportunities: ["Estabilizar humor", "Melhorar relações", "Reduzir ansiedade", "Aumentar bem-estar geral"]
+            }
+        };
+        
+        // Mapeamento das respostas para diagnóstico TPM
+        function getDiagnosticoTPM(faseTpm) {
+            if (faseTpm && faseTpm.includes("irritada")) return diagnosticosTPM.irritada;
+            if (faseTpm && faseTpm.includes("Desconto tudo na comida")) return diagnosticosTPM.comida;
+            if (faseTpm && faseTpm.includes("inchada")) return diagnosticosTPM.inchaco;
+            if (faseTpm && faseTpm.includes("Oscilo emocionalmente")) return diagnosticosTPM.oscilacao;
+            return diagnosticosTPM.comida;
+        }
+        
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // ============================================
+        // RENDER PARA QUIZ TPM
+        // ============================================
+        function renderTPMReport(userData) {
+            const perfil = getDiagnosticoTPM(userData.fase_tpm);
+            const primeiroNome = userData.nome ? userData.nome.split(' ')[0] : "Visitante";
+            
+            // Mapear respostas para exibição
+            const sintomas = [
+                { icon: "fa-face-angry", label: "Como a TPM te afeta", value: userData.fase_tpm },
+                { icon: "fa-cookie-bite", label: "Sintoma que mais incomoda", value: userData.compulsao },
+                { icon: "fa-burger", label: "Alimentação na TPM", value: userData.alimentacao },
+                { icon: "fa-heart", label: "Como fica emocionalmente", value: userData.emocional },
+                { icon: "fa-bullseye", label: "O que quer melhorar", value: userData.objetivo }
+            ].filter(s => s.value);
+            
+            const sintomasHtml = `
+                <div class="sintomas-grid">
+                    ${sintomas.map(s => `
+                        <div class="sintoma-item">
+                            <i class="fas ${s.icon}"></i>
+                            <div><strong>${s.label}:</strong><br>${escapeHtml(s.value)}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            // Gráfico de diagnóstico
+            const chartItems = [
+                { label: "Equilíbrio Hormonal", key: "equilibrio", icon: "fa-balance-scale" },
+                { label: "Nível de Energia", key: "energia", icon: "fa-bolt" },
+                { label: "Controle Emocional", key: "controle", icon: "fa-heart" },
+                { label: "Bem-estar Geral", key: "bemEstar", icon: "fa-smile" }
+            ];
+            
+            let chartHtml = `<div class="chart-container"><div class="chart-title">📊 SEU PERFIL HORMONAL</div>`;
+            chartItems.forEach(item => {
+                const percent = perfil.scores[item.key] || 50;
+                chartHtml += `
+                    <div class="chart-item">
+                        <div class="chart-label">
+                            <span><i class="fas ${item.icon}" style="margin-right: 6px;"></i> ${item.label}</span>
+                            <span class="chart-percent">${percent}%</span>
+                        </div>
+                        <div class="chart-bar-bg">
+                            <div class="chart-bar-fill" style="width: ${percent}%;"></div>
+                        </div>
+                    </div>
+                `;
+            });
+            chartHtml += `</div>`;
+            
+            const strengthsHtml = `
+                <div class="strengths-card">
+                    <h4><i class="fas fa-star" style="color: var(--rose-primary);"></i> 💪 SUAS FORÇAS</h4>
+                    <ul>
+                        ${perfil.strengths.map(s => `<li><i class="fas fa-check-circle"></i> ${escapeHtml(s)}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            
+            const opportunitiesHtml = `
+                <div class="opportunities-card">
+                    <h4><i class="fas fa-bullseye" style="color: var(--orange-warning);"></i> 🎯 ÁREAS PARA TRABALHAR</h4>
+                    <ul>
+                        ${perfil.opportunities.map(o => `<li><i class="fas fa-arrow-right"></i> ${escapeHtml(o)}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            
+            const mensagemHtml = userData.mensagem ? `
+                <div class="mensagem-card">
+                    <i class="fas fa-comment-dots"></i> <strong>💬 Mensagem para Thaís Coelho:</strong>
+                    <p>"${escapeHtml(userData.mensagem)}"</p>
+                </div>
+            ` : '';
+            
+            return `
+    <div class="report-card">
+        <i class="fas fa-heart" style="font-size: 48px; color: var(--rose-primary); margin-bottom: 16px;"></i>
+        <h1 style="font-size: 1.8rem;">Olá, <span style="color: var(--rose-primary);">${escapeHtml(primeiroNome)}</span>!</h1>
+        <div class="perfil-badge">${perfil.titulo}</div>
+        
+        <p style="margin: 16px 0; line-height: 1.6; font-size: 1rem;">${perfil.descricao}</p>
+        <p style="margin-bottom: 20px; background: var(--rose-light); padding: 16px; border-radius: 28px; line-height: 1.5;">💡 <strong>Estratégia recomendada para sua TPM:</strong> ${perfil.estrategia}</p>
+        
+        <h3 style="margin: 20px 0 12px;">📝 Seu perfil de sintomas</h3>
+        ${sintomasHtml}
+        
+        ${mensagemHtml}
+        ${chartHtml}
+        ${strengthsHtml}
+        ${opportunitiesHtml}
+        
+        <div style="margin: 32px 0 16px;">
+            <div style="width: 50px; height: 2px; background: var(--border-light); margin: 0 auto 20px;"></div>
+            <h2 style="font-size: 1.4rem; text-align: center;">📌 Seu próximo passo</h2>
+            <p style="text-align: center; color: var(--text-light); margin-top: 8px;">Transforme sua TPM com acompanhamento especializado</p>
+        </div>
+        
+        <div class="flex-col">
+    <div class="card-upsell" style="max-width: 100%; background: #7A2530; color: #FFFFFF; padding: 30px 20px; border-radius: 20px; text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.12);">
+        
+        <div class="badge-hot" style="background: rgba(255, 255, 255, 0.2); color: #FFFFFF; padding: 4px 12px; border-radius: 50px; display: inline-block; font-size: 0.8rem; font-weight: bold;">
+            E-BOOK EXCLUSIVO
+        </div>
+        
+        <i class="fas fa-book-open" style="font-size: 44px; margin: 15px 0; color: #FAD2C2;"></i>
+        
+        <h3 style="font-size: 1.4rem; color: #FFFFFF; margin: 0 0 8px 0;">Guia: Como Sobreviver à TPM</h3>
+        <p style="opacity: 0.9; font-size: 0.95rem; margin: 0 0 20px 0; line-height: 1.4;">O manual definitivo para aliviar os sintomas e recuperar o seu bem-estar!</p>
+        
+        <div style="margin: 0 auto 20px auto; max-width: 280px; text-align: left; font-size: 0.9rem; line-height: 1.6;">
+            <div>✔ Alívio prático para dores e cólicas</div>
+            <div>✔ Combate à oscilação de humor</div>
+            <div>✔ Guia de chás e suplementos naturais</div>
+        </div>
+        
+        <div style="font-size: 1.7rem; font-weight: bold; margin-bottom: 20px; color: #FFFFFF;">
+            Por apenas R$ 29,90
+        </div>
+        
+      <a href="https://pay.cakto.com.br/353ret4_893760" class="btn-upsell" target="_self" style="background: #FFFFFF; color: #7A2530; display: block; padding: 14px; border-radius: 50px; font-weight: bold; text-decoration: none; text-transform: uppercase; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <i class="fas fa-shopping-cart"></i> COMPRAR E-BOOK AGORA
+</a>
+        
+    </div>
+</div>
+        <div class="termo-etica">
+            <i class="fas fa-balance-scale"></i> Conforme Resolução CFN nº 856/2026. Ferramenta educativa, não substitui consulta nutricional individualizada.
+        </div>
+        
+        <button class="btn-voltar" id="backBtn">
+            <i class="fas fa-arrow-left"></i> Voltar ao início
+        </button>
+    </div>`;
+        }
+        
+        function showError(message) {
+            document.getElementById('reportContainer').innerHTML = `
+                <div class="report-card" style="text-align: center;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 48px; color: var(--orange-warning); margin-bottom: 16px;"></i>
+                    <h2>Ops! Dados não encontrados</h2>
+                    <p style="margin: 16px 0;">${message || 'Você precisa fazer o quiz da TPM primeiro para acessar sua análise personalizada.'}</p>
+                    <a href="tpm.html" class="btn-downsell" style="display: inline-block; margin-top: 20px; text-decoration: none;">FAZER O TESTE AGORA →</a>
+                </div>
+            `;
+        }
+        
+        // ============================================
+        // RECUPERAR DADOS DO SESSIONSTORAGE
+        // ============================================
+        function loadDataAndRender() {
+            const storedData = sessionStorage.getItem(SESSION_KEY_TPM);
+            
+            if (!storedData) {
+                showError('Nenhum dado encontrado. Por favor, realize o quiz da TPM primeiro.');
+                return;
+            }
+            
+            try {
+                const userData = JSON.parse(storedData);
+                
+                if (!userData.nome || !userData.telefone || !userData.email) {
+                    showError('Dados incompletos. Por favor, realize o quiz da TPM novamente.');
+                    return;
+                }
+                
+                // Renderizar o relatório
+                document.getElementById('reportContainer').innerHTML = renderTPMReport(userData);
+                
+                // Evento do botão voltar
+                const backBtn = document.getElementById('backBtn');
+                if(backBtn) {
+                    backBtn.addEventListener('click', () => {
+                        window.location.href = 'tpm.html';
+                    });
+                }
+                
+            } catch (error) {
+                console.error('Erro ao processar dados:', error);
+                showError('Erro ao carregar seus dados. Por favor, tente novamente.');
+            }
+        }
+        
+        // Executar ao carregar a página
+        loadDataAndRender();
+    })();
+</script>
+</body>
+</html>
