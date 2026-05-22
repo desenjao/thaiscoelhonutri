@@ -22,13 +22,13 @@
         :root {
             --bg-page: #FAF8F5;          
             --white-card: #FFFFFF;
-            --gold-soft: #FDF6E3;       /* Fundo dourado bem suave */
-            --gold-primary: #D4AF37;     /* Ouro Clássico principal */
-            --gold-dark: #AA7C11;        /* Ouro Escuro para hovers */
-            --gold-light: #F3E5AB;       /* Ouro claro para destaques */
-            --text-dark: #2C2520;        /* Grafite caloroso */
-            --text-light: #7A6F66;       /* Cinza acastanhado chique */
-            --border-light: #E8DCC8;     /* Borda suave dourada */
+            --gold-soft: #FDF6E3;
+            --gold-primary: #D4AF37;
+            --gold-dark: #AA7C11;
+            --gold-light: #F3E5AB;
+            --text-dark: #2C2520;
+            --text-light: #7A6F66;
+            --border-light: #E8DCC8;
             --shadow-sm: 0 4px 16px rgba(44, 37, 32, 0.03);
             --shadow-md: 0 8px 28px rgba(44, 37, 32, 0.06);
             --shadow-lg: 0 20px 40px rgba(44, 37, 32, 0.10);
@@ -54,83 +54,7 @@
             padding: 40px 20px 60px;
         }
 
-        /* Header profissional com toque dourado */
-        .professional-header {
-            display: flex;
-            background: linear-gradient(135deg, #C99B2B 0%, #A87C1A 100%);
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 48px;
-            margin-bottom: 41px;
-            padding: 60px 40px;
-            border-radius: 32px;
-            position: relative;
-            box-shadow: var(--shadow-md);
-        }
-
-        .professional-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .professional-photo {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.25);
-            backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-md);
-            border: 1px solid rgba(255,255,255,0.4);
-        }
-
-        .professional-photo i {
-            font-size: 36px;
-            color: white;
-        }
-
-        .professional-text h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: white;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .professional-text p {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.92);
-            font-style: italic;
-        }
-
-        .btn-quiz-top {
-            background: white;
-            color: var(--gold-primary);
-            padding: 10px 28px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all 0.25s;
-            box-shadow: var(--shadow-sm);
-            position: relative;
-            z-index: 2;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-quiz-top:hover {
-            transform: translateY(-2px);
-            background: var(--gold-light);
-            color: var(--gold-dark);
-            box-shadow: var(--shadow-md);
-        }
-
+        /* Hero com espaçamento lateral corrigido */
         .hero {
             display: flex;
             flex-wrap: wrap;
@@ -138,6 +62,10 @@
             justify-content: space-between;
             gap: 40px;
             margin-bottom: 80px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;  /* <-- ESSE É O ESPAÇAMENTO QUE FALTAVA */
         }
 
         .hero-content {
@@ -236,6 +164,10 @@
             font-size: 2rem;
             font-weight: 600;
             margin-bottom: 12px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
         }
 
         .section-subtitle {
@@ -245,6 +177,10 @@
             font-style: italic;
             font-family: 'Cormorant Garamond', serif;
             font-size: 1rem;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
         }
 
         .profiles-grid {
@@ -252,6 +188,10 @@
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 28px;
             margin-bottom: 60px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
         }
 
         .profile-card {
@@ -311,9 +251,12 @@
 
         .cta-bottom {
             text-align: center;
-            padding: 48px 0 32px;
+            padding: 48px 20px 32px;
             border-top: 1px solid var(--border-light);
             margin-top: 20px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .btn-cta {
@@ -372,33 +315,37 @@
             color: white;
         }
 
-        /* Responsividade mobile-first + suporte PC refinado */
+        /* Imagem do topo também com espaçamento */
+        .top-image-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px 0;
+        }
+
+        .top-image-wrapper img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
         @media (max-width: 768px) {
-            .container {
-                padding: 20px 16px 40px;
-            }
             .hero h1 {
                 font-size: 2rem;
             }
             .section-title {
                 font-size: 1.6rem;
             }
-            .professional-header {
-                padding: 40px 24px;
-                flex-direction: column;
-                text-align: center;
+            .hero, .section-title, .section-subtitle, .profiles-grid, .cta-bottom {
+                padding-left: 16px;
+                padding-right: 16px;
             }
-            .professional-info {
-                flex-direction: column;
-                gap: 12px;
+            .top-image-wrapper {
+                padding-left: 16px;
+                padding-right: 16px;
             }
         }
 
-        /* Melhorias para telas maiores (desktop) */
         @media (min-width: 1200px) {
-            .container {
-                padding: 60px 40px 80px;
-            }
             .hero h1 {
                 font-size: 3.4rem;
             }
@@ -417,9 +364,9 @@
 </head>
 <body>
 
-<!-- Imagem principal mantida exatamente onde você colocou -->
-<div class="container">
-    <img src="img/semana-da-tpm-_1_.webp" alt="Semana da TPM" style="max-width: 100%; height: auto; display: block;">
+<!-- Imagem do topo com wrapper para espaçamento correto -->
+<div class="top-image-wrapper">
+    <img src="img/semana-da-tpm-_1_.webp" alt="Semana da TPM">
 </div>
 
 <section class="hero">
@@ -495,22 +442,14 @@
 </a>
 
 <script>
-    // Todos os botões e cards redirecionam para tpm.html (preservando navegação)
-    const heroBtn = document.getElementById('heroQuizBtn');
-    const bottomBtn = document.getElementById('bottomQuizBtn');
-    const profileCards = document.querySelectorAll('.profile-card');
-    
     function redirectToQuiz() {
         window.location.href = 'tpm.html';
     }
     
-    if (heroBtn) heroBtn.addEventListener('click', redirectToQuiz);
-    if (bottomBtn) bottomBtn.addEventListener('click', redirectToQuiz);
+    document.getElementById('heroQuizBtn').addEventListener('click', redirectToQuiz);
+    document.getElementById('bottomQuizBtn').addEventListener('click', redirectToQuiz);
     
-    // O seletor do botão .btn-quiz-top não existe no HTML original, então removemos a referência para evitar erro.
-    // Caso queira adicionar um botão no header profissional, você pode inserir posteriormente. Por enquanto está seguro.
-    
-    profileCards.forEach(card => {
+    document.querySelectorAll('.profile-card').forEach(function(card) {
         card.addEventListener('click', redirectToQuiz);
     });
 </script>
