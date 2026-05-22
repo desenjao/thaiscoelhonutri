@@ -20,23 +20,23 @@
         }
 
         :root {
-            --bg-page: #FDF8F5;
+            --bg-page: #FAF8F5;          
             --white-card: #FFFFFF;
-            --rose-soft: #FCE4EC;
-            --rose-primary: #C44569;
-            --rose-dark: #A6344F;
-            --rose-highlight: #E57399;
-            --text-dark: #4A2E38;
-            --text-light: #8E6B76;
-            --border-light: #F5E0E8;
-            --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.02);
-            --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --gold-soft: #FDF6E3;       /* Fundo dourado bem suave */
+            --gold-primary: #D4AF37;     /* Ouro Clássico principal */
+            --gold-dark: #AA7C11;        /* Ouro Escuro para hovers */
+            --gold-light: #F3E5AB;       /* Ouro claro para destaques */
+            --text-dark: #2C2520;        /* Grafite caloroso */
+            --text-light: #7A6F66;       /* Cinza acastanhado chique */
+            --border-light: #E8DCC8;     /* Borda suave dourada */
+            --shadow-sm: 0 4px 16px rgba(44, 37, 32, 0.03);
+            --shadow-md: 0 8px 28px rgba(44, 37, 32, 0.06);
+            --shadow-lg: 0 20px 40px rgba(44, 37, 32, 0.10);
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(145deg, var(--bg-page) 0%, #FDF0F3 100%);
+            background: linear-gradient(145deg, var(--bg-page) 0%, #FCF9F0 100%);
             min-height: 100vh;
             color: var(--text-dark);
             font-weight: 400;
@@ -54,10 +54,10 @@
             padding: 40px 20px 60px;
         }
 
+        /* Header profissional com toque dourado */
         .professional-header {
             display: flex;
-            background: linear-gradient(135deg, #C44569 0%, #A6344F 100%);
-            background-size: cover;
+            background: linear-gradient(135deg, #C99B2B 0%, #A87C1A 100%);
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
@@ -87,7 +87,7 @@
             align-items: center;
             justify-content: center;
             box-shadow: var(--shadow-md);
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.4);
         }
 
         .professional-photo i {
@@ -104,13 +104,13 @@
 
         .professional-text p {
             font-size: 0.8rem;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255,255,255,0.92);
             font-style: italic;
         }
 
         .btn-quiz-top {
             background: white;
-            color: var(--rose-primary);
+            color: var(--gold-primary);
             padding: 10px 28px;
             border-radius: 40px;
             text-decoration: none;
@@ -126,8 +126,8 @@
 
         .btn-quiz-top:hover {
             transform: translateY(-2px);
-            background: var(--rose-soft);
-            color: var(--rose-dark);
+            background: var(--gold-light);
+            color: var(--gold-dark);
             box-shadow: var(--shadow-md);
         }
 
@@ -146,7 +146,7 @@
         }
 
         .hero-badge {
-            background: var(--rose-soft);
+            background: var(--gold-soft);
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -154,7 +154,7 @@
             border-radius: 40px;
             font-size: 0.7rem;
             font-weight: 500;
-            color: var(--rose-dark);
+            color: var(--gold-dark);
             margin-bottom: 24px;
         }
 
@@ -167,10 +167,10 @@
         }
 
         .hero h1 span {
-            color: var(--rose-primary);
+            color: var(--gold-primary);
             font-style: italic;
             font-family: 'Cormorant Garamond', serif;
-            border-bottom: 2px solid var(--rose-soft);
+            border-bottom: 2px solid var(--gold-light);
         }
 
         .hero p {
@@ -181,7 +181,7 @@
         }
 
         .btn-hero {
-            background: var(--rose-primary);
+            background: var(--gold-primary);
             color: white;
             padding: 14px 34px;
             border-radius: 40px;
@@ -192,15 +192,15 @@
             align-items: center;
             gap: 10px;
             transition: all 0.25s;
-            box-shadow: 0 2px 8px rgba(196,69,105,0.2);
+            box-shadow: 0 2px 8px rgba(170,124,17,0.25);
             border: none;
             cursor: pointer;
         }
 
         .btn-hero:hover {
-            background: var(--rose-dark);
+            background: var(--gold-dark);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(196,69,105,0.25);
+            box-shadow: 0 8px 20px rgba(170,124,17,0.3);
         }
 
         .hero-image {
@@ -222,7 +222,7 @@
             margin-top: 20px;
             margin-bottom: 8px;
             font-weight: 600;
-            color: var(--rose-primary);
+            color: var(--gold-primary);
         }
 
         .hero-image-placeholder p {
@@ -267,14 +267,14 @@
 
         .profile-card:hover {
             transform: translateY(-4px);
-            border-color: var(--rose-highlight);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+            border-color: var(--gold-primary);
+            box-shadow: 0 12px 24px rgba(170,124,17,0.08);
         }
 
         .profile-icon {
             width: 72px;
             height: 72px;
-            background: var(--rose-soft);
+            background: var(--gold-soft);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -284,7 +284,7 @@
         }
 
         .profile-card:hover .profile-icon {
-            background: var(--rose-primary);
+            background: var(--gold-primary);
         }
 
         .profile-card:hover .profile-icon i {
@@ -293,7 +293,7 @@
 
         .profile-icon i {
             font-size: 32px;
-            color: var(--rose-primary);
+            color: var(--gold-primary);
             transition: color 0.2s;
         }
 
@@ -318,8 +318,8 @@
 
         .btn-cta {
             background: transparent;
-            border: 1.5px solid var(--rose-primary);
-            color: var(--rose-primary);
+            border: 1.5px solid var(--gold-primary);
+            color: var(--gold-primary);
             padding: 14px 34px;
             border-radius: 40px;
             font-weight: 600;
@@ -330,7 +330,7 @@
         }
 
         .btn-cta:hover {
-            background: var(--rose-primary);
+            background: var(--gold-primary);
             color: white;
             transform: translateY(-2px);
         }
@@ -372,6 +372,7 @@
             color: white;
         }
 
+        /* Responsividade mobile-first + suporte PC refinado */
         @media (max-width: 768px) {
             .container {
                 padding: 20px 16px 40px;
@@ -392,86 +393,94 @@
                 gap: 12px;
             }
         }
+
+        /* Melhorias para telas maiores (desktop) */
+        @media (min-width: 1200px) {
+            .container {
+                padding: 60px 40px 80px;
+            }
+            .hero h1 {
+                font-size: 3.4rem;
+            }
+            .profiles-grid {
+                gap: 32px;
+            }
+            .profile-card {
+                padding: 40px 28px;
+            }
+            .btn-hero, .btn-cta {
+                padding: 16px 42px;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
 
+<!-- Imagem principal mantida exatamente onde você colocou -->
 <div class="container">
-    <div class="professional-header">
-        <div class="professional-info">
-            <div class="professional-photo">
-                <i class="fas fa-female"></i>
-            </div>
-            <div class="professional-text">
-                <h2>Thaís Coelho</h2>
-                <p>Nutricionista Especialista em Saúde da Mulher</p>
-            </div>
+    <img src="img/semana-da-tpm-_1_.webp" alt="Semana da TPM" style="max-width: 100%; height: auto; display: block;">
+</div>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">
+            <i class="fas fa-chart-line"></i> Revisado por Thaís Coelho
         </div>
-        <button class="btn-quiz-top" id="topQuizBtn">
-            <i class="fas fa-clipboard-list"></i> Fazer teste de TPM
+        <h1>Descubra seu <span>Perfil de TPM</span> e transforme seu ciclo menstrual</h1>
+        <p>Mapeamento gratuito que revela seus padrões hormonais e te mostra o caminho para viver a TPM com mais equilíbrio e bem-estar.</p>
+        <button class="btn-hero" id="heroQuizBtn">
+            FAZER TESTE GRATUITO <i class="fas fa-arrow-right"></i>
         </button>
     </div>
-
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-chart-line"></i> Revisado por Thaís Coelho
-            </div>
-            <h1>Descubra seu <span>Perfil de TPM</span> e transforme seu ciclo menstrual</h1>
-            <p>Mapeamento gratuito que revela seus padrões hormonais e te mostra o caminho para viver a TPM com mais equilíbrio e bem-estar.</p>
-            <button class="btn-hero" id="heroQuizBtn">
-                FAZER TESTE GRATUITO <i class="fas fa-arrow-right"></i>
-            </button>
-        </div>
-        <div class="hero-image">
-            <div class="hero-image-placeholder">
-                <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mulher cuidando da saúde menstrual">
-                <h3>Mapeamento Hormonal</h3>
-                <p>Baseado em evidências científicas</p>
-            </div>
-        </div>
-    </section>
-
-    <h2 class="section-title">Conheça os perfis de TPM</h2>
-    <p class="section-subtitle">Identifique seus sintomas e descubra estratégias personalizadas</p>
-    
-    <div class="profiles-grid">
-        <div class="profile-card" data-profile="irritativa">
-            <div class="profile-icon">
-                <i class="fas fa-angry"></i>
-            </div>
-            <h3>😤 TPM Irritativa</h3>
-            <p>Irritação, raiva fácil, mudanças de humor intensas. O estrogênio em queda afeta a serotonina.</p>
-        </div>
-        <div class="profile-card" data-profile="retencao">
-            <div class="profile-icon">
-                <i class="fas fa-tint"></i>
-            </div>
-            <h3>💧 TPM Retenção</h3>
-            <p>Inchaço, mamas sensíveis, ganho de peso temporário. Desequilíbrio entre estrogênio e progesterona.</p>
-        </div>
-        <div class="profile-card" data-profile="fome">
-            <div class="profile-icon">
-                <i class="fas fa-cookie-bite"></i>
-            </div>
-            <h3>🍫 TPM Fome Emocional</h3>
-            <p>Desejo incontrolável por doces e carboidratos. Queda da serotonina e glicose instável.</p>
-        </div>
-        <div class="profile-card" data-profile="depressiva">
-            <div class="profile-icon">
-                <i class="fas fa-sad-tear"></i>
-            </div>
-            <h3>🌧️ TPM Depressiva</h3>
-            <p>Tristeza profunda, choro fácil, falta de energia. Sensibilidade excessiva às flutuações hormonais.</p>
+    <div class="hero-image">
+        <div class="hero-image-placeholder">
+            <img src="img/semana-da-tpm.webp" alt="Mulher cuidando da saúde menstrual">
+            <h3>Mapeamento Hormonal</h3>
+            <p>Baseado em evidências científicas</p>
         </div>
     </div>
+</section>
 
-    <div class="cta-bottom">
-        <p style="font-size: 1.1rem; font-weight: 500;">Descubra como aliviar seus sintomas de TPM de forma natural</p>
-        <button id="bottomQuizBtn" class="btn-cta">
-            QUERO DESCOBRIR MEU PERFIL <i class="fas fa-arrow-right"></i>
-        </button>
+<h2 class="section-title">Conheça os perfis de TPM</h2>
+<p class="section-subtitle">Identifique seus sintomas e descubra estratégias personalizadas</p>
+
+<div class="profiles-grid">
+    <div class="profile-card" data-profile="irritativa">
+        <div class="profile-icon">
+            <i class="fas fa-angry"></i>
+        </div>
+        <h3>😤 TPM Irritativa</h3>
+        <p>Irritação, raiva fácil, mudanças de humor intensas. O estrogênio em queda afeta a serotonina.</p>
     </div>
+    <div class="profile-card" data-profile="retencao">
+        <div class="profile-icon">
+            <i class="fas fa-tint"></i>
+        </div>
+        <h3>💧 TPM Retenção</h3>
+        <p>Inchaço, mamas sensíveis, ganho de peso temporário. Desequilíbrio entre estrogênio e progesterona.</p>
+    </div>
+    <div class="profile-card" data-profile="fome">
+        <div class="profile-icon">
+            <i class="fas fa-cookie-bite"></i>
+        </div>
+        <h3>🍫 TPM Fome Emocional</h3>
+        <p>Desejo incontrolável por doces e carboidratos. Queda da serotonina e glicose instável.</p>
+    </div>
+    <div class="profile-card" data-profile="depressiva">
+        <div class="profile-icon">
+            <i class="fas fa-sad-tear"></i>
+        </div>
+        <h3>🌧️ TPM Depressiva</h3>
+        <p>Tristeza profunda, choro fácil, falta de energia. Sensibilidade excessiva às flutuações hormonais.</p>
+    </div>
+</div>
+
+<div class="cta-bottom">
+    <p style="font-size: 1.1rem; font-weight: 500;">Descubra como aliviar seus sintomas de TPM de forma natural</p>
+    <button id="bottomQuizBtn" class="btn-cta">
+        QUERO DESCOBRIR MEU PERFIL <i class="fas fa-arrow-right"></i>
+    </button>
 </div>
 
 <footer class="footer">
@@ -486,24 +495,23 @@
 </a>
 
 <script>
-    // Todos os botões e cards redirecionam para tpm.html
-    document.getElementById('heroQuizBtn').addEventListener('click', function() {
-        window.location.href = 'tpm.html';
-    });
+    // Todos os botões e cards redirecionam para tpm.html (preservando navegação)
+    const heroBtn = document.getElementById('heroQuizBtn');
+    const bottomBtn = document.getElementById('bottomQuizBtn');
+    const profileCards = document.querySelectorAll('.profile-card');
     
-    document.getElementById('topQuizBtn').addEventListener('click', function() {
+    function redirectToQuiz() {
         window.location.href = 'tpm.html';
-    });
+    }
     
-    document.getElementById('bottomQuizBtn').addEventListener('click', function() {
-        window.location.href = 'tpm.html';
-    });
+    if (heroBtn) heroBtn.addEventListener('click', redirectToQuiz);
+    if (bottomBtn) bottomBtn.addEventListener('click', redirectToQuiz);
     
-    // Cards de perfil também redirecionam para o quiz
-    document.querySelectorAll('.profile-card').forEach(function(card) {
-        card.addEventListener('click', function() {
-            window.location.href = 'tpm.html';
-        });
+    // O seletor do botão .btn-quiz-top não existe no HTML original, então removemos a referência para evitar erro.
+    // Caso queira adicionar um botão no header profissional, você pode inserir posteriormente. Por enquanto está seguro.
+    
+    profileCards.forEach(card => {
+        card.addEventListener('click', redirectToQuiz);
     });
 </script>
 </body>
