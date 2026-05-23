@@ -360,13 +360,56 @@
                 font-size: 1rem;
             }
         }
+        /* Container que segura o carrossel */
+.top-image-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* O carrossel em si */
+.carousel-instagram {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth; /* Faz o efeito de deslizar suave */
+    scroll-snap-type: x mandatory; /* Ativa o "imã" do estilo Instagram */
+    
+    /* Esconde a barra de rolagem no Chrome, Safari, Firefox e IE */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; 
+}
+.carousel-instagram::-webkit-scrollbar {
+    display: none; 
+}
+
+/* Cada slide */
+.carousel-item {
+    flex: 0 0 100%; /* Cada imagem ocupa 100% da largura */
+    width: 100%;
+    scroll-snap-align: start; /* Onde o slide vai travar ao parar */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
     </style>
 </head>
 <body>
 
-<!-- Imagem do topo com wrapper para espaçamento correto -->
+<!-- Carrossel estilo Instagram -->
 <div class="top-image-wrapper">
-    <img src="img/semana-da-tpm-_1_.webp" alt="Semana da TPM">
+    <div class="carousel-instagram">
+        <div class="carousel-item active">
+            <img src="img/carrocel/1.png" alt="Semana da TPM - Slide 1">
+        </div>
+        <div class="carousel-item">
+            <img src="img/carrocel/2.png" alt="Semana da TPM - Slide 2">
+        </div>
+        <div class="carousel-item">
+            <img src="img/carrocel/3.png" alt="Semana da TPM - Slide 3">
+        </div>
+    </div>
 </div>
 
 <section class="hero">
@@ -437,11 +480,38 @@
     </p>
 </footer>
 
-<a href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre o mapeamento de TPM" class="whatsapp-float" target="_blank">
+<a href="https://wa.me/5589981287260?text=Olá! Thais vim da pagina sobre TPM" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const carousel = document.querySelector('.carousel-instagram');
+    const items = document.querySelectorAll('.carousel-item');
+    let currentIndex = 0;
+    const intervalTime = 3000; // 3 segundos
+
+    function autoScroll() {
+        currentIndex++;
+        
+        // Se passar da última imagem, volta para a primeira
+        if (currentIndex >= items.length) {
+            currentIndex = 0;
+        }
+
+        // Calcula a posição exata para onde o carrossel deve deslizar
+        const scrollAmount = carousel.clientWidth * currentIndex;
+        
+        // Faz o efeito de arrastar até a posição
+        carousel.scrollTo({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+
+    // Inicia o timer do carrossel automático
+    setInterval(autoScroll, intervalTime);
+});
     function redirectToQuiz() {
         window.location.href = 'tpm.html';
     }
