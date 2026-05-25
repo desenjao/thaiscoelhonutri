@@ -464,13 +464,13 @@
 
         
 
-        /* ========== NOVO CARD PREMIUM COM VERDE E VERMELHO ========== */
+        /* ========== CARD WHATSAPP GROUP ========== */
 
         .card-upsell {
 
             max-width: 100%;
 
-            background: linear-gradient(135deg, #0D2B1F 0%, #1A4A33 100%);
+            background: linear-gradient(135deg, #075E54 0%, #128C7E 100%);
 
             color: #FFFFFF;
 
@@ -491,8 +491,6 @@
         }
 
         
-
-        /* Efeito de brilho sutil no fundo */
 
         .card-upsell::before {
 
@@ -558,84 +556,9 @@
 
 
 
-        /* Botão Preço Cheio (VERMELHO - primeiro) */
+        .btn-whatsapp {
 
-        .btn-fullprice {
-            
-           
-            background: white;
-
-            border: 2px solid rgba(231, 76, 60, 0.5);
-
-            color: #444443;
-
-            display: block;
-
-            padding: 14px;
-
-            border-radius: 60px;
-
-            font-weight: 700;
-
-            text-decoration: none;
-
-            text-transform: uppercase;
-
-            font-size: 0.8rem;
-
-            transition: all 0.3s ease;
-
-            margin-bottom: 20px;
-
-        }
-
-        
-
-        .btn-fullprice:hover {
-
-            background: rgba(231, 76, 60, 0.25);
-
-            border-color: #e74c3c;
-
-            color: #FFB5A8;
-
-        }
-
-        
-
-        .price-line-through {
-
-            font-size: 1.2rem;
-
-            text-decoration: line-through;
-
-            color: #FF9E8F;
-
-            font-weight: bold;
-
-            opacity: 0.8;
-
-        }
-
-        
-
-        .price-label {
-
-            font-size: 0.7rem;
-
-            opacity: 0.6;
-
-            letter-spacing: 1px;
-
-        }
-
-
-
-        /* Botão Desconto (VERDE - segundo, com PULSO) */
-
-        .btn-discount {
-
-            background: linear-gradient(135deg, var(--success-green) 0%, var(--success-dark) 100%);
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
 
             color: white;
 
@@ -653,7 +576,7 @@
 
             font-size: 1.1rem;
 
-            box-shadow: 0 8px 25px rgba(39,174,96,0.4);
+            box-shadow: 0 8px 25px rgba(37,211,102,0.4);
 
             transition: all 0.3s ease;
 
@@ -665,6 +588,8 @@
 
             z-index: 2;
 
+            cursor: pointer;
+
         }
 
         
@@ -675,7 +600,7 @@
 
                 transform: scale(1);
 
-                box-shadow: 0 8px 25px rgba(39,174,96,0.4);
+                box-shadow: 0 8px 25px rgba(37,211,102,0.4);
 
             }
 
@@ -683,7 +608,7 @@
 
                 transform: scale(1.02);
 
-                box-shadow: 0 12px 35px rgba(39,174,96,0.7);
+                box-shadow: 0 12px 35px rgba(37,211,102,0.7);
 
             }
 
@@ -691,7 +616,7 @@
 
                 transform: scale(1);
 
-                box-shadow: 0 8px 25px rgba(39,174,96,0.4);
+                box-shadow: 0 8px 25px rgba(37,211,102,0.4);
 
             }
 
@@ -699,19 +624,19 @@
 
         
 
-        .btn-discount:hover {
+        .btn-whatsapp:hover {
 
             transform: scale(1.03);
 
-            background: linear-gradient(135deg, #2ECC71 0%, var(--success-green) 100%);
+            background: linear-gradient(135deg, #30D158 0%, #25D366 100%);
 
-            box-shadow: 0 10px 30px rgba(39,174,96,0.6);
+            box-shadow: 0 10px 30px rgba(37,211,102,0.6);
 
         }
 
         
 
-        .btn-discount small {
+        .btn-whatsapp small {
 
             font-size: 0.65rem;
 
@@ -905,6 +830,44 @@
 
         }
 
+        .admin-badge {
+
+            position: fixed;
+
+            bottom: 20px;
+
+            right: 20px;
+
+            background: #2C3E2F;
+
+            color: white;
+
+            padding: 8px 15px;
+
+            border-radius: 50px;
+
+            font-size: 0.7rem;
+
+            font-weight: bold;
+
+            z-index: 999;
+
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+        }
+
+        .admin-badge:hover {
+
+            background: var(--rose-primary);
+
+            transform: scale(1.05);
+
+        }
+
 
 
         @media (max-width: 600px) {
@@ -935,7 +898,7 @@
 
             }
 
-            .btn-discount {
+            .btn-whatsapp {
 
                 font-size: 0.9rem;
 
@@ -957,7 +920,7 @@
 
     <div class="logo-circle">
 
-        <i class="fas fa-heart"></i>
+        <i class="fab fa-whatsapp"></i>
 
     </div>
 
@@ -987,6 +950,12 @@
 
 </div>
 
+<div id="adminBadge" class="admin-badge" style="display: none;">
+
+    <i class="fas fa-crown"></i> Modo Admin
+
+</div>
+
 
 
 <script>
@@ -994,107 +963,192 @@
     (function() {
 
         // ============================================
-
-        // CHAVE PARA RECUPERAR DADOS DO sessionStorage
-
+        // 🔧 VARIAVEL DE ADMINISTRADOR
         // ============================================
-
+        const admin = 0;  // 1 = modo admin | 0 = modo normal
+        
+        // ============================================
+        // CONFIGURAÇÃO DO LINK DO WHATSAPP
+        // ============================================
+        const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/KvAGrcAm5lECrRS0igGWj9";
+        
+        // ============================================
+        
         const SESSION_KEY_TPM = 'thais_coelho_dados_tpm';
 
-        
+        if (admin === 1) {
+            const adminBadge = document.getElementById('adminBadge');
+            if (adminBadge) {
+                adminBadge.style.display = 'flex';
+                adminBadge.style.alignItems = 'center';
+                adminBadge.style.gap = '8px';
+                adminBadge.innerHTML = '<i class="fas fa-crown"></i> Modo Admin (Visualização com dados reais)';
+            }
+        }
 
         // ============================================
-
-        // DIAGNÓSTICOS PARA TPM
-
+        // PERFIS DETALHADOS BASEADOS EM LEADS REAIS
         // ============================================
 
         const diagnosticosTPM = {
 
+            // PERFIL 1: IRRITABILIDADE EXTREMA (BASEADO EM LEADS: id16, id25, id17)
             irritada: {
-
-                titulo: "🩸 Irritabilidade Hormonal",
-
-                descricao: "Seu humor fica mais instável nesse período devido à queda de serotonina e flutuação hormonal.",
-
-                estrategia: "Alimentos ricos em triptofano e magnésio podem ajudar a equilibrar seu humor naturalmente.",
-
-                scores: { equilibrio: 35, energia: 42, controle: 38, bemEstar: 40 },
-
-                strengths: ["Autoconhecimento emocional", "Reconhece seus limites", "Busca por equilíbrio", "Sensibilidade para perceber mudanças"],
-
-                opportunities: ["Controlar irritabilidade", "Melhorar qualidade do sono", "Reduzir estresse", "Equilibrar neurotransmissores"]
-
+                titulo: "🔥 IRRITABILIDADE HORMONAL EXTREMA",
+                subtitulo: "Sua paciência vai a zero e pequenas coisas viram gatilhos",
+                descricao: "Os hormônios flutuam drasticamente nesse período, afetando diretamente a produção de serotonina (neurotransmissor do bem-estar). Isso faz com que situações que normalmente você lidaria bem se tornem insuportáveis.",
+                sintomas_comuns: ["Explosões emocionais", "Impaciência extrema", "Sensibilidade a críticas", "Vontade de ficar sozinha"],
+                estrategia: "A chave está em equilibrar a serotonina com alimentos ricos em triptofano (banana, aveia, ovos, chocolate 70%) e magnésio (folhas verdes, castanhas). Além disso, técnicas de respiração podem ajudar a lidar com os gatilhos.",
+                scores: { equilibrio: 28, energia: 38, controle: 25, bemEstar: 32 },
+                strengths: [
+                    "🌪️ Você reconhece a intensidade das suas emoções - isso é autoconsciência!",
+                    "💪 Tem força para buscar ajuda e entender o que está acontecendo",
+                    "🎯 Sabe o que quer: controlar a irritação que afeta seus relacionamentos",
+                    "🧠 Sua mente é rápida e perceptiva - você nota as mudanças imediatamente"
+                ],
+                opportunities: [
+                    "😤 Explosões de raiva que podem prejudicar relacionamentos",
+                    "😥 Culpa e arrependimento depois dos momentos de irritação",
+                    "🛌 Dificuldade para relaxar e desacelerar os pensamentos",
+                    "🍽️ Compulsão alimentar como válvula de escape da irritação"
+                ],
+                dica_extra: "💡 Muitas mulheres relatam que 'se enxergam' no espelho com os olhos marejados sem saber exatamente o porquê. Isso não é frescura - é bioquímica!",
+                depoimento_real: "Nutri, me enquadro em quase todas as alternativas. 🥺 - Idaiane"
             },
 
+            // PERFIL 2: COMPULSÃO ALIMENTAR (BASEADO EM LEADS: id20, id19, id23)
             comida: {
-
-                titulo: "🍪 Compulsão Alimentar na TPM",
-
-                descricao: "A vontade incontrolável de comer doces e carboidratos é uma resposta do seu corpo buscando serotonina e energia rápida.",
-
-                estrategia: "Estratégias para equilibrar a glicose e oferecer fontes saudáveis de carboidratos complexos antes das crises.",
-
-                scores: { equilibrio: 28, energia: 35, controle: 32, bemEstar: 38 },
-
-                strengths: ["Consciência do padrão", "Desejo de mudança", "Motivação para aprender", "Busca por soluções"],
-
-                opportunities: ["Reduzir compulsão por doces", "Equilibrar hormônios", "Estabilizar energia", "Melhorar relação com a comida"]
-
+                titulo: "🍪 COMPULSÃO ALIMENTAR NA TPM",
+                subtitulo: "Você perde o controle e come tudo o que vê pela frente",
+                descricao: "Seu corpo está desesperado por serotonina e energia rápida, e os carboidratos e açúcares são a forma mais rápida de conseguir isso. Não é falta de força de vontade - é uma resposta fisiológica real! O problema é que o alívio é momentâneo e vem seguido de culpa.",
+                sintomas_comuns: ["Vontade incontrolável de doce", "Comer sem fome real", "Culpa após comer", "Fome mesmo depois de já ter comido"],
+                estrategia: "O segredo é ANTECIPAR: incluir carboidratos complexos (batata doce, aveia, arroz integral) nas refeições principais e ter opções saudáveis de doce (banana com canela, chocolate 70%, tâmaras) para quando a vontade bater. Nunca se repreenda - isso só piora!",
+                scores: { equilibrio: 25, energia: 32, controle: 22, bemEstar: 30 },
+                strengths: [
+                    "🍽️ Você tem consciência do padrão de compulsão - muitas mulheres nem percebem!",
+                    "💪 Já tentou mudar e busca soluções reais",
+                    "🎯 Sabe exatamente que quer parar a compulsão alimentar",
+                    "🧠 Reconhece que o emocional está ligado à comida"
+                ],
+                opportunities: [
+                    "🍰 Comer grandes quantidades sem conseguir parar",
+                    "😔 Sensação de fracasso e culpa após as crises",
+                    "🔄 Ciclo vicioso: estresse → compulsão → culpa → mais estresse",
+                    "⚖️ Ganho de peso e inchaço que afetam a autoestima"
+                ],
+                dica_extra: "💡 Você já percebeu que quanto mais se culpa, mais compulsão tem? Isso acontece porque a culpa ativa o cortisol, que aumenta ainda mais a vontade de comer. Vamos quebrar esse ciclo!",
+                depoimento_real: "Perco o controle - Sirlene"
             },
 
+            // PERFIL 3: INCHAÇO E RETENÇÃO (BASEADO EM LEADS: id24, id22, id21, id18)
             inchaco: {
-
-                titulo: "💧 Retenção e Inchaço",
-
-                descricao: "Seu corpo retém líquidos devido à ação da progesterona e aldosterona nesse período, causando desconforto.",
-
-                estrategia: "Ajustes na ingestão de sódio, potássio e magnésio para reduzir o inchaço e melhorar o bem-estar.",
-
-                scores: { equilibrio: 42, energia: 45, controle: 48, bemEstar: 35 },
-
-                strengths: ["Percebe as alterações do corpo", "Cuida da hidratação", "Busca soluções naturais", "Atenção aos sinais"],
-
-                opportunities: ["Reduzir retenção de líquidos", "Melhorar digestão", "Equilibrar eletrólitos", "Aliviar desconforto físico"]
-
+                titulo: "💧 INCHAÇO E RETENÇÃO DE LÍQUIDOS",
+                subtitulo: "Você se sente pesada, suas roupas não fecham e isso te frustra",
+                descricao: "A progesterona e aldosterona (hormônios femininos) aumentam a retenção de sódio e líquidos no corpo. Isso faz com que você se sinta inchada, pesada e desconfortável. Muitas mulheres chegam a ganhar 2-3kg só de líquido nessa fase!",
+                sintomas_comuns: ["Roupas que ficam apertadas", "Sensação de pernas pesadas", "Anéis que não entram", "Barriga estufada"],
+                estrategia: "Reduza o sódio (evite industrializados, enlatados, temperos prontos) e aumente potássio (banana, abacate, coco, feijão) e magnésio (folhas verdes, castanhas, sementes). Beba muita água - parece contraditório, mas água ajuda a eliminar o excesso de sódio!",
+                scores: { equilibrio: 35, energia: 40, controle: 45, bemEstar: 28 },
+                strengths: [
+                    "👗 Você percebe as mudanças no seu corpo - atenção aos detalhes!",
+                    "💪 Busca soluções naturais (não quer só remédios)",
+                    "💧 Se preocupa com hidratação e bem-estar físico",
+                    "🎯 Objetivo claro: reduzir o inchaço que te incomoda"
+                ],
+                opportunities: [
+                    "🤰 Barriga estufada que parece de gestante",
+                    "👖 Roupas que não fecham, mesmo sem ter engordado",
+                    "🦵 Pernas e pés inchados no fim do dia",
+                    "😫 Desconforto físico que atrapalha o dia a dia"
+                ],
+                dica_extra: "💡 Sabe aquela sensação de que o espelho mostra uma mulher diferente? O inchaço mexe muito com a autoestima. Mas respira: 80% é retenção, não gordura!",
+                depoimento_real: "Me sinto muito Inchada - Thaís (ela mesma testou!)"
             },
 
+            // PERFIL 4: OSCILAÇÃO EMOCIONAL COMPLETA (BASEADO EM LEADS: id17, id16)
             oscilacao: {
+                titulo: "🎢 OSCILAÇÃO EMOCIONAL INTENSA",
+                subtitulo: "Você ri e chora na mesma hora, sem entender direito o porquê",
+                descricao: "Suas emoções estão em uma montanha-russa: um momento está tudo bem, no outro você quer sumir. Isso acontece porque a queda brusca de estrogênio e progesterona afeta diretamente os neurotransmissores que regulam o humor (serotonina, dopamina, GABA).",
+                sintomas_comuns: ["Choro fácil (até com comercial)", "Alegria que vira tristeza rápido", "Ansiedade sem motivo aparente", "Sensação de vulnerabilidade"],
+                estrategia: "Nutrientes específicos como magnésio (relaxante natural), vitamina B6 (regula neurotransmissores) e triptofano (precursor da serotonina) são seus melhores amigos. Além disso, técnicas de regulação emocional e sono de qualidade são fundamentais.",
+                scores: { equilibrio: 30, energia: 35, controle: 28, bemEstar: 25 },
+                strengths: [
+                    "🌊 Você sente tudo com muita intensidade - isso é sensibilidade aguçada!",
+                    "💪 É resiliente e consegue funcionar mesmo no caos emocional",
+                    "🎯 Quer estabilidade, mas não quer remédios controlados",
+                    "🧠 Tem inteligência emocional para perceber seus padrões"
+                ],
+                opportunities: [
+                    "😭 Choro compulsivo sem motivo claro",
+                    "📉 Oscilações que afetam trabalho e relacionamentos",
+                    "😰 Ansiedade que paralisa",
+                    "😴 Sono desregulado que piora as emoções"
+                ],
+                dica_extra: "💡 Você já se sentiu mal por 'não ter motivo para estar triste'? Isso é comum mas não é verdade. O motivo é hormonal e é VÁLIDO. Não se cobre tanto!",
+                depoimento_real: "Nutri maravilhinda, eu me enquadro em quase todas as alternativas.🥺 - Idaiane"
+            },
 
-                titulo: "🎢 Oscilação Emocional",
-
-                descricao: "Suas emoções variam intensamente, afetando relacionamentos, trabalho e bem-estar geral.",
-
-                estrategia: "Nutrientes específicos como magnésio, vitaminas do complexo B e regulação do estresse para estabilizar o humor.",
-
-                scores: { equilibrio: 30, energia: 38, controle: 35, bemEstar: 32 },
-
-                strengths: ["Inteligência emocional", "Empatia", "Resiliência", "Capacidade de reflexão"],
-
-                opportunities: ["Estabilizar humor", "Melhorar relações", "Reduzir ansiedade", "Aumentar bem-estar geral"]
-
+            // PERFIL 5: FADIGA EXTREMA (BASEADO EM LEADS: id16, id17)
+            cansaco: {
+                titulo: "⚡ FADIGA E EXAUSTÃO HORMONAL",
+                subtitulo: "Você acorda cansada e quer dormir o dia todo",
+                descricao: "A queda hormonal na TPM afeta diretamente sua energia. Além disso, a má qualidade do sono (comum nesse período) e o esforço emocional para lidar com tudo isso deixam seu corpo exausto. Você sente que até levantar da cama é um esforço hercúleo.",
+                sintomas_comuns: ["Cansaço mesmo após dormir 8h", "Preguiça extrema", "Dificuldade de concentração", "Corpo pesado"],
+                estrategia: "Priorize proteínas magras no almoço (frango, peixe, ovos) para estabilizar a energia, magnésio antes de dormir para melhorar o sono reparador, e evite cafeína em excesso - ela dá um pico de energia seguido de queda brusca que piora a fadiga.",
+                scores: { equilibrio: 32, energia: 20, controle: 35, bemEstar: 28 },
+                strengths: [
+                    "😴 Você respeita os limites do seu corpo",
+                    "💪 Continua fazendo o necessário mesmo cansada - guerreira!",
+                    "🎯 Quer mais energia para viver melhor, não só sobreviver",
+                    "🧠 Reconhece que descanso não é preguiça"
+                ],
+                opportunities: [
+                    "🛌 Acordar e continuar cansada",
+                    "📉 Queda de produtividade no trabalho/estudos",
+                    "😫 Irritabilidade causada pela exaustão",
+                    "🍽️ Compulsão por carboidratos para tentar ter energia"
+                ],
+                dica_extra: "💡 Você já teve que cancelar compromissos porque simplesmente não tinha energia? Não se culpe. Seu corpo está te pedindo descanso - e isso é sabedoria, não fraqueza!",
+                depoimento_real: "Cansaço sem motivo - Sergiana"
             }
-
         };
 
-        
-
-        // Mapeamento das respostas para diagnóstico TPM
-
-        function getDiagnosticoTPM(faseTpm) {
-
-            if (faseTpm && faseTpm.includes("irritada")) return diagnosticosTPM.irritada;
-
-            if (faseTpm && faseTpm.includes("Desconto tudo na comida")) return diagnosticosTPM.comida;
-
-            if (faseTpm && faseTpm.includes("inchada")) return diagnosticosTPM.inchaco;
-
-            if (faseTpm && faseTpm.includes("Oscilo emocionalmente")) return diagnosticosTPM.oscilacao;
-
+        // Mapeamento inteligente baseado nas respostas reais
+        function getDiagnosticoTPM(faseTpm, compulsao, emocional, objetivo) {
+            
+            // INCHADO: prioriza inchaço
+            if (faseTpm && (faseTpm.includes("inchada") || faseTpm.includes("pesada")) || 
+                compulsao === "Inchaço e retenção" || 
+                objetivo === "Reduzir o inchaço") {
+                return diagnosticosTPM.inchaco;
+            }
+            
+            // IRRITADA: irritação extrema
+            if (faseTpm && (faseTpm.includes("irritada") || faseTpm.includes("extrema")) ||
+                objetivo === "Controlar a irritação") {
+                return diagnosticosTPM.irritada;
+            }
+            
+            // COMPULSÃO: desconta tudo na comida
+            if (faseTpm && (faseTpm.includes("Desconto") || faseTpm.includes("comida")) ||
+                compulsao === "Vontade absurda de doce" ||
+                objetivo === "Parar a compulsão alimentar") {
+                return diagnosticosTPM.comida;
+            }
+            
+            // CANSACO: fadiga
+            if (compulsao === "Cansaço sem motivo" ||
+                objetivo === "Ter mais energia") {
+                return diagnosticosTPM.cansaco;
+            }
+            
+            // OSCILAÇÃO: padrão misto
+            if (emocional && (emocional.includes("sensível") || emocional.includes("paciência"))) {
+                return diagnosticosTPM.oscilacao;
+            }
+            
             return diagnosticosTPM.comida;
-
         }
-
         
 
         function escapeHtml(text) {
@@ -1109,329 +1163,215 @@
 
         }
 
-        
-
-        // ============================================
-
-        // RENDER PARA QUIZ TPM
-
-        // ============================================
+        // Dados de exemplo para modo admin (baseado em lead real)
+        const demoUserData = {
+            nome: "Sirlene",
+            telefone: "(89) 98146-7924",
+            email: "sirlene@exemplo.com",
+            fase_tpm: "Desconto tudo na comida",
+            compulsao: "Vontade absurda de doce",
+            alimentacao: "Sim, completamente",
+            emocional: "Sem paciência com ninguém",
+            objetivo: "Controlar a irritação",
+            mensagem: "Perco o controle"
+        };
 
         function renderTPMReport(userData) {
-
-            const perfil = getDiagnosticoTPM(userData.fase_tpm);
-
+            const perfil = getDiagnosticoTPM(userData.fase_tpm, userData.compulsao, userData.emocional, userData.objetivo);
             const primeiroNome = userData.nome ? userData.nome.split(' ')[0] : "Visitante";
 
-            
-
             // Mapear respostas para exibição
-
             const sintomas = [
-
                 { icon: "fa-face-angry", label: "Como a TPM te afeta", value: userData.fase_tpm },
-
                 { icon: "fa-cookie-bite", label: "Sintoma que mais incomoda", value: userData.compulsao },
-
                 { icon: "fa-burger", label: "Alimentação na TPM", value: userData.alimentacao },
-
                 { icon: "fa-heart", label: "Como fica emocionalmente", value: userData.emocional },
-
                 { icon: "fa-bullseye", label: "O que quer melhorar", value: userData.objetivo }
-
             ].filter(s => s.value);
 
-            
-
             const sintomasHtml = `
-
                 <div class="sintomas-grid">
-
                     ${sintomas.map(s => `
-
                         <div class="sintoma-item">
-
                             <i class="fas ${s.icon}"></i>
-
                             <div><strong>${s.label}:</strong><br>${escapeHtml(s.value)}</div>
-
                         </div>
-
                     `).join('')}
-
                 </div>
-
             `;
-
-            
 
             // Gráfico de diagnóstico
-
             const chartItems = [
-
                 { label: "Equilíbrio Hormonal", key: "equilibrio", icon: "fa-balance-scale" },
-
                 { label: "Nível de Energia", key: "energia", icon: "fa-bolt" },
-
                 { label: "Controle Emocional", key: "controle", icon: "fa-heart" },
-
                 { label: "Bem-estar Geral", key: "bemEstar", icon: "fa-smile" }
-
             ];
 
-            
-
-            let chartHtml = `<div class="chart-container"><div class="chart-title">📊 SEU PERFIL HORMONAL</div>`;
-
+            let chartHtml = `<div class="chart-container"><div class="chart-title">📊 SEU PERFIL HORMONAL - ${perfil.titulo}</div>`;
             chartItems.forEach(item => {
-
                 const percent = perfil.scores[item.key] || 50;
-
                 chartHtml += `
-
                     <div class="chart-item">
-
                         <div class="chart-label">
-
                             <span><i class="fas ${item.icon}" style="margin-right: 6px;"></i> ${item.label}</span>
-
                             <span class="chart-percent">${percent}%</span>
-
                         </div>
-
                         <div class="chart-bar-bg">
-
                             <div class="chart-bar-fill" style="width: ${percent}%;"></div>
-
                         </div>
-
                     </div>
-
                 `;
-
             });
-
             chartHtml += `</div>`;
 
-            
-
+            // Forças personalizadas
             const strengthsHtml = `
-
                 <div class="strengths-card">
-
-                    <h4><i class="fas fa-star" style="color: var(--rose-primary);"></i> 💪 SUAS FORÇAS</h4>
-
+                    <h4><i class="fas fa-star" style="color: var(--rose-primary);"></i> 💪 SUAS FORÇAS (QUE VOCÊ NÃO PERCEBE)</h4>
                     <ul>
-
                         ${perfil.strengths.map(s => `<li><i class="fas fa-check-circle"></i> ${escapeHtml(s)}</li>`).join('')}
-
                     </ul>
-
                 </div>
-
             `;
-
-            
 
             const opportunitiesHtml = `
-
                 <div class="opportunities-card">
-
-                    <h4><i class="fas fa-bullseye" style="color: var(--orange-warning);"></i> 🎯 ÁREAS PARA TRABALHAR</h4>
-
+                    <h4><i class="fas fa-bullseye" style="color: var(--orange-warning);"></i> 🎯 O QUE PODEMOS TRANSFORMAR JUNTAS</h4>
                     <ul>
-
                         ${perfil.opportunities.map(o => `<li><i class="fas fa-arrow-right"></i> ${escapeHtml(o)}</li>`).join('')}
-
                     </ul>
-
                 </div>
-
             `;
-
             
-
-            const mensagemHtml = userData.mensagem ? `
-
-                <div class="mensagem-card">
-
-                    <i class="fas fa-comment-dots"></i> <strong>💬 Mensagem para Thaís Coelho:</strong>
-
-                    <p>"${escapeHtml(userData.mensagem)}"</p>
-
+            const descricaoHtml = `
+                <div style="background: linear-gradient(135deg, #FDE8E8, #FFF5F5); padding: 20px; border-radius: 20px; margin: 20px 0;">
+                    <h3 style="color: var(--rose-dark); margin-bottom: 8px;">📖 ${perfil.titulo}</h3>
+                    <h4 style="color: var(--text-light); margin-bottom: 16px; font-size: 0.9rem;">${perfil.subtitulo}</h4>
+                    <p style="line-height: 1.6;">${perfil.descricao}</p>
+                    ${perfil.sintomas_comuns ? `
+                        <div style="margin-top: 16px; background: white; border-radius: 16px; padding: 12px;">
+                            <strong><i class="fas fa-list"></i> Sintomas comuns nesse perfil:</strong>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;">
+                                ${perfil.sintomas_comuns.map(s => `<span style="background: var(--rose-light); padding: 4px 12px; border-radius: 20px; font-size: 0.7rem;">${s}</span>`).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
                 </div>
-
+            `;
+            
+            const estrategiaHtml = `
+                <div style="background: #E8F5E9; padding: 20px; border-radius: 20px; margin: 20px 0; border-left: 4px solid #27AE60;">
+                    <h3 style="color: #1E8449; margin-bottom: 8px;">🌿 ESTRATÉGIA PERSONALIZADA</h3>
+                    <p style="line-height: 1.6;">${perfil.estrategia}</p>
+                    <div style="margin-top: 12px; background: white; border-radius: 12px; padding: 12px;">
+                        <i class="fas fa-lightbulb" style="color: #F5B042;"></i>
+                        <strong>${perfil.dica_extra || "Dica especial para você:"}</strong>
+                    </div>
+                </div>
+            `;
+            
+            const depoimentoHtml = perfil.depoimento_real ? `
+                <div style="background: #F3E5F5; padding: 16px; border-radius: 20px; margin: 20px 0; text-align: center; font-style: italic;">
+                    <i class="fas fa-quote-left" style="color: #9C27B0; margin-right: 8px;"></i>
+                    "${perfil.depoimento_real}"
+                    <div style="margin-top: 8px; font-size: 0.7rem; color: var(--text-light);">— Depoimento real de uma mulher como você</div>
+                </div>
             ` : '';
 
-            
+            const mensagemHtml = userData.mensagem ? `
+                <div class="mensagem-card">
+                    <i class="fas fa-comment-dots"></i> <strong>💬 Sua mensagem para a Thaís:</strong>
+                    <p>"${escapeHtml(userData.mensagem)}"</p>
+                </div>
+            ` : '';
 
-          return `
+            const adminWarning = (admin === 1) ? `
+                <div style="background: #F5B04220; border: 2px solid #F5B042; border-radius: 16px; padding: 12px; margin-bottom: 20px; text-align: center;">
+                    <i class="fas fa-crown" style="color: #F5B042;"></i>
+                    <strong style="color: #B83B4D;"> Modo Administrador - Visualização do perfil: ${perfil.titulo}</strong>
+                    <small style="display: block; color: var(--text-light); margin-top: 5px;">Baseado nos dados reais dos seus leads</small>
+                </div>
+            ` : '';
 
-    <div class="report-card">
+            return `<div class="report-card">
 
-        <i class="fas fa-heart" style="font-size: 48px; color: var(--rose-primary); margin-bottom: 16px;"></i>
+    ${adminWarning}
 
-        <h1 style="font-size: 1.8rem;">Olá, <span style="color: var(--rose-primary);">${escapeHtml(primeiroNome)}</span>!</h1>
-
-        <div class="perfil-badge">${perfil.titulo}</div>
-
-        
-
-        <p style="margin: 16px 0; line-height: 1.6; font-size: 1rem;">${perfil.descricao}</p>
-
-        <p style="margin-bottom: 20px; background: var(--rose-light); padding: 16px; border-radius: 28px; line-height: 1.5;">💡 <strong>Estratégia recomendada para sua TPM:</strong> ${perfil.estrategia}</p>
-
-        
-
-        <h3 style="margin: 20px 0 12px;">📝 Seu perfil de sintomas</h3>
-
-        ${sintomasHtml}
-
-        
-
-        ${mensagemHtml}
-
-        ${chartHtml}
-
-        ${strengthsHtml}
-
-        ${opportunitiesHtml}
-
-        
-
-        <div style="margin: 32px 0 16px;">
-
-            <div style="width: 50px; height: 2px; background: var(--border-light); margin: 0 auto 20px;"></div>
-
-            <h2 style="font-size: 1.4rem; text-align: center;">📌 Seu próximo passo</h2>
-
-            <p style="text-align: center; color: var(--text-light); margin-top: 8px;">Transforme sua TPM com acompanhamento especializado</p>
-
+    <div class="perfil-badge" style="background: linear-gradient(90deg, #075E54, #128C7E); color: white; font-weight: bold; letter-spacing: 2px; padding: 6px 20px; border-radius: 50px; display: inline-block; margin-bottom: 20px;">
+        ⭐ CONVITE EXCLUSIVO PARA O WHATSAPP
+    </div>
+    
+    <h1 style="font-size: 1.8rem; font-weight: 800; color: var(--text-dark); margin-bottom: 10px;">
+        Olá, <span style="color: #075E54;">${escapeHtml(primeiroNome)}</span>!
+    </h1>
+    
+    <p style="margin: 16px 0; line-height: 1.6; font-size: 1rem; color: var(--text-light);">
+        Baseado no seu perfil da TPM, preparei uma análise detalhada e personalizada para você entender melhor o que está acontecendo no seu corpo.
+    </p>
+    
+    ${descricaoHtml}
+    
+    ${sintomasHtml}
+    
+    ${chartHtml}
+    
+    ${estrategiaHtml}
+    
+    ${strengthsHtml}
+    
+    ${opportunitiesHtml}
+    
+    ${depoimentoHtml}
+    
+    ${mensagemHtml}
+    
+    <!-- CARD WHATSAPP GROUP -->
+    <div class="card-upsell" style="margin-top: 30px;">
+    
+        <div class="badge-hot">
+            <i class="fab fa-whatsapp"></i> ENTRADA LIBERADA HOJE
         </div>
-
         
-
-        <!-- ================= CARD PREMIUM - ORDEM INVERTIDA (PREÇO CHEIO PRIMEIRO, DEPOIS DESCONTO) ================= -->
-
-        <div class="flex-col" style="padding: 10px 0;">
-
-            <div class="card-upsell">
-
-                
-
-                <!-- Selo de Oportunidade Única -->
-
-                <div class="badge-hot">
-
-                    🔥 OPORTUNIDADE ÚNICA E EXCLUSIVA 🔥
-
-                </div>
-
-                
-
-                <i class="fas fa-book-open" style="font-size: 52px; margin: 10px 0; color: var(--gold); text-shadow: 0 4px 8px rgba(0,0,0,0.2);"></i>
-
-                
-
-                <h3 style="font-size: 1.6rem; color: #FFFFFF; margin: 5px 0 8px 0; font-weight: 800; letter-spacing: -0.5px;">Guia Prático: Como Sobreviver à TPM</h3>
-
-                <p style="opacity: 0.9; font-size: 0.95rem; margin: 0 auto 25px auto; line-height: 1.4; max-width: 320px; color: #E8F5E9;">O manual definitivo para cortar os sintomas pela raiz e recuperar as rédeas do seu bem-estar.</p>
-
-                
-
-                <!-- Lista de Benefícios -->
-
-                <div class="benefits-list">
-
-                    <div><i class="fas fa-check-circle"></i> Alívio imediato para dores e cólicas</div>
-
-                    <div><i class="fas fa-check-circle"></i> Controle absoluto sobre oscilações de humor</div>
-
-                    <div><i class="fas fa-check-circle"></i> Protocolo secreto de chás e suplementos</div>
-
-                </div>
-
-                
-
-                <!-- ===== BOTÃO 1: PREÇO CHEIO (VERMELHO) - PRIMEIRO ===== -->
-
-                <div>
-
-                    <span class="price-label">PREÇO OFICIAL DO MANUAL:</span>
-
-                    <div class="price-line-through">R$ 747,60</div>
-
-                    
-
-                    <a href="https://pay.cakto.com.br/7xg6wb9" class="btn-fullprice" target="_self">
-
-                        ⚠️ QUERO PAGAR O PREÇO CHEIO (Sem desconto) - R$ 747,60
-
-                    </a>
-
-                </div>
-
-                
-
-                <!-- ===== BOTÃO 2: DESCONTO 96% (VERDE COM PULSO) - SEGUNDO ===== -->
-
-                <div>
-
-                    <div class="discount-badge">
-
-                        🎁 DESCONTO EXCLUSIVO 96% OFF 🎁
-
-                    </div>
-
-                    
-
-                    <a href="https://pay.cakto.com.br/353ret4_893760?discount=96" class="btn-discount" target="_self">
-
-                        <i class="fas fa-gem"></i> APROVEITAR 96% DE DESCONTO
-
-                        <small>De R$ 747,50 por apenas</small>
-
-                        <span style="font-size: 1.4rem; display: block;">R$ 29,90</span>
-
-                    </a>
-
-                    <span style="font-size: 0.7rem; color: var(--gold); display: block; margin-top: 10px; font-weight: 500;">
-
-                        *Desconto aplicado automaticamente • Últimas unidades
-
-                    </span>
-
-                </div>
-
-                
-
-            </div>
-
-        </div>
-
-        <!-- =================================================================== -->
-
-
-
-        <div class="termo-etica">
-
-            <i class="fas fa-balance-scale"></i> Conforme Resolução CFN nº 856/2026. Ferramenta educativa, não substitui consulta nutricional individualizada.
-
-        </div>
-
+        <h3 style="color: white; margin-bottom: 15px; font-size: 1.4rem;">
+            🔓 Grupo VIP de Apoio no WhatsApp
+        </h3>
         
+        <p style="margin-bottom: 15px; opacity: 0.9;">
+            Junte-se a outras mulheres que estão vivendo a mesma jornada
+        </p>
+        
+        <div class="benefits-list">
+            <div><i class="fas fa-check-circle"></i> Dicas práticas de nutrição toda semana</div>
+            <div><i class="fas fa-check-circle"></i> Estratégias para cada fase do ciclo</div>
+            <div><i class="fas fa-check-circle"></i> Suporte emocional da comunidade</div>
+            <div><i class="fas fa-check-circle"></i> Conteúdos exclusivos e gratuitos</div>
+        </div>
+        
+        <div style="margin: 20px 0 10px 0;">
+            <span class="discount-badge">
+                ⚡ VAGAS LIMITADAS
+            </span>
+        </div>
+        
+        <a href="${WHATSAPP_GROUP_LINK}" class="btn-whatsapp" target="_blank">
+            <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>
+            QUERO FAZER PARTE
+            <small>✦ Clique e entre no grupo gratuitamente ✦</small>
+        </a>
+        
+        <p style="font-size: 0.7rem; margin-top: 20px; opacity: 0.8;">
+            <i class="fas fa-lock"></i> Ambiente seguro, acolhedor e moderado
+        </p>
+    </div>
 
-        <button class="btn-voltar" id="backBtn">
-
-            <i class="fas fa-arrow-left"></i> Voltar ao início
-
-        </button>
-
-    </div>`;
+    <div class="termo-etica" style="margin-top: 25px;">
+        🔒 Ao entrar no grupo você concorda com as regras de convivência e respeito mútuo.
+    </div>
+    
+</div>`;
 
         }
-
-        
 
         function showError(message) {
 
@@ -1445,7 +1385,9 @@
 
                     <p style="margin: 16px 0;">${message || 'Você precisa fazer o quiz da TPM primeiro para acessar sua análise personalizada.'}</p>
 
-                    <a href="tpm.html" class="btn-downsell" style="display: inline-block; margin-top: 20px; text-decoration: none; background: linear-gradient(135deg, var(--rose-primary), var(--rose-dark)); color: white; padding: 14px 28px; border-radius: 60px;">FAZER O TESTE AGORA →</a>
+                    ${admin === 1 ? '<p style="margin: 10px 0; padding: 10px; background: #F5B04220; border-radius: 8px;"><i class="fas fa-info-circle"></i> Modo admin ativo - Recarregue a página para ver o demo</p>' : ''}
+
+                    <a href="tpm.html" style="display: inline-block; margin-top: 20px; text-decoration: none; background: linear-gradient(135deg, var(--rose-primary), var(--rose-dark)); color: white; padding: 14px 28px; border-radius: 60px;">FAZER O TESTE AGORA →</a>
 
                 </div>
 
@@ -1453,81 +1395,42 @@
 
         }
 
-        
-
-        // ============================================
-
-        // RECUPERAR DADOS DO SESSIONSTORAGE
-
-        // ============================================
-
         function loadDataAndRender() {
-
+            
+            if (admin === 1) {
+                document.getElementById('reportContainer').innerHTML = renderTPMReport(demoUserData);
+                return;
+            }
+            
             const storedData = sessionStorage.getItem(SESSION_KEY_TPM);
 
-            
-
             if (!storedData) {
-
                 showError('Nenhum dado encontrado. Por favor, realize o quiz da TPM primeiro.');
-
                 return;
-
             }
 
-            
-
             try {
-
                 const userData = JSON.parse(storedData);
-
                 
-
                 if (!userData.nome || !userData.telefone || !userData.email) {
-
                     showError('Dados incompletos. Por favor, realize o quiz da TPM novamente.');
-
                     return;
-
                 }
-
-                
-
-                // Renderizar o relatório
 
                 document.getElementById('reportContainer').innerHTML = renderTPMReport(userData);
 
-                
-
-                // Evento do botão voltar
-
                 const backBtn = document.getElementById('backBtn');
-
                 if(backBtn) {
-
                     backBtn.addEventListener('click', () => {
-
                         window.location.href = 'tpm.html';
-
                     });
-
                 }
 
-                
-
             } catch (error) {
-
                 console.error('Erro ao processar dados:', error);
-
                 showError('Erro ao carregar seus dados. Por favor, tente novamente.');
-
             }
-
         }
-
-        
-
-        // Executar ao carregar a página
 
         loadDataAndRender();
 
