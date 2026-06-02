@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Análise Nutricional · Os 10 erros que sabotam seu emagrecimento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background-color: #FFFFFF; font-family: 'Inter', sans-serif; color: #1A1A1A; line-height: 1.5; scroll-behavior: smooth; }
+    .reading-progress { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: #2E7D32; z-index: 1000; transition: width 0.08s linear; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 1.8rem; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; letter-spacing: -0.01em; }
+    .hero-category { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; color: #2E7D32; font-weight: 600; margin-bottom: 1rem; }
+    .hero-title { font-size: 3.5rem; font-weight: 700; line-height: 1.2; margin: 1rem 0 1.2rem; color: #1A1A1A; }
+    .hero-sub { font-size: 1.25rem; color: #4a3f33; max-width: 750px; font-weight: 400; border-left: 4px solid #2E7D32; padding-left: 1.2rem; margin: 1.5rem 0; }
+    .meta-info { display: flex; gap: 1.8rem; flex-wrap: wrap; font-size: 0.85rem; color: #7a6a57; border-top: 1px solid #ece3da; padding-top: 1.2rem; margin-top: 1rem; }
+    .discovery-card { background: #ffffff; border-radius: 32px; padding: 1.8rem; margin-bottom: 2rem; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02); border: 1px solid #e8f0e6; }
+    .error-badge { font-size: 0.7rem; font-weight: 700; color: #2E7D32; background: #E8F5E9; display: inline-block; padding: 0.2rem 0.9rem; border-radius: 30px; margin-bottom: 1rem; }
+    .what-today { background: #F5F9F2; border-radius: 20px; padding: 1rem 1.2rem; margin-top: 1rem; font-size: 0.9rem; border-left: 3px solid #2E7D32; }
+    .btn-readmore-container { text-align: center; margin: 1.5rem 0 2.5rem; }
+    .btn-readmore { background: #2E7D32; color: white; border: none; padding: 1rem 2.5rem; border-radius: 60px; font-weight: 700; font-size: 1.05rem; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 6px 14px rgba(46,125,50,0.25); transition: all 0.2s ease; }
+    .btn-readmore:hover { background: #1B5E20; transform: translateY(-2px); }
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; z-index: 2000; }
+    .modal-content { max-width: 500px; width: 90%; background: linear-gradient(135deg, #0A2F1F 0%, #1B4D2E 100%); border-radius: 28px; padding: 2rem 1.8rem; text-align: center; box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4); }
+    .modal-content h3 { font-size: 1.8rem; font-weight: 700; color: #FFE0A3; margin-bottom: 0.5rem; font-family: 'Playfair Display'; }
+    .modal-content p { color: #E8F0E6; margin-bottom: 1.2rem; font-size: 0.95rem; }
+    .form-modal { display: flex; flex-direction: column; gap: 1rem; margin: 1.5rem 0; }
+    .form-modal input { width: 100%; padding: 1rem 1.2rem; border-radius: 60px; border: none; background: #ffffff; font-size: 0.95rem; font-family: 'Inter'; outline: none; }
+    .form-modal input:focus { box-shadow: 0 0 0 3px #FFD966; }
+    .btn-modal { background: linear-gradient(95deg, #FFB347 0%, #FF9F2E 100%); border: none; padding: 1rem; border-radius: 60px; font-weight: 700; font-size: 1.05rem; color: #1D3B2A; cursor: pointer; width: 100%; transition: all 0.2s ease; }
+    .btn-modal:hover { transform: scale(0.98); background: #FFA233; }
+    .close-modal { background: none; border: none; color: #CFE6D4; font-size: 0.7rem; margin-top: 1rem; cursor: pointer; text-decoration: underline; }
+    .error-feedback { color: #FFD966; font-size: 0.75rem; margin-top: 0.3rem; }
+    .checklist-modern { background: #FEFAF5; border-radius: 32px; padding: 2rem; margin: 2rem 0; }
+    .check-item { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; cursor: pointer; border-bottom: 1px solid #e0ebdb; }
+    .editorial-footer { margin: 3rem 0; text-align: center; padding: 2rem; background: #F5F9F2; border-radius: 48px; }
+    .premium-content { display: none; }
+    .premium-content.visible { display: block; }
+    @media (max-width: 680px) { .container { padding: 0 1.2rem; } .hero-title { font-size: 2.2rem; } .modal-content h3 { font-size: 1.5rem; } }
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+<div class="reading-progress" id="progressBar"></div>
+
+<main>
+  <div class="container" style="padding-top: 3rem;">
+    <div class="hero-category">ANÁLISE NUTRICIONAL • REPORTAGEM ESPECIAL</div>
+    <h1 class="hero-title">Os 10 Erros Que Sabotam Seu Emagrecimento</h1>
+    <div class="hero-sub">Após analisar dezenas de mulheres com dificuldades para emagrecer, alguns padrões começaram a aparecer repetidamente.</div>
+    <div class="meta-info">
+      <span><i class="far fa-clock"></i> Leitura: 10 minutos</span>
+      <span><i class="fas fa-seedling"></i> Conteúdo exclusivo</span>
+      <span><i class="fas fa-sync-alt"></i> Atualizado recentemente</span>
+    </div>
+  </div>
+
+  <!-- ERROS 1, 2 e 3 (totalmente visíveis) -->
+  <div class="container" id="initialErrors">
+    <div class="discovery-card fade-up">
+      <div class="error-badge">ERRO #1</div>
+      <h2 style="font-size: 1.6rem;">🍬 Tentar vencer a vontade de doces apenas na força de vontade</h2>
+      <p style="margin: 1rem 0;"><strong>Por que acontece:</strong> Resistência gera efeito rebote. Quando o cérebro identifica privação, a ansiedade noturna intensifica o desejo.</p>
+      <p><strong>Impacto no emagrecimento:</strong> Leva ao consumo excessivo de calorias em horários inadequados, travando o déficit calórico.</p>
+      <div class="what-today"><i class="fas fa-lightbulb" style="color:#2E7D32;"></i> <strong>O que fazer hoje:</strong> Inclua uma porção de doce funcional (15g de chocolate 70%) após o almoço. Equilibre cromo e magnésio para reduzir fissura.</div>
+    </div>
+
+    <div class="discovery-card fade-up">
+      <div class="error-badge">ERRO #2</div>
+      <h2 style="font-size: 1.6rem;">🚫 Cortar tudo o que gosta de comer</h2>
+      <p><strong>Por que acontece:</strong> Cultura da restrição radical e mito de que alimentos precisam ser "merecidos".</p>
+      <p><strong>Impacto:</strong> Dietas castigo geram abandono em até 21 dias. Frustração e episódios de compulsão.</p>
+      <div class="what-today"><i class="fas fa-lightbulb" style="color:#2E7D32;"></i> <strong>O que fazer hoje:</strong> Adote o método 80-20 (80% nutritivo, 20% flexível). Permita o pão ou doce sem culpa, com moderação consciente.</div>
+    </div>
+
+    <div class="discovery-card fade-up">
+      <div class="error-badge">ERRO #3</div>
+      <h2 style="font-size: 1.6rem;">😥 Ignorar a ansiedade, o estresse e a TPM</h2>
+      <p><strong>Por que acontece:</strong> Não reconhecer gatilhos emocionais. Muitas mulheres tratam fome emocional como falta de força.</p>
+      <p><strong>Impacto:</strong> Compulsão, inflamação e resistência à perda de gordura na região abdominal.</p>
+      <div class="what-today"><i class="fas fa-lightbulb" style="color:#2E7D32;"></i> <strong>O que fazer hoje:</strong> Técnica de respiração 4-7-8 ao sentir fissura. Suplementação de magnésio dimalato ajuda no controle da TPM e ansiedade.</div>
+    </div>
+  </div>
+
+  <!-- CONTEÚDO PREMIUM (bloqueado até cadastro) -->
+  <div class="container" id="premiumSection">
+    <div id="premiumContent" class="premium-content">
+      
+      <!-- ERRO 4 -->
+      <div class="discovery-card">
+        <div class="error-badge">ERRO #4</div>
+        <h2 style="font-size: 1.6rem;">🥤 Beber pouca água e confundir sede com fome</h2>
+        <p><strong>Por que acontece:</strong> O cérebro muitas vezes interpreta o sinal de desidratação como fome, levando a comer desnecessariamente.</p>
+        <p><strong>Impacto:</strong> Consumo calórico extra sem necessidade real, metabolismo mais lento e retenção de líquidos.</p>
+        <div class="what-today"><i class="fas fa-lightbulb" style="color:#2E7D32;"></i> <strong>O que fazer hoje:</strong> Tenha uma garrafa de água sempre por perto. Ao sentir fome fora de hora, beba 1 copo de água e espere 15 minutos.</div>
+      </div>
+
+      <!-- ERRO 5 -->
+      <div class="discovery-card">
+        <div class="error-badge">ERRO #5</div>
+        <h2 style="font-size: 1.6rem;">😴 Dormir mal e desregular hormônios da fome</h2>
+        <p><strong>Por que acontece:</strong> Noites mal dormidas aumentam o cortisol (estresse) e a grelina (hormônio da fome), além de reduzirem a leptina (saciedade).</p>
+        <p><strong>Impacto:</strong> Fome aumentada, vontade de carboidratos e gorduras, além de metabolismo mais lento.</p>
+        <div class="what-today"><i class="fas fa-lightbulb" style="color:#2E7D32;"></i> <strong>O que fazer hoje:</strong> Estabeleça um horário regular para dormir. Evite telas 1 hora antes de deitar. Chás calmantes como camomila ajudam.</div>
+      </div>
+
+      <!-- ERRO 6 -->
+      <div class="discovery-card">
+        <div class="error-badge">ERRO #6</div>
+        <h2 style="font-size: 1.6rem;">🏃‍♀️ Fazer só cardio e ignorar a musculação</h2>
+        <p><strong>Por que acontece:</strong> Mito de que só cardio emagrece. Muitas mulheres têm medo de "ficar grandes" com pesos.</p>
+        <p><strong>Impacto:</strong> Perda de massa muscular, metabolismo mais lento e efeito sanfona.</p>
+        <div class="what-today"><i class="fas fa-lightbulb" style="color:#2E7D32;"></i> <strong>O que fazer hoje:</strong> Inclua 2-3 treinos de força por semana. Músculo queima calorias mesmo em repouso!</div>
+      </div>
+
+      <!-- ERRO 7 -->
+      <div class="discovery-card">
+        <div class="error-badge">ERRO #7</div>
+        <h2 style="font-size: 1.6rem;">⏰ Ficar muitas horas sem comer</h2>
+        <p><strong>Por que acontece:</strong> Crença de que "jejum emagrece" sem entender o próprio corpo. Rotina corrida também atrapalha.</p>
+        <p><strong>Impacto:</strong> Queda de açúcar no sangue, compulsão na próxima refeição, escolhas alimentares ruins.</p>
+        <div class="what-today"><i class="fas fa-lightbulb" style="color:#2E7D32;"></i> <strong>O que fazer hoje:</strong> Faça pelo menos 4 refeições ao dia. Tenha lanches saudáveis (castanhas, frutas, iogurte) sempre à mão.</div>
+      </div>
+
+      <!-- ERRO 8 -->
+      <div class="discovery-card">
+        <div class="error-badge">ERRO #8</div>
+        <h2 style="font-size: 1.6rem;">📱 Comer distraída (celular, TV, trabalho)</h2>
+        <p><strong>Por que acontece:</strong> Rotina multitarefa nos desconecta do momento da refeição.</p>
+        <p><strong>Impacto:</strong> Você come mais, mastiga pior e demora a perceber a saciedade. Estudos mostram aumento de até 25% no consumo calórico.</p>
+        <div class="what-today"><i class="fas fa-lightbulb" style="color:#2E7D32;"></i> <strong>O que fazer hoje:</strong> Faça uma refeição por dia sem telas. Mastigue devagar e pare quando estiver satisfeita (85% cheia).</div>
+      </div>
+
+      <!-- ERRO 9 -->
+      <div class="discovery-card">
+        <div class="error-badge">ERRO #9</div>
+        <h2 style="font-size: 1.6rem;">🍷 Subestimar calorias líquidas</h2>
+        <p><strong>Por que acontece:</strong> Sucos, refrigerantes, bebidas alcoólicas e até açaí com xarope passam despercebidos na dieta.</p>
+        <p><strong>Impacto:</strong> Centenas de calorias "invisíveis" por dia que atrapalham totalmente o déficit calórico.</p>
+        <div class="what-today"><i class="fas fa-lightbulb" style="color:#2E7D32;"></i> <strong>O que fazer hoje:</strong> Troque refrigerante por água com gás e limão. Reduza o açúcar nos sucos. Prefira água e chás sem açúcar.</div>
+      </div>
+
+      <!-- ERRO 10 -->
+      <div class="discovery-card">
+        <div class="error-badge">ERRO #10</div>
+        <h2 style="font-size: 1.6rem;">🎯 Não ter um plano realista (só força de vontade)</h2>
+        <p><strong>Por que acontece:</strong> Acreditamos que "dieta" precisa ser sofrida e restritiva para funcionar.</p>
+        <p><strong>Impacto:</strong> Abandono em 3-4 semanas, frustração, culpa e ciclo vicioso de dietas malucas.</p>
+        <div class="what-today"><i class="fas fa-lightbulb" style="color:#2E7D32;"></i> <strong>O que fazer hoje:</strong> Comece com uma mudança por semana. Estabeleça metas pequenas. Lembre-se: consistência ganha de perfeição.</div>
+      </div>
+
+      <!-- CHECKLIST INTERATIVO -->
+      <div class="checklist-modern">
+        <h4 style="font-family: 'Playfair Display';">📋 Checklist · Hábitos que transformam</h4>
+        <div id="checklistArea">
+          <div class="check-item" data-idx="0"><i class="far fa-square"></i> <span>Beber 2 litros de água por dia</span></div>
+          <div class="check-item" data-idx="1"><i class="far fa-square"></i> <span>Fazer 4 refeições ao dia (não pular)</span></div>
+          <div class="check-item" data-idx="2"><i class="far fa-square"></i> <span>Incluir proteína em todas as refeições</span></div>
+          <div class="check-item" data-idx="3"><i class="far fa-square"></i> <span>Dormir 7-8 horas por noite</span></div>
+          <div class="check-item" data-idx="4"><i class="far fa-square"></i> <span>Treino de força 2x por semana</span></div>
+          <div class="check-item" data-idx="5"><i class="far fa-square"></i> <span>Uma refeição sem telas por dia</span></div>
+          <div class="check-item" data-idx="6"><i class="far fa-square"></i> <span>Comer devagar e mastigar bem</span></div>
+          <div class="check-item" data-idx="7"><i class="far fa-square"></i> <span>Trocar refrigerante por água com gás</span></div>
+        </div>
+        <div style="margin-top:0.8rem; font-size:0.8rem; color:#4a6741;"><i class="fas fa-heart"></i> Toque nos itens para marcar seus avanços</div>
+      </div>
+
+      <!-- RODAPÉ -->
+      <div class="editorial-footer">
+        <i class="fas fa-quote-left" style="color:#2E7D32; font-size: 1.5rem;"></i>
+        <p style="font-size: 1.2rem; font-weight: 450; max-width: 580px; margin: 0 auto;">A maioria das pessoas não precisa de mais disciplina. Precisa de uma estratégia que funcione na vida real.</p>
+        <a href="https://wa.me/5511999999999?text=Olá!%20Quero%20saber%20mais%20sobre%20acompanhamento%20nutricional" style="display: inline-block; margin-top: 1.5rem; background: #2E7D32; color: white; padding: 0.7rem 2rem; border-radius: 60px; text-decoration: none; font-weight: 500;"><i class="fab fa-whatsapp"></i> Conversar com a Nutricionista</a>
+      </div>
+    </div>
+
+    <div class="btn-readmore-container" id="btnContainer">
+      <button id="btnReadMore" class="btn-readmore"><i class="fas fa-arrow-right"></i> Continuar leitura (grátis)</button>
+    </div>
+  </div>
+</main>
+
+<script>
+  const API_URL = 'https://thaicnutriback.onrender.com/api/tpm/leads';
+  let unlocked = false;
+
+  async function enviarLead(leadData, modalDiv, onSuccess) {
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(leadData)
+      });
+      
+      if (response.ok) {
+        console.log('✅ Lead salvo com sucesso!');
+        if (modalDiv) modalDiv.remove();
+        if (onSuccess) onSuccess();
+      } else {
+        console.error('Erro na API');
+        const feed = document.getElementById('modalFeedback');
+        if (feed) feed.innerText = "Erro ao salvar. Tente novamente.";
+      }
+    } catch (error) {
+      console.error('Erro de conexão:', error);
+      const feed = document.getElementById('modalFeedback');
+      if (feed) feed.innerText = "Erro de conexão. Tente novamente.";
+    }
+  }
+
+  function showModal() {
+    if (unlocked || document.querySelector('.modal-overlay')) return;
+
+    const modalDiv = document.createElement('div');
+    modalDiv.className = 'modal-overlay';
+    modalDiv.innerHTML = `
+      <div class="modal-content">
+        <i class="fas fa-newspaper" style="font-size: 2.2rem; color: #FFD966; margin-bottom: 0.5rem;"></i>
+        <h3>Continue lendo gratuitamente</h3>
+        <p>Cadastre-se e desbloqueie os 7 erros restantes + checklist exclusivo.</p>
+        <div class="form-modal">
+          <input type="text" id="modalName" placeholder="Seu nome completo">
+          <input type="email" id="modalEmail" placeholder="Melhor e-mail">
+          <input type="tel" id="modalPhone" placeholder="WhatsApp (com DDD)">
+        </div>
+        <button id="modalUnlockBtn" class="btn-modal"><i class="fas fa-unlock-alt"></i> Desbloquear leitura</button>
+        <div id="modalFeedback" class="error-feedback"></div>
+        <button class="close-modal" id="closeModalBtn">Agora não</button>
+      </div>
+    `;
+    document.body.appendChild(modalDiv);
+
+    const unlockBtn = document.getElementById('modalUnlockBtn');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const nameInp = document.getElementById('modalName');
+    const emailInp = document.getElementById('modalEmail');
+    const phoneInp = document.getElementById('modalPhone');
+    const feedEl = document.getElementById('modalFeedback');
+
+    function validateAndUnlock() {
+      const nome = nameInp.value.trim();
+      const email = emailInp.value.trim();
+      const phone = phoneInp.value.trim();
+      
+      if (!nome) { feedEl.innerText = "Informe seu nome completo."; return; }
+      if (!email || !/^\S+@\S+\.\S+$/.test(email)) { feedEl.innerText = "E-mail válido é necessário."; return; }
+      const digits = phone.replace(/\D/g, '');
+      if (!phone || digits.length < 10 || digits.length > 12) { feedEl.innerText = "WhatsApp com DDD (ex: 11999998888)."; return; }
+
+      const leadData = {
+        nome: nome,
+        telefone: phone,
+        email: email,
+        mensagem: "Lead capturado via artigo: Os 10 erros que sabotam seu emagrecimento",
+        fase_tpm: null,
+        compulsao: null,
+        alimentacao: null,
+        emocional: null,
+        objetivo: null,
+        origem: "artigo_emagrecimento",
+        pagina: "10_erros_sabotam_emagrecimento"
+      };
+
+      feedEl.innerText = "Enviando...";
+      unlockBtn.disabled = true;
+
+      enviarLead(leadData, modalDiv, () => {
+        localStorage.setItem('nutri_unlocked', 'true');
+        unlockContent();
+      });
+      
+      unlockBtn.disabled = false;
+    }
+
+    unlockBtn.addEventListener('click', validateAndUnlock);
+    closeBtn.addEventListener('click', () => modalDiv.remove());
+  }
+
+  function unlockContent() {
+    if (unlocked) return;
+    unlocked = true;
+    
+    const premiumDiv = document.getElementById('premiumContent');
+    const btnContainer = document.getElementById('btnContainer');
+    
+    if (premiumDiv) premiumDiv.classList.add('visible');
+    if (btnContainer) btnContainer.style.display = 'none';
+    
+    // Scroll suave para o conteúdo
+    setTimeout(() => {
+      document.getElementById('premiumSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+
+  function checkStoredUnlock() {
+    if (localStorage.getItem('nutri_unlocked') === 'true') {
+      unlockContent();
+    }
+  }
+
+  // Eventos
+  document.getElementById('btnReadMore')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!unlocked) showModal();
+  });
+
+  // Checklist interativo
+  document.getElementById('checklistArea')?.addEventListener('click', (e) => {
+    const item = e.target.closest('.check-item');
+    if (item) {
+      const icon = item.querySelector('i');
+      if (icon.classList.contains('fa-square')) {
+        icon.classList.remove('fa-square');
+        icon.classList.add('fa-check-square');
+        icon.style.color = '#2E7D32';
+      } else {
+        icon.classList.remove('fa-check-square');
+        icon.classList.add('fa-square');
+        icon.style.color = '';
+      }
+    }
+  });
+
+  // Barra de progresso
+  window.addEventListener('scroll', () => {
+    const winScroll = document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = (winScroll / height) * 100;
+    const progressBar = document.getElementById('progressBar');
+    if (progressBar) progressBar.style.width = scrolled + '%';
+  });
+
+  // Animações
+  const faders = document.querySelectorAll('.fade-up');
+  const obsFade = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  faders.forEach(el => obsFade.observe(el));
+
+  checkStoredUnlock();
+</script>
+</body>
+</html>
