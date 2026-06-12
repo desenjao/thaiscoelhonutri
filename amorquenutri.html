@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Amor que Nutri | Alimentação Consciente para Casais</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
+            border: 1px solid #f1f1f1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f472b6, #ec4899);
+            border-radius: 48px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(236, 72, 153, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(236, 72, 153, 0.3);
+        }
+
+        .feature-card {
+            background: #f9fafb;
+            border-radius: 24px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #fbcfe8;
+            box-shadow: 0 8px 20px rgba(236, 72, 153, 0.08);
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #fff5f9, #ffffff);
+            border-left: 4px solid #ec4899;
+            border-radius: 20px;
+            padding: 24px;
+        }
+
+        .check-icon {
+            color: #10b981;
+        }
+
+        hr {
+            border-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-pink-100">
+        <div class="max-w-6xl mx-auto px-5 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-heart text-pink-500 text-2xl"></i>
+                <span class="font-playfair font-bold text-xl text-gray-800">Amor que <span
+                        class="text-pink-500">Nutri</span></span>
+            </div>
+            <a href="#cta"
+                class="hidden md:block bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-all">
+                COMEÇAR AGORA
+            </a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-5 py-12 md:py-20">
+        <!-- Hero Section -->
+        <section class="text-center mb-20">
+            <div class="inline-block bg-pink-50 border border-pink-200 rounded-full px-4 py-1 mb-6">
+                <span class="text-pink-600 text-sm">✨ Sistema para Casais ✨</span>
+            </div>
+
+            <h1 class="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight mb-6">
+                Alimentação em casal<br>
+                <span class="text-pink-500">sem brigas e sem frustração</span>
+            </h1>
+
+            <p class="text-xl text-gray-500 mb-8 max-w-2xl mx-auto">
+                Um sistema que ajuda vocês a alinharem rotinas, gostos e objetivos — 
+                respeitando as preferências de cada um.
+            </p>
+
+            <div class="bg-pink-50 border border-pink-200 rounded-2xl p-6 max-w-2xl mx-auto mb-10">
+                <p class="text-gray-700">
+                    <span class="font-semibold text-pink-600">🌱 Baseado em evidências</span><br>
+                    Nossa proposta é promover hábitos saudáveis e uma relação mais harmoniosa com a comida — 
+                    sem promessas milagrosas, com respeito às individualidades de cada casal.
+                </p>
+            </div>
+
+            <a href="#cta"
+                class="inline-flex items-center gap-3 bg-pink-500 hover:bg-pink-600 text-white font-semibold py-4 px-10 rounded-full text-lg transition-all shadow-md">
+                <i class="fas fa-heart"></i>
+                QUERO CONHECER O SISTEMA
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </section>
+
+        <!-- Desafios do Casal (A Dor - sem exageros) -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="font-playfair text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Você já passou por isso?
+                </h2>
+                <div class="w-16 h-0.5 bg-pink-300 mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="feature-card text-center">
+                    <div class="text-4xl mb-4">🍔</div>
+                    <h3 class="font-bold text-gray-800 mb-2">Rotinas diferentes</h3>
+                    <p class="text-gray-500 text-sm">Um quer comer leve, o outro sente vontade de algo mais prático — e a
+                        falta de alinhamento vira conflito.</p>
+                </div>
+
+                <div class="feature-card text-center">
+                    <div class="text-4xl mb-4">🤷</div>
+                    <h3 class="font-bold text-gray-800 mb-2">"O que vamos comer?"</h3>
+                    <p class="text-gray-500 text-sm">A indecisão na hora das refeições vira um desgaste diário que poderia
+                        ser evitado com planejamento.</p>
+                </div>
+
+                <div class="feature-card text-center">
+                    <div class="text-4xl mb-4">😔</div>
+                    <h3 class="font-bold text-gray-800 mb-2">Objetivos diferentes</h3>
+                    <p class="text-gray-500 text-sm">Cada um tem seu momento e suas necessidades — mas comerem juntos
+                        deveria ser prazeroso, não um campo de batalha.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Como funciona -->
+        <section class="mb-20 bg-gradient-to-r from-pink-50 to-white rounded-3xl p-8 md:p-12">
+            <div class="text-center mb-10">
+                <h2 class="font-playfair text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Como funciona
+                </h2>
+                <p class="text-gray-500 text-lg max-w-2xl mx-auto">
+                    Um processo simples, pensado para casais reais
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div
+                        class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center text-2xl font-bold text-pink-600 mx-auto mb-4">
+                        1</div>
+                    <i class="fas fa-edit text-3xl text-pink-400 mb-3 block"></i>
+                    <h3 class="font-bold text-gray-800 mb-2">Você responde o quiz</h3>
+                    <p class="text-gray-500 text-sm">Conte sobre seus hábitos, preferências e objetivos. Leva poucos
+                        minutos.</p>
+                </div>
+
+                <div class="text-center">
+                    <div
+                        class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center text-2xl font-bold text-pink-600 mx-auto mb-4">
+                        2</div>
+                    <i class="fas fa-share-alt text-3xl text-pink-400 mb-3 block"></i>
+                    <h3 class="font-bold text-gray-800 mb-2">Seu parceiro(a) também</h3>
+                    <p class="text-gray-500 text-sm">O sistema gera um link exclusivo para sua pessoa especial responder o
+                        dela(e).</p>
+                </div>
+
+                <div class="text-center">
+                    <div
+                        class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center text-2xl font-bold text-pink-600 mx-auto mb-4">
+                        3</div>
+                    <i class="fas fa-chart-line text-3xl text-pink-400 mb-3 block"></i>
+                    <h3 class="font-bold text-gray-800 mb-2">Análise personalizada</h3>
+                    <p class="text-gray-500 text-sm">Cruzamos os dados e entregamos um relatório com insights e
+                        sugestões para alinhar a rotina de vocês.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- O que você recebe -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="font-playfair text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    O que está incluso
+                </h2>
+                <div class="w-16 h-0.5 bg-pink-300 mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="flex items-start gap-4 p-4 bg-white rounded-xl border border-gray-100">
+                    <i class="fas fa-chart-line text-2xl text-pink-500 check-icon"></i>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Análise de Compatibilidade</h3>
+                        <p class="text-gray-500 text-sm">Identifique onde as rotinas de vocês se alinham e onde há
+                            espaço para ajustes.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-4 bg-white rounded-xl border border-gray-100">
+                    <i class="fas fa-exchange-alt text-2xl text-pink-500"></i>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Sugestões de Substituições</h3>
+                        <p class="text-gray-500 text-sm">Versões adaptadas de preparos que vocês já gostam, sem abrir mão
+                            do sabor.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-4 bg-white rounded-xl border border-gray-100">
+                    <i class="fas fa-shopping-cart text-2xl text-pink-500"></i>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Guia de Alinhamento</h3>
+                        <p class="text-gray-500 text-sm">Lista de alimentos e preparos que agradam os dois — facilita o
+                            mercado e o dia a dia.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-4 bg-white rounded-xl border border-gray-100">
+                    <i class="fas fa-calendar-alt text-2xl text-pink-500"></i>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Planejamento Semanal</h3>
+                        <p class="text-gray-500 text-sm">Modelo de organização para as refeições da semana, respeitando a
+                            rotina de vocês.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+      
+
+        <!-- CTA Final -->
+        <section id="cta" class="text-center">
+            <div class="hero-card p-8 md:p-12">
+                <i class="fas fa-heart text-5xl text-pink-400 mb-6"></i>
+                <h2 class="font-playfair text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Pronto para alinhar a alimentação do casal?
+                </h2>
+                <p class="text-gray-500 text-lg mb-6 max-w-2xl mx-auto">
+                    Comece hoje mesmo. Vocês respondem o quiz e recebem a análise personalizada.
+                </p>
+
+                <div class="bg-pink-50 rounded-2xl p-6 mb-8 max-w-md mx-auto">
+                    <p class="text-gray-700">
+                        <span class="font-bold text-pink-600">🎁 Bônus especial</span><br>
+                        Quem adquirir agora recebe também o <strong>"Guia de receitas a dois"</strong> — 
+                        para fortalecer a comunicação do casal.
+                    </p>
+                </div>
+
+                <a href="https://pay.cakto.com.br/39opikx_866849"
+                    class="inline-flex items-center gap-3 bg-pink-500 hover:bg-pink-600 text-white font-semibold py-4 px-10 rounded-full text-lg transition-all shadow-md">
+                    <i class="fas fa-heart"></i>
+                    QUERO COMEÇAR AGORA
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+                <div class="flex flex-wrap justify-center gap-6 mt-8 text-sm text-gray-400">
+                    <span><i class="fas fa-lock text-pink-400"></i> Compra segura</span>
+                    <span><i class="fas fa-infinity text-pink-400"></i> Acesso por 1 ano</span>
+                    <span><i class="fas fa-headset text-pink-400"></i> Suporte por e-mail</span>
+                
+                </div>
+            </div>
+
+            <!-- Aviso legal (importante para conformidade) -->
+            <p class="text-xs text-gray-400 mt-8 max-w-2xl mx-auto">
+                ⚠️ Este produto não substitui acompanhamento profissional individualizado. Os resultados variam de pessoa
+                para pessoa e dependem da adesão às orientações. Consulte sempre um nutricionista para um plano
+                personalizado.
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-100 py-8 px-5 text-center text-gray-400 text-sm">
+        <p>© 2026 Amor que Nutri - Todos os direitos reservados</p>
+        <p class="mt-2">❤️ Cuidar de quem a gente ama é a melhor nutrição</p>
+    </footer>
+</body>
+
+</html>
