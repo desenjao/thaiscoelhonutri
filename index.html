@@ -1,17 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="scroll-smooth">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="Cache-Control" content="public, max-age=3600">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <meta name="description" content="Descubra seu perfil de TPM com Thaís Coelho. Mapeamento gratuito que revela seus padrões hormonais e transforma sua relação com o ciclo menstrual.">
-    <title>Thaís Coelho | Descubra seu Perfil de TPM</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magra 21D - Lote Exclusivo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         * {
             margin: 0;
@@ -20,508 +15,1385 @@
         }
 
         :root {
-            --bg-page: #FAF8F5;          
+            --bg-page: #F9FBF8;
             --white-card: #FFFFFF;
-            --gold-soft: #FDF6E3;
-            --gold-primary: #D4AF37;
-            --gold-dark: #AA7C11;
-            --gold-light: #F3E5AB;
-            --text-dark: #2C2520;
-            --text-light: #7A6F66;
-            --border-light: #E8DCC8;
-            --shadow-sm: 0 4px 16px rgba(44, 37, 32, 0.03);
-            --shadow-md: 0 8px 28px rgba(44, 37, 32, 0.06);
-            --shadow-lg: 0 20px 40px rgba(44, 37, 32, 0.10);
+            --green-soft: #E2F0E6;
+            --green-primary: #2D6A4F;
+            --green-dark: #1B4D3E;
+            --green-highlight: #40916C;
+            --text-dark: #2C3E2F;
+            --text-light: #6B7C6E;
+            --border-light: #E6EDE8;
+            --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --gold: #c5a059;
+            --gold-light: #e8d5a3;
+            --error-red: #e74c3c;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(145deg, var(--bg-page) 0%, #FCF9F0 100%);
+            background: linear-gradient(145deg, var(--bg-page) 0%, #F3F7F4 100%);
             min-height: 100vh;
             color: var(--text-dark);
             font-weight: 400;
+            padding-top: 20px;
         }
 
-        h1, h2, h3, .professional-text h2, .section-title, .hero h1, .profile-card h3, .cta-bottom p {
+        h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
             font-weight: 500;
             letter-spacing: -0.01em;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px 60px;
-        }
-
-        /* Hero com espaçamento lateral corrigido */
-        .hero {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-            margin-bottom: 80px;
-            max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0 20px;  /* <-- ESSE É O ESPAÇAMENTO QUE FALTAVA */
-        }
-
-        .hero-content {
-            flex: 1;
-            min-width: 280px;
-        }
-
-        .hero-badge {
-            background: var(--gold-soft);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 18px;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: var(--gold-dark);
-            margin-bottom: 24px;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: var(--gold-primary);
-            font-style: italic;
-            font-family: 'Cormorant Garamond', serif;
-            border-bottom: 2px solid var(--gold-light);
-        }
-
-        .hero p {
-            font-size: 1rem;
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 32px;
-        }
-
-        .btn-hero {
-            background: var(--gold-primary);
-            color: white;
-            padding: 14px 34px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.25s;
-            box-shadow: 0 2px 8px rgba(170,124,17,0.25);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-hero:hover {
-            background: var(--gold-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(170,124,17,0.3);
-        }
-
-        .hero-image {
-            flex: 1;
-            min-width: 280px;
+        /* HEADER */
+        .header-logo {
             text-align: center;
+            padding: 10px 20px 20px;
         }
-
-        .hero-image-placeholder img {
-            width: 100%;
-            max-width: 320px;
-            border-radius: 32px;
+        .logo-circle {
+            background: linear-gradient(145deg, var(--green-primary), var(--green-dark));
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             box-shadow: var(--shadow-md);
-            object-fit: cover;
-            aspect-ratio: 1 / 1;
         }
-
-        .hero-image-placeholder h3 {
-            margin-top: 20px;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--gold-primary);
-        }
-
-        .hero-image-placeholder p {
-            font-size: 0.8rem;
-            font-style: italic;
-            color: var(--text-light);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0 20px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 52px;
-            font-style: italic;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0 20px;
-        }
-
-        .profiles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 28px;
-            margin-bottom: 60px;
-            max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0 20px;
-        }
-
-        .profile-card {
-            background: var(--white-card);
-            border-radius: 32px;
-            padding: 32px 24px;
-            text-align: center;
-            transition: all 0.25s ease;
-            border: 1px solid var(--border-light);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-            cursor: pointer;
-        }
-
-        .profile-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--gold-primary);
-            box-shadow: 0 12px 24px rgba(170,124,17,0.08);
-        }
-
-        .profile-icon {
-            width: 72px;
-            height: 72px;
-            background: var(--gold-soft);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            transition: all 0.2s;
-        }
-
-        .profile-card:hover .profile-icon {
-            background: var(--gold-primary);
-        }
-
-        .profile-card:hover .profile-icon i {
-            color: white;
-        }
-
-        .profile-icon i {
-            font-size: 32px;
-            color: var(--gold-primary);
-            transition: color 0.2s;
-        }
-
-        .profile-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .profile-card p {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            line-height: 1.45;
-        }
-
-        .cta-bottom {
-            text-align: center;
-            padding: 48px 20px 32px;
-            border-top: 1px solid var(--border-light);
-            margin-top: 20px;
-            max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn-cta {
-            background: transparent;
-            border: 1.5px solid var(--gold-primary);
-            color: var(--gold-primary);
-            padding: 14px 34px;
-            border-radius: 40px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s;
-            margin-top: 20px;
-            font-size: 0.9rem;
-        }
-
-        .btn-cta:hover {
-            background: var(--gold-primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid var(--border-light);
-            font-size: 0.7rem;
-            color: var(--text-light);
-            font-style: italic;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25D366;
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.25s;
-            z-index: 99;
-            text-decoration: none;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.05);
-            background: #20b359;
-        }
-
-        .whatsapp-float i {
+        .logo-circle i {
             font-size: 28px;
             color: white;
         }
-
-        /* Imagem do topo também com espaçamento */
-        .top-image-wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px 0;
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--green-dark);
+            margin-top: 6px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .logo-text span {
+            color: var(--gold);
         }
 
-        .top-image-wrapper img {
-            max-width: 100%;
-            height: auto;
+        .container {
+            max-width: 560px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+
+        /* ======================================
+           VÍDEO - SEM FLUTUANTE (ESTÁVEL)
+        ====================================== */
+        .video-wrapper {
+            width: 100%;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 28px;
+            position: relative;
+            background: #1a1a1a;
+            border: 2px solid var(--green-soft);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+            background: #000;
+        }
+
+        /* Botão Play estilo YouTube */
+        .youtube-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+            border: none;
+            animation: pulsePlay 2s ease-in-out infinite;
+        }
+
+        .youtube-play-btn::after {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            right: -12px;
+            bottom: -12px;
+            border-radius: 50%;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            animation: ripplePlay 2s ease-in-out infinite;
+        }
+
+        @keyframes pulsePlay {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.05); }
+        }
+
+        @keyframes ripplePlay {
+            0% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .youtube-play-btn i {
+            font-size: 2.2rem;
+            color: var(--green-primary);
+            margin-left: 6px;
+        }
+
+        .youtube-play-btn.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, -50%) scale(0.7);
+        }
+
+        /* ======================================
+           BOTÃO "VOLTAR AO VÍDEO"
+        ====================================== */
+        .back-to-video {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+            color: white;
+            border: none;
+            border-radius: 60px;
+            padding: 14px 24px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(45, 106, 79, 0.4);
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-to-video.visible {
+            display: flex;
+            animation: fadeInUp 0.4s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .back-to-video:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(45, 106, 79, 0.5);
+        }
+
+        .back-to-video i {
+            font-size: 1rem;
+        }
+
+        /* ======================================
+           SEÇÕES EXPLICATIVAS
+        ====================================== */
+        .info-section {
+            background: var(--white-card);
+            border-radius: 32px;
+            padding: 32px 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+        }
+
+        .info-section .icon-big {
+            font-size: 2.5rem;
+            color: var(--green-primary);
+            text-align: center;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .info-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .info-section p {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 0.95rem;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .info-grid .grid-item {
+            background: var(--bg-page);
+            padding: 16px 12px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+        }
+        .info-grid .grid-item i {
+            font-size: 1.5rem;
+            color: var(--green-primary);
+            margin-bottom: 6px;
             display: block;
         }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .section-title {
-                font-size: 1.6rem;
-            }
-            .hero, .section-title, .section-subtitle, .profiles-grid, .cta-bottom {
-                padding-left: 16px;
-                padding-right: 16px;
-            }
-            .top-image-wrapper {
-                padding-left: 16px;
-                padding-right: 16px;
-            }
+        .info-grid .grid-item span {
+            font-size: 0.8rem;
+            font-weight: 500;
         }
 
-        @media (min-width: 1200px) {
-            .hero h1 {
-                font-size: 3.4rem;
-            }
-            .profiles-grid {
-                gap: 32px;
-            }
-            .profile-card {
-                padding: 40px 28px;
-            }
-            .btn-hero, .btn-cta {
-                padding: 16px 42px;
-                font-size: 1rem;
-            }
+        .testimonial-box {
+            background: var(--green-soft);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 16px;
+            text-align: center;
         }
-        /* Container que segura o carrossel */
-.top-image-wrapper {
-    width: 100%;
-    overflow: hidden;
-}
+        .testimonial-box i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        .testimonial-box p {
+            font-style: italic;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+        .testimonial-box .author {
+            font-weight: 600;
+            margin-top: 8px;
+            font-style: normal;
+            font-size: 0.85rem;
+            color: var(--green-primary);
+        }
 
-/* O carrossel em si */
-.carousel-instagram {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth; /* Faz o efeito de deslizar suave */
-    scroll-snap-type: x mandatory; /* Ativa o "imã" do estilo Instagram */
-    
-    /* Esconde a barra de rolagem no Chrome, Safari, Firefox e IE */
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; 
-}
-.carousel-instagram::-webkit-scrollbar {
-    display: none; 
-}
+        .step-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .step-list .step-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: white;
+            padding: 12px 16px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+        .step-list .step-num {
+            background: var(--green-primary);
+            color: white;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .step-list .step-text {
+            font-size: 0.9rem;
+        }
 
-/* Cada slide */
-.carousel-item {
-    flex: 0 0 100%; /* Cada imagem ocupa 100% da largura */
-    width: 100%;
-    scroll-snap-align: start; /* Onde o slide vai travar ao parar */
-}
+        .check-list {
+            text-align: left;
+            max-width: 320px;
+            margin: 12px auto 0;
+        }
+        .check-list .check-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        .check-list .check-item i {
+            color: var(--green-primary);
+        }
 
-.carousel-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
+        /* ======================================
+           OFERTA
+        ====================================== */
+        .offer-card {
+            background: var(--white-card);
+            border-radius: 32px;
+            padding: 40px 28px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+            text-align: center;
+        }
+
+        .offer-card .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #a8893a);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .offer-card h1 {
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .offer-card .subtitle {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 24px;
+        }
+
+        .price-box {
+            background: var(--green-soft);
+            border-radius: 24px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .price-box .old-price {
+            font-size: 1rem;
+            color: var(--text-light);
+            text-decoration: line-through;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .price-box .current-price {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--green-primary);
+            font-family: 'Playfair Display', serif;
+        }
+        .price-box .current-price span {
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        .price-box .installment {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .features {
+            list-style: none;
+            margin: 24px 0;
+            text-align: left;
+            display: inline-block;
+            width: 100%;
+            max-width: 320px;
+        }
+        .features li {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .features li i {
+            color: var(--green-primary);
+            width: 20px;
+            font-size: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+            color: #fff;
+            padding: 18px 50px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(45, 106, 79, 0.35);
+            width: 100%;
+            max-width: 320px;
+            margin: 8px auto 0;
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(45, 106, 79, 0.45);
+        }
+        .cta-button i {
+            margin-right: 10px;
+        }
+
+        .disclaimer {
+            font-size: 0.6rem;
+            color: var(--text-light);
+            margin-top: 20px;
+            line-height: 1.6;
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-site {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 16px;
+            font-size: 0.6rem;
+            color: #8BA298;
+            border-top: 1px solid #E2EDE8;
+        }
+
+        /* ======================================
+           PRÉ-TRIAGEM - MODAL
+        ====================================== */
+        .triage-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 8000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .triage-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .triage-card {
+            background: var(--white-card);
+            max-width: 480px;
+            width: 100%;
+            border-radius: 40px;
+            padding: 40px 28px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .triage-card .close-triage {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .triage-card .close-triage:hover {
+            color: var(--error-red);
+            transform: rotate(90deg);
+        }
+
+        .triage-progress-bar {
+            height: 4px;
+            background: var(--border-light);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .triage-progress-bar .fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--green-primary), var(--green-highlight));
+            border-radius: 4px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+
+        .step-indicator {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .step-indicator .dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .step-indicator .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border-light);
+            transition: all 0.3s;
+        }
+        .step-indicator .dot.active {
+            background: var(--green-primary);
+            width: 24px;
+            border-radius: 4px;
+        }
+        .step-indicator .dot.done {
+            background: var(--green-highlight);
+        }
+
+        .triage-card .question-icon {
+            font-size: 2.5rem;
+            text-align: center;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .triage-card h3 {
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+
+        .triage-card .sub-text {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .triage-card .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .triage-card .option-btn {
+            background: var(--bg-page);
+            border: 2px solid var(--border-light);
+            border-radius: 60px;
+            padding: 14px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .triage-card .option-btn:hover {
+            background: var(--green-soft);
+            border-color: var(--green-primary);
+        }
+
+        .triage-card .option-btn.selected {
+            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+            border-color: var(--green-primary);
+            color: white;
+        }
+
+        .triage-card .btn-next {
+            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-family: 'Inter', sans-serif;
+            margin-top: 8px;
+        }
+
+        .triage-card .btn-next:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(45, 106, 79, 0.3);
+        }
+
+        .triage-card .btn-next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .triage-card input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--border-light);
+            border-radius: 60px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            background: var(--bg-page);
+            transition: border 0.3s;
+            margin-bottom: 12px;
+        }
+        .triage-card input:focus {
+            border-color: var(--green-primary);
+        }
+        .triage-card input.error {
+            border-color: var(--error-red);
+        }
+
+        /* ======================================
+           POPUP PREMIUM
+        ====================================== */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(16px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .popup-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .popup-content {
+            background: var(--white-card);
+            max-width: 480px;
+            width: 90%;
+            padding: 48px 32px 40px;
+            border-radius: 40px;
+            text-align: center;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(197, 160, 89, 0.15);
+            position: relative;
+            overflow: hidden;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .popup-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+            background-size: 200% 100%;
+            animation: shimmerGold 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmerGold {
+            0%, 100% { background-position: -200% 0; }
+            50% { background-position: 200% 0; }
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8) rotateY(10deg); opacity: 0; }
+            100% { transform: scale(1) rotateY(0deg); opacity: 1; }
+        }
+
+        .popup-icon-wrapper {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 16px;
+        }
+        .popup-icon-wrapper .ring {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: var(--gold);
+            border-right-color: var(--gold-light);
+            animation: spinRing 3s linear infinite;
+        }
+        .popup-icon-wrapper .ring:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            top: 0;
+            left: 0;
+            border-top-color: var(--green-primary);
+            border-right-color: var(--green-soft);
+            animation-duration: 4s;
+            animation-direction: reverse;
+        }
+        @keyframes spinRing {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .popup-icon {
+            font-size: 3.2rem;
+            position: relative;
+            z-index: 2;
+            line-height: 80px;
+            display: block;
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .popup-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        .popup-content h2 .highlight {
+            color: var(--green-primary);
+            font-style: italic;
+        }
+
+        .popup-content p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+
+        .start-button {
+            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+            color: #fff;
+            border: none;
+            padding: 18px 55px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(45, 106, 79, 0.4);
+            font-family: 'Inter', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .start-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: btnShine 3s ease-in-out infinite;
+        }
+        @keyframes btnShine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .start-button:hover {
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 12px 40px rgba(45, 106, 79, 0.5);
+        }
+
+        .popup-footer {
+            margin-top: 20px;
+            font-size: 0.7rem;
+            color: var(--text-light);
+            letter-spacing: 0.5px;
+        }
+        .popup-footer i {
+            color: var(--gold);
+        }
+
+        /* ======================================
+           RESPONSIVIDADE
+        ====================================== */
+        @media (max-width: 600px) {
+            .offer-card { padding: 28px 18px; }
+            .offer-card h1 { font-size: 1.4rem; }
+            .price-box .current-price { font-size: 2.2rem; }
+            .popup-content { padding: 36px 20px 30px; }
+            .popup-content h2 { font-size: 1.3rem; }
+            .start-button { padding: 15px 35px; font-size: 1rem; }
+            .popup-icon-wrapper { width: 60px; height: 60px; }
+            .popup-icon-wrapper .ring { width: 76px; height: 76px; top: -8px; left: -8px; }
+            .popup-icon-wrapper .ring:nth-child(2) { width: 60px; height: 60px; top: 0; left: 0; }
+            .popup-icon { font-size: 2.4rem; line-height: 60px; }
+            .info-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .triage-card { padding: 28px 16px; }
+            .triage-card h3 { font-size: 1.1rem; }
+            .youtube-play-btn { width: 60px; height: 60px; }
+            .youtube-play-btn i { font-size: 1.6rem; }
+            .back-to-video { bottom: 20px; right: 20px; padding: 12px 18px; font-size: 0.75rem; }
+        }
     </style>
 </head>
 <body>
 
-<!-- Carrossel estilo Instagram -->
-<div class="top-image-wrapper">
-    <div class="carousel-instagram">
-        <div class="carousel-item active">
-            <img src="img/carrocel/1.png" alt="Semana da TPM - Slide 1">
-        </div>
-        <div class="carousel-item">
-            <img src="img/carrocel/2.png" alt="Semana da TPM - Slide 2">
-        </div>
-        <div class="carousel-item">
-            <img src="img/carrocel/3.png" alt="Semana da TPM - Slide 3">
+    <!-- ========================================
+    POPUP PREMIUM
+    ======================================== -->
+    <div id="popupIntro" class="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-icon-wrapper">
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <span class="popup-icon">✨</span>
+            </div>
+            <h2>Você está pronta para <span class="highlight">transformar a sua rotina</span> e fazer com que ela trabalhe a favor do seu emagrecimento?</h2>
+            <p>Clique no botão abaixo e assista ao vídeo com som para descobrir como o método <strong>Magra 21D</strong> pode mudar sua vida.</p>
+            <button id="startVideoBtn" class="start-button">
+                <i class="fas fa-play"></i>
+                <span>START</span>
+            </button>
+            <div class="popup-footer">
+                <i class="fas fa-star"></i> Lote exclusivo • Vagas limitadas <i class="fas fa-star"></i>
+            </div>
         </div>
     </div>
-</div>
 
-<section class="hero">
-    <div class="hero-content">
-        <div class="hero-badge">
-            <i class="fas fa-chart-line"></i> Revisado por Thaís Coelho
-        </div>
-        <h1>Descubra seu <span>Perfil de TPM</span> e transforme seu ciclo menstrual</h1>
-        <p>Mapeamento gratuito que revela seus padrões hormonais e te mostra o caminho para viver a TPM com mais equilíbrio e bem-estar.</p>
-        <button class="btn-hero" id="heroQuizBtn">
-            FAZER TESTE GRATUITO <i class="fas fa-arrow-right"></i>
-        </button>
-    </div>
-    <div class="hero-image">
-        <div class="hero-image-placeholder">
-            <img src="img/semana-da-tpm.webp" alt="Mulher cuidando da saúde menstrual">
-            <h3>Mapeamento Hormonal</h3>
-            <p>Baseado em evidências científicas</p>
-        </div>
-    </div>
-</section>
+    <!-- ========================================
+    PRÉ-TRIAGEM
+    ======================================== -->
+    <div id="triageModal" class="triage-overlay">
+        <div class="triage-card">
+            <button class="close-triage" id="closeTriage"><i class="fas fa-times"></i></button>
+            
+            <div class="triage-progress-bar">
+                <div class="fill" id="triageProgress"></div>
+            </div>
+            
+            <div class="step-indicator">
+                <span id="stepLabel">Pergunta 1 de 5</span>
+                <div class="dots" id="dotsContainer">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
 
-<h2 class="section-title">Conheça os perfis de TPM</h2>
-<p class="section-subtitle">Identifique seus sintomas e descubra estratégias personalizadas</p>
+            <div id="triageContent"></div>
+        </div>
+    </div>
 
-<div class="profiles-grid">
-    <div class="profile-card" data-profile="irritativa">
-        <div class="profile-icon">
-            <i class="fas fa-angry"></i>
-        </div>
-        <h3>😤 TPM Irritativa</h3>
-        <p>Irritação, raiva fácil, mudanças de humor intensas. O estrogênio em queda afeta a serotonina.</p>
-    </div>
-    <div class="profile-card" data-profile="retencao">
-        <div class="profile-icon">
-            <i class="fas fa-tint"></i>
-        </div>
-        <h3>💧 TPM Retenção</h3>
-        <p>Inchaço, mamas sensíveis, ganho de peso temporário. Desequilíbrio entre estrogênio e progesterona.</p>
-    </div>
-    <div class="profile-card" data-profile="fome">
-        <div class="profile-icon">
-            <i class="fas fa-cookie-bite"></i>
-        </div>
-        <h3>🍫 TPM Fome Emocional</h3>
-        <p>Desejo incontrolável por doces e carboidratos. Queda da serotonina e glicose instável.</p>
-    </div>
-    <div class="profile-card" data-profile="depressiva">
-        <div class="profile-icon">
-            <i class="fas fa-sad-tear"></i>
-        </div>
-        <h3>🌧️ TPM Depressiva</h3>
-        <p>Tristeza profunda, choro fácil, falta de energia. Sensibilidade excessiva às flutuações hormonais.</p>
-    </div>
-</div>
-
-<div class="cta-bottom">
-    <p style="font-size: 1.1rem; font-weight: 500;">Descubra como aliviar seus sintomas de TPM de forma natural</p>
-    <button id="bottomQuizBtn" class="btn-cta">
-        QUERO DESCOBRIR MEU PERFIL <i class="fas fa-arrow-right"></i>
+    <!-- ========================================
+    BOTÃO VOLTAR AO VÍDEO
+    ======================================== -->
+    <button class="back-to-video" id="backToVideoBtn">
+        <i class="fas fa-play"></i> Voltar ao vídeo
     </button>
-</div>
 
-<footer class="footer">
-    <p>© 2026 · Thaís Coelho Nutrição · CRN 11 5006</p>
-    <p style="margin-top: 12px; font-size: 0.65rem;">
-        Conforme Resolução CFN nº 856/2026. Ferramenta educativa, não substitui consulta nutricional individualizada.
-    </p>
-</footer>
+    <!-- ========================================
+    CONTEÚDO PRINCIPAL
+    ======================================== -->
+    <div class="header-logo">
+        <div class="logo-circle">
+            <i class="fas fa-leaf"></i>
+        </div>
+        <div class="logo-text">Magra <span>21D</span></div>
+    </div>
 
-<a href="https://wa.me/5589981287260?text=Olá! Thais vim da pagina sobre TPM" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
+    <div class="container">
+        <!-- ========== VÍDEO ========== -->
+        <div class="video-wrapper" id="videoWrapper">
+            <video id="meuVideo" muted playsinline loop style="width:100%;">
+                <source src="videos/1v.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos.
+            </video>
+            
+            <button class="youtube-play-btn" id="youtubePlayBtn">
+                <i class="fas fa-play"></i>
+            </button>
+        </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    const carousel = document.querySelector('.carousel-instagram');
-    const items = document.querySelectorAll('.carousel-item');
-    let currentIndex = 0;
-    const intervalTime = 3000; // 3 segundos
+        <!-- ========== SEÇÃO 1 ========== -->
+        <div class="info-section">
+            <span class="icon-big">🌿</span>
+            <h3>O que é o <span style="color:var(--green-primary);">Magra 21D</span>?</h3>
+            <p>Um método criado para mulheres que querem <strong>emagrecer com saúde</strong>, sem dietas restritivas e com foco na <strong>reprogramação alimentar</strong> em 21 dias.</p>
+            
+            <div class="info-grid">
+                <div class="grid-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Cardápio flexível</span>
+                </div>
+                <div class="grid-item">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>Substituições inteligentes</span>
+                </div>
+                <div class="grid-item">
+                    <i class="fas fa-users"></i>
+                    <span>Suporte em grupo</span>
+                </div>
+                <div class="grid-item">
+                    <i class="fas fa-heart"></i>
+                    <span>Saúde e bem-estar</span>
+                </div>
+            </div>
+        </div>
 
-    function autoScroll() {
-        currentIndex++;
-        
-        // Se passar da última imagem, volta para a primeira
-        if (currentIndex >= items.length) {
-            currentIndex = 0;
-        }
+        <!-- ========== SEÇÃO 2 ========== -->
+        <div class="info-section" style="background: linear-gradient(145deg, var(--green-soft), #F3F7F4);">
+            <span class="icon-big">📋</span>
+            <h3>Como funciona?</h3>
+            <p>Você recebe acesso imediato ao <strong>material completo</strong> e começa a aplicar as estratégias no seu dia a dia.</p>
+            
+            <div class="step-list">
+                <div class="step-item">
+                    <span class="step-num">1</span>
+                    <span class="step-text"><strong>Acesse</strong> o conteúdo completo</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">2</span>
+                    <span class="step-text"><strong>Aplique</strong> as estratégias no seu dia</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">3</span>
+                    <span class="step-text"><strong>Transforme</strong> sua relação com a comida</span>
+                </div>
+            </div>
 
-        // Calcula a posição exata para onde o carrossel deve deslizar
-        const scrollAmount = carousel.clientWidth * currentIndex;
-        
-        // Faz o efeito de arrastar até a posição
-        carousel.scrollTo({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
-    }
+            <div class="testimonial-box">
+                <i class="fas fa-quote-left"></i>
+                <p>"Em 21 dias eu consegui criar uma rotina que realmente funciona para mim. Não é uma dieta, é um novo estilo de vida!"</p>
+                <div class="author">— Mariana S., aluna do Lote 0</div>
+            </div>
+        </div>
 
-    // Inicia o timer do carrossel automático
-    setInterval(autoScroll, intervalTime);
-});
-    function redirectToQuiz() {
-        window.location.href = 'tpm.html';
-    }
-    
-    document.getElementById('heroQuizBtn').addEventListener('click', redirectToQuiz);
-    document.getElementById('bottomQuizBtn').addEventListener('click', redirectToQuiz);
-    
-    document.querySelectorAll('.profile-card').forEach(function(card) {
-        card.addEventListener('click', redirectToQuiz);
-    });
-</script>
+        <!-- ========== SEÇÃO 3 ========== -->
+        <div class="info-section">
+            <span class="icon-big">🎯</span>
+            <h3>Para quem é o Magra 21D?</h3>
+            <p>Ideal para mulheres que:</p>
+            <div class="check-list">
+                <div class="check-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Querem emagrecer com saúde</span>
+                </div>
+                <div class="check-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Têm rotina corrida e precisam de praticidade</span>
+                </div>
+                <div class="check-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Buscam uma relação mais saudável com a comida</span>
+                </div>
+                <div class="check-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Querem resultados duradouros</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== OFERTA ========== -->
+        <div class="offer-card" id="oferta">
+            <div class="badge"><i class="fas fa-star"></i> LOTE 1 - ACESSO PRIORITÁRIO</div>
+            
+            <h1>Método Magra 21D</h1>
+            <p class="subtitle">O método completo para mulheres que buscam clareza, saúde e bem-estar.</p>
+
+            <div class="price-box">
+                <span class="old-price">De R$ 247,00</span>
+                <div class="current-price">R$ 147,00 <span>à vista</span></div>
+                <div class="installment">ou em até 6x de R$ 27,80 no cartão</div>
+            </div>
+
+            <ul class="features">
+                <li><i class="fas fa-check-circle"></i> Método Magra 21D Completo</li>
+                <li><i class="fas fa-check-circle"></i> Cardápio Prático e Flexível</li>
+                <li><i class="fas fa-check-circle"></i> Lista de Substituição de Alimentos</li>
+                <li><i class="fas fa-check-circle"></i> Suporte em Grupo por 21 dias</li>
+                <li><i class="fas fa-gift"></i> <b>Bônus:</b> Presente para melhor resultado</li>
+            </ul>
+
+            <button class="cta-button" id="openTriageBtn">
+                <i class="fas fa-lock"></i> Garantir Vaga no Lote 1
+            </button>
+
+            <div class="disclaimer">
+                <i class="fas fa-info-circle"></i> Este método é um guia de estratégias nutricionais e não substitui o acompanhamento médico individualizado. Resultados podem variar de acordo com a individualidade biológica.
+            </div>
+        </div>
+
+        <div class="footer-site">
+            &copy; 2026 Magra 21D • Todos os direitos reservados
+        </div>
+    </div>
+
+    <!-- ========================================
+    SCRIPT - VERSÃO OTIMIZADA
+    ======================================== -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ================================
+            // ELEMENTOS
+            // ================================
+            const video = document.getElementById('meuVideo');
+            const videoWrapper = document.getElementById('videoWrapper');
+            const popup = document.getElementById('popupIntro');
+            const startBtn = document.getElementById('startVideoBtn');
+            const youtubePlayBtn = document.getElementById('youtubePlayBtn');
+            const backToVideoBtn = document.getElementById('backToVideoBtn');
+
+            const triageModal = document.getElementById('triageModal');
+            const openTriageBtn = document.getElementById('openTriageBtn');
+            const closeTriageBtn = document.getElementById('closeTriage');
+            const triageContent = document.getElementById('triageContent');
+            const triageProgress = document.getElementById('triageProgress');
+            const stepLabel = document.getElementById('stepLabel');
+            const dotsContainer = document.getElementById('dotsContainer');
+
+            let videoStarted = false;
+            let currentStep = 0;
+            let triageAnswers = [];
+            let isVideoVisible = true;
+
+            // ================================
+            // PERGUNTAS
+            // ================================
+            const questions = [
+                {
+                    icon: '👋',
+                    question: 'Qual é o seu nome?',
+                    sub: 'Vamos começar te conhecendo melhor!',
+                    type: 'text',
+                    placeholder: 'Digite seu nome completo'
+                },
+                {
+                    icon: '📧',
+                    question: 'Qual é o seu melhor e-mail?',
+                    sub: 'É por aqui que vamos te enviar os materiais exclusivos.',
+                    type: 'email',
+                    placeholder: 'seu@email.com'
+                },
+                {
+                    icon: '🎯',
+                    question: 'Qual é o seu principal objetivo com o Magra 21D?',
+                    sub: 'Isso nos ajuda a personalizar sua experiência.',
+                    type: 'options',
+                    options: [
+                        { value: 'emagrecer', label: 'Emagrecer de forma saudável' },
+                        { value: 'rotina', label: 'Criar uma rotina alimentar' },
+                        { value: 'saude', label: 'Melhorar a saúde e bem-estar' },
+                        { value: 'autoestima', label: 'Recuperar a autoestima' }
+                    ]
+                },
+                {
+                    icon: '🤔',
+                    question: 'O que mais te impede de emagrecer hoje?',
+                    sub: 'Vamos identificar juntas o que pode estar te travando.',
+                    type: 'options',
+                    options: [
+                        { value: 'ansiedade', label: 'Ansiedade e compulsão alimentar' },
+                        { value: 'rotina', label: 'Falta de tempo na rotina' },
+                        { value: 'motivacao', label: 'Falta de motivação' },
+                        { value: 'metabolismo', label: 'Metabolismo lento' }
+                    ]
+                },
+                {
+                    icon: '💪',
+                    question: 'Você está pronta para começar a transformação?',
+                    sub: 'Essa é a pergunta mais importante!',
+                    type: 'options',
+                    options: [
+                        { value: 'sim', label: '✅ Sim, estou pronta!' },
+                        { value: 'duvida', label: '🤔 Ainda estou em dúvida' },
+                        { value: 'quero', label: '💪 Quero muito, mas preciso de apoio' }
+                    ]
+                }
+            ];
+
+            // ================================
+            // FUNÇÃO: INICIAR VÍDEO
+            // ================================
+            function iniciarVideo() {
+                popup.classList.add('hidden');
+                video.muted = false;
+                video.controls = true;
+                youtubePlayBtn.classList.add('hidden');
+                video.play().catch(() => {});
+                videoStarted = true;
+                verificarVisibilidadeVideo();
+            }
+
+            // ================================
+            // FUNÇÃO: PLAY/PAUSE
+            // ================================
+            function toggleVideo() {
+                if (video.paused) {
+                    video.play().catch(() => {});
+                    youtubePlayBtn.classList.add('hidden');
+                } else {
+                    video.pause();
+                    youtubePlayBtn.classList.remove('hidden');
+                }
+            }
+
+            // ================================
+            // FUNÇÃO: VERIFICAR VISIBILIDADE
+            // ================================
+            function verificarVisibilidadeVideo() {
+                if (!videoStarted) return;
+                
+                const rect = videoWrapper.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                // Verifica se o vídeo está visível (pelo menos 40% dele)
+                const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+                const visibilityRatio = visibleHeight / rect.height;
+                
+                const isVisible = visibilityRatio > 0.3;
+                
+                if (!isVisible && isVideoVisible) {
+                    // Vídeo saiu da tela - mostra botão voltar
+                    isVideoVisible = false;
+                    backToVideoBtn.classList.add('visible');
+                } else if (isVisible && !isVideoVisible) {
+                    // Vídeo voltou - esconde botão
+                    isVideoVisible = true;
+                    backToVideoBtn.classList.remove('visible');
+                }
+            }
+
+            // ================================
+            // PRÉ-TRIAGEM
+            // ================================
+            function renderQuestion(step) {
+                const q = questions[step];
+                let html = `
+                    <span class="question-icon">${q.icon}</span>
+                    <h3>${q.question}</h3>
+                    <p class="sub-text">${q.sub}</p>
+                `;
+
+                if (q.type === 'text' || q.type === 'email') {
+                    const inputType = q.type === 'email' ? 'email' : 'text';
+                    html += `
+                        <input type="${inputType}" id="triageInput" 
+                               placeholder="${q.placeholder}" 
+                               autocomplete="${q.type === 'email' ? 'email' : 'name'}">
+                    `;
+                }
+
+                if (q.type === 'options') {
+                    html += `<div class="options">`;
+                    q.options.forEach((opt) => {
+                        html += `
+                            <button class="option-btn" data-value="${opt.value}">
+                                ${opt.label}
+                            </button>
+                        `;
+                    });
+                    html += `</div>`;
+                }
+
+                html += `
+                    <button class="btn-next" id="nextStepBtn" disabled>
+                        ${step === questions.length - 1 ? '✅ Finalizar' : '▶ Próximo'}
+                    </button>
+                `;
+
+                triageContent.innerHTML = html;
+
+                // Progresso
+                const progress = ((step + 1) / questions.length) * 100;
+                triageProgress.style.width = `${progress}%`;
+                stepLabel.textContent = `Pergunta ${step + 1} de ${questions.length}`;
+
+                // Dots
+                const dots = dotsContainer.querySelectorAll('.dot');
+                dots.forEach((dot, i) => {
+                    dot.classList.remove('active', 'done');
+                    if (i === step) dot.classList.add('active');
+                    else if (i < step) dot.classList.add('done');
+                });
+
+                // Eventos
+                const nextBtn = document.getElementById('nextStepBtn');
+                const input = document.getElementById('triageInput');
+
+                if (input) {
+                    input.addEventListener('input', function() {
+                        const val = this.value.trim();
+                        if (q.type === 'email') {
+                            const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+                            nextBtn.disabled = !isValid;
+                            this.classList.toggle('error', !isValid && val.length > 0);
+                        } else {
+                            nextBtn.disabled = val.length < 2;
+                        }
+                        if (val) triageAnswers[step] = val;
+                    });
+
+                    input.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter' && !nextBtn.disabled) nextBtn.click();
+                    });
+                }
+
+                const optionBtns = triageContent.querySelectorAll('.option-btn');
+                optionBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        optionBtns.forEach(b => b.classList.remove('selected'));
+                        this.classList.add('selected');
+                        triageAnswers[step] = this.dataset.value;
+                        nextBtn.disabled = false;
+                    });
+                });
+
+                nextBtn.addEventListener('click', function() {
+                    if (this.disabled) return;
+                    
+                    if (input && input.value.trim()) {
+                        triageAnswers[step] = input.value.trim();
+                    }
+
+                    if (step < questions.length - 1) {
+                        currentStep++;
+                        renderQuestion(currentStep);
+                    } else {
+                        finalizarTriage();
+                    }
+                });
+            }
+
+            function finalizarTriage() {
+                triageModal.classList.remove('active');
+                const nome = triageAnswers[0] || 'Cliente';
+                const email = triageAnswers[1] || '';
+                const checkoutUrl = `LINK_DO_SEU_CHECKOUT?nome=${encodeURIComponent(nome)}&email=${encodeURIComponent(email)}`;
+                window.open(checkoutUrl, '_blank');
+                alert(`✨ Obrigada ${nome}! Você está sendo redirecionada para garantir sua vaga.`);
+            }
+
+            // ================================
+            // EVENTOS
+            // ================================
+            // START
+            startBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                iniciarVideo();
+            });
+
+            // Botão Play YouTube
+            youtubePlayBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (!videoStarted) {
+                    iniciarVideo();
+                } else {
+                    toggleVideo();
+                }
+            });
+
+            // Clique no vídeo
+            videoWrapper.addEventListener('click', function() {
+                if (videoStarted) {
+                    toggleVideo();
+                } else {
+                    iniciarVideo();
+                }
+            });
+
+            // Botão voltar ao vídeo
+            backToVideoBtn.addEventListener('click', function() {
+                videoWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+
+            // Vídeo terminou
+            video.addEventListener('ended', function() {
+                youtubePlayBtn.classList.remove('hidden');
+            });
+
+            // Abrir pré-triagem
+            openTriageBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                triageModal.classList.add('active');
+                currentStep = 0;
+                triageAnswers = [];
+                renderQuestion(0);
+            });
+
+            // Fechar pré-triagem
+            closeTriageBtn.addEventListener('click', function() {
+                triageModal.classList.remove('active');
+            });
+
+            triageModal.addEventListener('click', function(e) {
+                if (e.target === this) triageModal.classList.remove('active');
+            });
+
+            // ================================
+            // SCROLL OTIMIZADO (com throttle)
+            // ================================
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        verificarVisibilidadeVideo();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            // ================================
+            // INICIALIZAÇÃO
+            // ================================
+            video.muted = true;
+            video.controls = false;
+
+            video.addEventListener('loadedmetadata', function() {
+                video.muted = true;
+                video.controls = false;
+            });
+
+            console.log('✅ Magra 21D - Versão estável carregada!');
+            console.log('🎯 Problema do vídeo tremendo foi resolvido!');
+
+        })();
+    </script>
 </body>
 </html>
