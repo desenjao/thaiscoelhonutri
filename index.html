@@ -472,204 +472,6 @@
         }
 
         /* ======================================
-           PRÉ-TRIAGEM - MODAL
-        ====================================== */
-        .triage-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
-            z-index: 8000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .triage-overlay.active {
-            display: flex;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .triage-card {
-            background: var(--white-card);
-            max-width: 480px;
-            width: 100%;
-            border-radius: 40px;
-            padding: 40px 28px;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        .triage-card .close-triage {
-            position: absolute;
-            top: 16px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-light);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .triage-card .close-triage:hover {
-            color: var(--error-red);
-            transform: rotate(90deg);
-        }
-
-        .triage-progress-bar {
-            height: 4px;
-            background: var(--border-light);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-        .triage-progress-bar .fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--green-primary), var(--green-highlight));
-            border-radius: 4px;
-            transition: width 0.4s ease;
-            width: 0%;
-        }
-
-        .step-indicator {
-            text-align: center;
-            font-size: 0.7rem;
-            color: var(--text-light);
-            margin-bottom: 20px;
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-        .step-indicator .dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 8px;
-        }
-        .step-indicator .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--border-light);
-            transition: all 0.3s;
-        }
-        .step-indicator .dot.active {
-            background: var(--green-primary);
-            width: 24px;
-            border-radius: 4px;
-        }
-        .step-indicator .dot.done {
-            background: var(--green-highlight);
-        }
-
-        .triage-card .question-icon {
-            font-size: 2.5rem;
-            text-align: center;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .triage-card h3 {
-            font-size: 1.3rem;
-            text-align: center;
-            margin-bottom: 6px;
-            color: var(--text-dark);
-        }
-
-        .triage-card .sub-text {
-            text-align: center;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
-
-        .triage-card .options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 16px;
-        }
-
-        .triage-card .option-btn {
-            background: var(--bg-page);
-            border: 2px solid var(--border-light);
-            border-radius: 60px;
-            padding: 14px 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-dark);
-            text-align: center;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .triage-card .option-btn:hover {
-            background: var(--green-soft);
-            border-color: var(--green-primary);
-        }
-
-        .triage-card .option-btn.selected {
-            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
-            border-color: var(--green-primary);
-            color: white;
-        }
-
-        .triage-card .btn-next {
-            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
-            color: white;
-            border: none;
-            padding: 16px;
-            border-radius: 60px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            font-family: 'Inter', sans-serif;
-            margin-top: 8px;
-        }
-
-        .triage-card .btn-next:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(45, 106, 79, 0.3);
-        }
-
-        .triage-card .btn-next:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .triage-card input {
-            width: 100%;
-            padding: 14px 18px;
-            border: 2px solid var(--border-light);
-            border-radius: 60px;
-            font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
-            outline: none;
-            background: var(--bg-page);
-            transition: border 0.3s;
-            margin-bottom: 12px;
-        }
-        .triage-card input:focus {
-            border-color: var(--green-primary);
-        }
-        .triage-card input.error {
-            border-color: var(--error-red);
-        }
-
-        /* ======================================
            POPUP PREMIUM
         ====================================== */
         .popup-overlay {
@@ -860,8 +662,6 @@
             .popup-icon-wrapper .ring:nth-child(2) { width: 60px; height: 60px; top: 0; left: 0; }
             .popup-icon { font-size: 2.4rem; line-height: 60px; }
             .info-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-            .triage-card { padding: 28px 16px; }
-            .triage-card h3 { font-size: 1.1rem; }
             .youtube-play-btn { width: 60px; height: 60px; }
             .youtube-play-btn i { font-size: 1.6rem; }
             .back-to-video { bottom: 20px; right: 20px; padding: 12px 18px; font-size: 0.75rem; }
@@ -878,7 +678,7 @@
             <div class="popup-icon-wrapper">
                 <div class="ring"></div>
                 <div class="ring"></div>
-                <span class="popup-icon">✨</span>
+                <span class="popup-icon"><i class="fas fa-star"></i></span>
             </div>
             <h2>Você está pronta para <span class="highlight">transformar a sua rotina</span> e fazer com que ela trabalhe a favor do seu emagrecimento?</h2>
             <p>Clique no botão abaixo e assista ao vídeo com som para descobrir como o método <strong>Magra 21D</strong> pode mudar sua vida.</p>
@@ -889,32 +689,6 @@
             <div class="popup-footer">
                 <i class="fas fa-star"></i> Lote exclusivo • Vagas limitadas <i class="fas fa-star"></i>
             </div>
-        </div>
-    </div>
-
-    <!-- ========================================
-    PRÉ-TRIAGEM
-    ======================================== -->
-    <div id="triageModal" class="triage-overlay">
-        <div class="triage-card">
-            <button class="close-triage" id="closeTriage"><i class="fas fa-times"></i></button>
-            
-            <div class="triage-progress-bar">
-                <div class="fill" id="triageProgress"></div>
-            </div>
-            
-            <div class="step-indicator">
-                <span id="stepLabel">Pergunta 1 de 5</span>
-                <div class="dots" id="dotsContainer">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
-            </div>
-
-            <div id="triageContent"></div>
         </div>
     </div>
 
@@ -939,7 +713,7 @@
         <!-- ========== VÍDEO ========== -->
         <div class="video-wrapper" id="videoWrapper">
             <video id="meuVideo" muted playsinline loop style="width:100%;">
-                <source src="videos/1v.mp4" type="video/mp4">
+                <source src="videos/v2.mp4" type="video/mp4">
                 Seu navegador não suporta vídeos.
             </video>
             
@@ -950,7 +724,7 @@
 
         <!-- ========== SEÇÃO 1 ========== -->
         <div class="info-section">
-            <span class="icon-big">🌿</span>
+            <span class="icon-big"><i class="fas fa-leaf"></i></span>
             <h3>O que é o <span style="color:var(--green-primary);">Magra 21D</span>?</h3>
             <p>Um método criado para mulheres que querem <strong>emagrecer com saúde</strong>, sem dietas restritivas e com foco na <strong>reprogramação alimentar</strong> em 21 dias.</p>
             
@@ -976,7 +750,7 @@
 
         <!-- ========== SEÇÃO 2 ========== -->
         <div class="info-section" style="background: linear-gradient(145deg, var(--green-soft), #F3F7F4);">
-            <span class="icon-big">📋</span>
+            <span class="icon-big"><i class="fas fa-clipboard-list"></i></span>
             <h3>Como funciona?</h3>
             <p>Você recebe acesso imediato ao <strong>material completo</strong> e começa a aplicar as estratégias no seu dia a dia.</p>
             
@@ -998,13 +772,13 @@
             <div class="testimonial-box">
                 <i class="fas fa-quote-left"></i>
                 <p>"Em 21 dias eu consegui criar uma rotina que realmente funciona para mim. Não é uma dieta, é um novo estilo de vida!"</p>
-                <div class="author">— Mariana S., aluna do Lote 0</div>
+                <div class="author"><i class="fas fa-user-circle"></i> Mariana S., aluna do Lote 0</div>
             </div>
         </div>
 
         <!-- ========== SEÇÃO 3 ========== -->
         <div class="info-section">
-            <span class="icon-big">🎯</span>
+            <span class="icon-big"><i class="fas fa-bullseye"></i></span>
             <h3>Para quem é o Magra 21D?</h3>
             <p>Ideal para mulheres que:</p>
             <div class="check-list">
@@ -1048,8 +822,8 @@
                 <li><i class="fas fa-gift"></i> <b>Bônus:</b> Presente para melhor resultado</li>
             </ul>
 
-            <button class="cta-button" id="openTriageBtn">
-                <i class="fas fa-lock"></i> Garantir Vaga no Lote 1
+            <button class="cta-button" id="goToQuizBtn">
+                <i class="fas fa-arrow-right"></i> Garantir Vaga 
             </button>
 
             <div class="disclaimer">
@@ -1078,74 +852,10 @@
             const startBtn = document.getElementById('startVideoBtn');
             const youtubePlayBtn = document.getElementById('youtubePlayBtn');
             const backToVideoBtn = document.getElementById('backToVideoBtn');
-
-            const triageModal = document.getElementById('triageModal');
-            const openTriageBtn = document.getElementById('openTriageBtn');
-            const closeTriageBtn = document.getElementById('closeTriage');
-            const triageContent = document.getElementById('triageContent');
-            const triageProgress = document.getElementById('triageProgress');
-            const stepLabel = document.getElementById('stepLabel');
-            const dotsContainer = document.getElementById('dotsContainer');
+            const goToQuizBtn = document.getElementById('goToQuizBtn');
 
             let videoStarted = false;
-            let currentStep = 0;
-            let triageAnswers = [];
             let isVideoVisible = true;
-
-            // ================================
-            // PERGUNTAS
-            // ================================
-            const questions = [
-                {
-                    icon: '👋',
-                    question: 'Qual é o seu nome?',
-                    sub: 'Vamos começar te conhecendo melhor!',
-                    type: 'text',
-                    placeholder: 'Digite seu nome completo'
-                },
-                {
-                    icon: '📧',
-                    question: 'Qual é o seu melhor e-mail?',
-                    sub: 'É por aqui que vamos te enviar os materiais exclusivos.',
-                    type: 'email',
-                    placeholder: 'seu@email.com'
-                },
-                {
-                    icon: '🎯',
-                    question: 'Qual é o seu principal objetivo com o Magra 21D?',
-                    sub: 'Isso nos ajuda a personalizar sua experiência.',
-                    type: 'options',
-                    options: [
-                        { value: 'emagrecer', label: 'Emagrecer de forma saudável' },
-                        { value: 'rotina', label: 'Criar uma rotina alimentar' },
-                        { value: 'saude', label: 'Melhorar a saúde e bem-estar' },
-                        { value: 'autoestima', label: 'Recuperar a autoestima' }
-                    ]
-                },
-                {
-                    icon: '🤔',
-                    question: 'O que mais te impede de emagrecer hoje?',
-                    sub: 'Vamos identificar juntas o que pode estar te travando.',
-                    type: 'options',
-                    options: [
-                        { value: 'ansiedade', label: 'Ansiedade e compulsão alimentar' },
-                        { value: 'rotina', label: 'Falta de tempo na rotina' },
-                        { value: 'motivacao', label: 'Falta de motivação' },
-                        { value: 'metabolismo', label: 'Metabolismo lento' }
-                    ]
-                },
-                {
-                    icon: '💪',
-                    question: 'Você está pronta para começar a transformação?',
-                    sub: 'Essa é a pergunta mais importante!',
-                    type: 'options',
-                    options: [
-                        { value: 'sim', label: '✅ Sim, estou pronta!' },
-                        { value: 'duvida', label: '🤔 Ainda estou em dúvida' },
-                        { value: 'quero', label: '💪 Quero muito, mas preciso de apoio' }
-                    ]
-                }
-            ];
 
             // ================================
             // FUNÇÃO: INICIAR VÍDEO
@@ -1200,113 +910,10 @@
             }
 
             // ================================
-            // PRÉ-TRIAGEM
+            // REDIRECIONAR PARA QUIZ.HTML
             // ================================
-            function renderQuestion(step) {
-                const q = questions[step];
-                let html = `
-                    <span class="question-icon">${q.icon}</span>
-                    <h3>${q.question}</h3>
-                    <p class="sub-text">${q.sub}</p>
-                `;
-
-                if (q.type === 'text' || q.type === 'email') {
-                    const inputType = q.type === 'email' ? 'email' : 'text';
-                    html += `
-                        <input type="${inputType}" id="triageInput" 
-                               placeholder="${q.placeholder}" 
-                               autocomplete="${q.type === 'email' ? 'email' : 'name'}">
-                    `;
-                }
-
-                if (q.type === 'options') {
-                    html += `<div class="options">`;
-                    q.options.forEach((opt) => {
-                        html += `
-                            <button class="option-btn" data-value="${opt.value}">
-                                ${opt.label}
-                            </button>
-                        `;
-                    });
-                    html += `</div>`;
-                }
-
-                html += `
-                    <button class="btn-next" id="nextStepBtn" disabled>
-                        ${step === questions.length - 1 ? '✅ Finalizar' : '▶ Próximo'}
-                    </button>
-                `;
-
-                triageContent.innerHTML = html;
-
-                // Progresso
-                const progress = ((step + 1) / questions.length) * 100;
-                triageProgress.style.width = `${progress}%`;
-                stepLabel.textContent = `Pergunta ${step + 1} de ${questions.length}`;
-
-                // Dots
-                const dots = dotsContainer.querySelectorAll('.dot');
-                dots.forEach((dot, i) => {
-                    dot.classList.remove('active', 'done');
-                    if (i === step) dot.classList.add('active');
-                    else if (i < step) dot.classList.add('done');
-                });
-
-                // Eventos
-                const nextBtn = document.getElementById('nextStepBtn');
-                const input = document.getElementById('triageInput');
-
-                if (input) {
-                    input.addEventListener('input', function() {
-                        const val = this.value.trim();
-                        if (q.type === 'email') {
-                            const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
-                            nextBtn.disabled = !isValid;
-                            this.classList.toggle('error', !isValid && val.length > 0);
-                        } else {
-                            nextBtn.disabled = val.length < 2;
-                        }
-                        if (val) triageAnswers[step] = val;
-                    });
-
-                    input.addEventListener('keypress', function(e) {
-                        if (e.key === 'Enter' && !nextBtn.disabled) nextBtn.click();
-                    });
-                }
-
-                const optionBtns = triageContent.querySelectorAll('.option-btn');
-                optionBtns.forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        optionBtns.forEach(b => b.classList.remove('selected'));
-                        this.classList.add('selected');
-                        triageAnswers[step] = this.dataset.value;
-                        nextBtn.disabled = false;
-                    });
-                });
-
-                nextBtn.addEventListener('click', function() {
-                    if (this.disabled) return;
-                    
-                    if (input && input.value.trim()) {
-                        triageAnswers[step] = input.value.trim();
-                    }
-
-                    if (step < questions.length - 1) {
-                        currentStep++;
-                        renderQuestion(currentStep);
-                    } else {
-                        finalizarTriage();
-                    }
-                });
-            }
-
-            function finalizarTriage() {
-                triageModal.classList.remove('active');
-                const nome = triageAnswers[0] || 'Cliente';
-                const email = triageAnswers[1] || '';
-                const checkoutUrl = `LINK_DO_SEU_CHECKOUT?nome=${encodeURIComponent(nome)}&email=${encodeURIComponent(email)}`;
-                window.open(checkoutUrl, '_blank');
-                alert(`✨ Obrigada ${nome}! Você está sendo redirecionada para garantir sua vaga.`);
+            function irParaQuiz() {
+                window.location.href = 'https://pay.hotmart.com/F106653180H?off=h6t9at6i&hotfeature=51&_hi=eyJjaWQiOiIxNzgzNDc4NzAzOTE2NTY0OTIzMTA4Mzg5NzY2ODAwIiwiYmlkIjoiMTc4MzQ3ODcwMzkxNjU2NDkyMzEwODM4OTc2NjgwMCIsInNpZCI6ImIwMThiYTlmNDM4NTQ1ZTA4MDMyNTIyM2YxN2U5ZDRiIn0=.1783480359705&bid=1783480361707';
             }
 
             // ================================
@@ -1347,22 +954,10 @@
                 youtubePlayBtn.classList.remove('hidden');
             });
 
-            // Abrir pré-triagem
-            openTriageBtn.addEventListener('click', function(e) {
+            // Botão "Garantir Vaga" - redireciona para quiz.html
+            goToQuizBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                triageModal.classList.add('active');
-                currentStep = 0;
-                triageAnswers = [];
-                renderQuestion(0);
-            });
-
-            // Fechar pré-triagem
-            closeTriageBtn.addEventListener('click', function() {
-                triageModal.classList.remove('active');
-            });
-
-            triageModal.addEventListener('click', function(e) {
-                if (e.target === this) triageModal.classList.remove('active');
+                irParaQuiz();
             });
 
             // ================================
@@ -1391,7 +986,7 @@
             });
 
             console.log('✅ Magra 21D - Versão estável carregada!');
-            console.log('🎯 Problema do vídeo tremendo foi resolvido!');
+            console.log('🎯 Ao clicar em "Garantir Vaga", redireciona para quiz.html');
 
         })();
     </script>

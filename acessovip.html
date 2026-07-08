@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bem-vinda ao Magra 21D · Sua jornada começa agora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f4f0ea;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 680px;
+            width: 100%;
+            background: #ffffff;
+            padding: 3rem 2.8rem 2.5rem;
+            border-radius: 40px 40px 32px 32px;
+            box-shadow: 0 30px 70px -20px rgba(30, 60, 30, 0.25), 0 8px 20px rgba(0, 0, 0, 0.04);
+            position: relative;
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        /* elementos decorativos premium */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -25px;
+            right: -15px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(197, 160, 89, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: -20px;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle, rgba(45, 90, 39, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* selo / ícone */
+        .icon-success {
+            font-size: 4.2rem;
+            color: #c5a059;
+            margin-bottom: 0.5rem;
+            display: block;
+            line-height: 1;
+        }
+
+        .icon-success i {
+            filter: drop-shadow(0 4px 12px rgba(197, 160, 89, 0.25));
+        }
+
+        /* título principal */
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 2.6rem;
+            color: #2d5a27;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.2rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #5a6b4a;
+            background: #f0f5ed;
+            display: inline-block;
+            padding: 0.2rem 2rem;
+            border-radius: 60px;
+            border: 1px solid #d6e0ce;
+            margin-bottom: 1.8rem;
+        }
+
+        .subtitle i {
+            color: #c5a059;
+            margin-right: 6px;
+        }
+
+        .hero-message {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #2c3d2a;
+            background: #f8fbf6;
+            padding: 1.5rem 1.8rem;
+            border-radius: 24px;
+            border-left: 5px solid #c5a059;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .hero-message strong {
+            color: #2d5a27;
+        }
+
+        .hero-message .highlight-gold {
+            background: #f5eddd;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            font-weight: 600;
+            color: #7a5f2e;
+        }
+
+        /* botão principal — grupo de acompanhamento */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            background: #25D366;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            text-decoration: none;
+            box-shadow: 0 12px 30px -8px rgba(37, 211, 102, 0.35);
+            transition: all 0.25s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+            max-width: 460px;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-whatsapp i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #1ebe5b;
+            transform: scale(1.02);
+            box-shadow: 0 16px 40px -8px rgba(37, 211, 102, 0.45);
+        }
+
+        .btn-whatsapp:active {
+            transform: scale(0.97);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: #5a6b4a;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border-bottom: 2px dotted #c5a059;
+            padding-bottom: 2px;
+            transition: color 0.2s;
+        }
+
+        .btn-secondary:hover {
+            color: #2d5a27;
+        }
+
+        /* checklist de próximos passos */
+        .steps-card {
+            background: #f9fbf8;
+            border-radius: 24px;
+            padding: 1.8rem 1.8rem 1.2rem;
+            margin: 2rem 0 1.5rem;
+            border: 1px solid #e4ebe0;
+            text-align: left;
+        }
+
+        .steps-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: #2d5a27;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .steps-card h3 i {
+            color: #c5a059;
+            font-size: 1.4rem;
+        }
+
+        .steps-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .steps-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #edf3ea;
+            font-size: 0.98rem;
+            color: #2a3d28;
+            line-height: 1.5;
+        }
+
+        .steps-list li:last-child {
+            border-bottom: none;
+        }
+
+        .steps-list li i {
+            color: #2d5a27;
+            font-size: 1.1rem;
+            width: 1.6rem;
+            text-align: center;
+            margin-top: 0.1rem;
+        }
+
+        .steps-list li .step-highlight {
+            background: #f0f5ed;
+            padding: 0.1rem 0.8rem;
+            border-radius: 30px;
+            font-weight: 600;
+            color: #2d5a27;
+        }
+
+        .steps-list li .gold-text {
+            color: #a8863a;
+            font-weight: 600;
+        }
+
+        /* rodapé com informações de contato e direitos */
+        .footer-info {
+            margin-top: 2rem;
+            border-top: 1px solid #e2eade;
+            padding-top: 1.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem 2rem;
+            font-size: 0.8rem;
+            color: #5f6f55;
+        }
+
+        .footer-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-info i {
+            color: #c5a059;
+        }
+
+        .signature {
+            background: #f0f5ed;
+            padding: 0.2rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            color: #3d5539;
+            border: 1px solid #d6e0ce;
+            display: inline-block;
+            margin-top: 0.8rem;
+        }
+
+        .badge-lote {
+            background: #2d5a27;
+            color: #f5f0e6;
+            padding: 0.2rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: inline-block;
+            border: 1px solid #c5a059;
+            text-transform: uppercase;
+        }
+
+        /* responsividade */
+        @media (max-width: 580px) {
+            .container {
+                padding: 2rem 1.2rem 1.8rem;
+                border-radius: 28px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .btn-whatsapp {
+                font-size: 1rem;
+                padding: 0.9rem 1.5rem;
+                gap: 10px;
+            }
+
+            .btn-whatsapp i {
+                font-size: 1.6rem;
+            }
+
+            .hero-message {
+                padding: 1.2rem;
+                font-size: 0.98rem;
+            }
+
+            .steps-card {
+                padding: 1.2rem;
+            }
+
+            .steps-list li {
+                font-size: 0.9rem;
+            }
+
+            .footer-info {
+                gap: 0.5rem 1rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            .subtitle {
+                font-size: 0.9rem;
+                padding: 0.2rem 1.2rem;
+            }
+            .icon-success {
+                font-size: 3.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ícone de sucesso -->
+    <span class="icon-success"><i class="fas fa-check-circle"></i></span>
+
+    <!-- título -->
+    <h1>Compra Aprovada!</h1>
+    <div class="subtitle">
+        <i class="fas fa-crown"></i> Bem-vinda ao Método Magra 21D
+    </div>
+
+    <!-- mensagem de validação e acolhimento -->
+    <div class="hero-message">
+        <p style="margin-bottom: 0.5rem;">
+            <i class="fas fa-quote-left" style="color: #c5a059; margin-right: 6px;"></i>
+            Parabéns, <strong>você deu um passo incrível</strong> rumo à sua transformação.
+        </p>
+        <p>
+            Sua vaga no <span class="highlight-gold">Magra 21D</span> está garantida. 
+            Prepare-se para <strong>21 dias de reprogramação alimentar</strong>, com 
+            <span class="highlight-gold">cardápio flexível</span>, 
+            <span class="highlight-gold">substituições inteligentes</span> e 
+            <span class="highlight-gold">suporte humano</span>.
+        </p>
+        <div style="margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.4rem 0.8rem;">
+            <span style="background: #2d5a27; color: #f5f0e6; padding: 0.1rem 0.8rem; border-radius: 40px; font-size: 0.7rem; font-weight: 600;"><i class="fas fa-tag"></i> LOTE 1 · ACESSO PROIBITIVO</span>
+            <span style="background: #f0f5ed; padding: 0.1rem 0.8rem; border-radius: 40px; font-size: 0.7rem; color: #2d5a27;"><i class="fas fa-gift"></i> Bônus exclusivo</span>
+        </div>
+    </div>
+
+    <!-- BOTÃO PRINCIPAL: grupo de acompanhamento -->
+    <div class="btn-group">
+        <a href="https://chat.whatsapp.com/ExemploMagra21D" target="_blank" class="btn-whatsapp" id="grupoLink">
+            <i class="fab fa-whatsapp"></i> Entrar no grupo de suporte
+        </a>
+    </div>
+    <p style="font-size: 0.8rem; color: #6f7f65; margin-top: -0.5rem; margin-bottom: 0.5rem;">
+        <i class="fas fa-arrow-right" style="color: #c5a059;"></i> Conecte-se com outras alunas e com a Thais
+    </p>
+
+    <!-- card de próximos passos (reduz ansiedade) -->
+    <div class="steps-card">
+        <h3>
+            <i class="fas fa-list-check"></i> O que fazer agora?
+        </h3>
+        <ul class="steps-list">
+            <li>
+                <i class="fas fa-envelope"></i>
+                <span><strong>Verifique seu e-mail</strong> — Enviamos seu acesso e material. <span class="step-highlight">Se não achar, olhe o SPAM</span>.</span>
+            </li>
+            <li>
+                <i class="fas fa-users"></i>
+                <span><strong>Entre no grupo</strong> — Clique no botão verde acima e faça parte da comunidade <span class="gold-text">#Magra21D</span>.</span>
+            </li>
+            <li>
+                <i class="fas fa-calendar-check"></i>
+                <span><strong>Prepare-se</strong> — Começamos em breve. Fique atenta às notificações do grupo e aos e-mails.</span>
+            </li>
+            <li>
+                <i class="fas fa-heart-pulse"></i>
+                <span><strong>Confie no processo</strong> — Você tem tudo o que precisa para transformar sua relação com a comida.</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- rodapé com informações institucionais -->
+    <div class="footer-info">
+        <span><i class="fas fa-user-md"></i> Thais Coelho · Nutricionista</span>
+        <span><i class="fas fa-star" style="color: #c5a059;"></i> 4.9/5.0 (200+ alunas)</span>
+        <span><i class="fas fa-clock"></i> Resultados sustentáveis</span>
+    </div>
+
+    <!-- assinatura e direitos -->
+    <div style="margin-top: 1.2rem;">
+        <span class="signature">
+            <i class="far fa-copyright"></i> 2026 Magra 21D · by Thais Coelho Nutricionista
+        </span>
+        <div style="margin-top: 0.3rem; font-size: 0.65rem; color: #8a9a80;">
+            <i class="fas fa-info-circle"></i> Estratégias nutricionais · não substitui acompanhamento médico individualizado
+        </div>
+    </div>
+</div>
+
+<!-- script para garantir que o link do grupo seja facilmente editável -->
+<script>
+    (function() {
+        // 🔥 ALTERE A URL ABAIXO PARA O LINK REAL DO SEU GRUPO DE WHATSAPP
+        const grupoUrl = 'https://chat.whatsapp.com/ExemploMagra21D';
+        const btn = document.getElementById('grupoLink');
+        if (btn) {
+            btn.href = grupoUrl;
+        }
+        console.log('✅ Página de obrigado Magra 21D — link do grupo configurado.');
+    })();
+</script>
+
+</body>
+</html>
