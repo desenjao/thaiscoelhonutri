@@ -502,57 +502,6 @@
             background: #5a6fd6;
         }
 
-        /* Botão Presente */
-        .presente-section {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            border-radius: 16px;
-            padding: 20px;
-            margin: 20px 0 16px 0;
-            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
-            text-align: center;
-        }
-
-        .presente-section h3 {
-            color: white;
-            font-size: 18px;
-            margin-bottom: 4px;
-        }
-
-        .presente-section h3 i {
-            margin-right: 8px;
-        }
-
-        .presente-section p {
-            color: rgba(255,255,255,0.9);
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-
-        .btn-presente {
-            background: white;
-            color: #f5576c;
-            border: none;
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-        }
-
-        .btn-presente:active {
-            transform: scale(0.95);
-        }
-
-        .btn-presente i {
-            font-size: 20px;
-        }
-
         /* Empty state */
         .empty-state {
             text-align: center;
@@ -647,15 +596,6 @@
         <button class="filter-btn" data-filter="arquivados"><i class="fas fa-archive"></i> Arquivados</button>
         <button class="filter-btn" data-filter="prevenda"><i class="fas fa-tag"></i> Pré-venda</button>
         <button class="filter-btn" data-filter="tpm"><i class="fas fa-heartbeat"></i> TPM</button>
-    </div>
-
-    <!-- Botão Presente -->
-    <div class="presente-section">
-        <h3><i class="fas fa-gift"></i> Presente Exclusivo!</h3>
-        <p>Thaís preparou um conteúdo especial para você!</p>
-        <a href="https://thaiscoelhonutri.com.br/pagina-de-vendas" class="btn-presente" target="_blank">
-            <i class="fas fa-gift"></i> RESGATAR AGORA
-        </a>
     </div>
 
     <!-- Container dos Leads -->
@@ -1118,6 +1058,8 @@
                 msg += `Sobre isso: "${lead.mensagem}"\n\n`;
             }
             
+            msg += `🎁 Você ganhou um presente especial! Acesse o link abaixo para conhecer o Método Magra 21D e começar sua transformação:\n\n`;
+            msg += `👉 https://thaiscoelhonutri.com.br/\n\n`;
             msg += `Quer saber como podemos trabalhar juntos para alcançar seus objetivos? 💪\n\n`;
             msg += `Vamos conversar? 😊`;
             
@@ -1135,6 +1077,8 @@
                 msg += `Sobre isso: "${lead.mensagem}"\n\n`;
             }
             
+            msg += `🎁 Você ganhou um presente especial! Acesse o link abaixo para conhecer o Método Magra 21D e começar sua transformação:\n\n`;
+            msg += `👉 https://thaiscoelhonutri.com.br/\n\n`;
             msg += `Quer saber como podemos trabalhar juntos para alcançar seus objetivos? 💪\n\n`;
             msg += `Estou aqui para ajudar você! 😊\n\n`;
             msg += `Aguardo seu retorno!`;
